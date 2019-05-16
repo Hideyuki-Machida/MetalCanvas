@@ -66,9 +66,26 @@ do {
 
 ## サンプルコード 画像描画
 
-[DrawSample01VC.swift](https://github.com/Hideyuki-Machida/MetalCanvas/blob/master/Example/MetalCanvasExample/DrawSample01VC.swift)
+* [DrawSample01VC.swift](https://github.com/Hideyuki-Machida/MetalCanvas/blob/master/Example/MetalCanvasExample/DrawSample01VC.swift)
 
 
 ## サンプルコード リアルタイム描画
 
-[DrawSample02VC.swift](https://github.com/Hideyuki-Machida/MetalCanvas/blob/master/Example/MetalCanvasExample/DrawSample02VC.swift)
+* [DrawSample02VC.swift](https://github.com/Hideyuki-Machida/MetalCanvas/blob/master/Example/MetalCanvasExample/DrawSample02VC.swift)
+
+
+## Coming Soon
+
+* Noise
+* Filter
+* Morphing
+* Vision
+
+
+## 参考
+
+* [processing](https://processing.org/)
+* [openframeworks](https://openframeworks.cc/)
+* [Flash BitmapData](https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/display/BitmapData.html)
+
+
