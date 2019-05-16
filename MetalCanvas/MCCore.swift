@@ -41,7 +41,7 @@ final public class MCCore {
 	
 	public static func setup(contextPptions: [CIContextOption : Any]) throws {
 		MCCore.ciContext = CIContext(mtlDevice: MCCore.device, options: contextPptions)
-		let bundlr: Bundle = Bundle.init(identifier: "com.cchannel.MetalCanvas")!
+		let bundlr: Bundle = Bundle.init(identifier: "hideyuki.machida.MetalCanvas")!
 		let path: String = bundlr.bundlePath + "/default.metallib"
 		MCCore.library = try MCCore.device.makeLibrary(filepath: path)
 	}
