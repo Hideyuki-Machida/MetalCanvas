@@ -76,6 +76,7 @@ class DrawSample02VC: UIViewController {
 	/////////////////////////////////////////////////////////////////////////////////////
 
 	/////////////////////////////////////////////////////////////////////////////////////
+	let queue: DispatchQueue = DispatchQueue(label: "hideyuki.machida.MetalCanvasExample.queue")
 	let len: Int = 100
 	let renderSize: CGSize = CGSize.init(width: 720, height: 1280)
 	
@@ -157,7 +158,7 @@ class DrawSample02VC: UIViewController {
 				commandBuffer: commandBuffer,
 				texture: self.destinationTexture!,
 				renderSize: self.renderSize,
-				queue: nil
+				queue: self.queue
 			)
 			
 		} catch {
