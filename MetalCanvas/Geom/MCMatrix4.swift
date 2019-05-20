@@ -1,6 +1,6 @@
 //
 //  MCMatrix4.swift
-//  iOS_AVModule
+//  CameraCore
 //
 //  Created by hideyuki machida on 2018/12/24.
 //  Copyright © 2018 町田 秀行. All rights reserved.
