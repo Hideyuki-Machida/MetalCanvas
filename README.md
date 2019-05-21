@@ -14,6 +14,12 @@ processingにおけるOpenGLのように、Metalを少ないインターフェ�
 点や四角などのプリミティブの描画や画像処理。
 そういった事を簡単に行なえます。
 
+---
+
+Processing is a flexible software sketchbook and a language for learning how to code within the context of the visual arts. Since 2001, Processing has promoted software literacy within the visual arts and visual literacy within technology. There are tens of thousands of students, artists, designers, researchers, and hobbyists who use Processing for learning and prototyping.
+
+---
+
 #### 参考
 
 * [processing](https://processing.org/)
@@ -21,7 +27,7 @@ processingにおけるOpenGLのように、Metalを少ないインターフェ�
 * [Flash BitmapData](https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/display/BitmapData.html)
 
 
-#### Metal参考
+#### Metal学習参考
 
 * [Metal Programming Guide](https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/MetalProgrammingGuide/Introduction/Introduction.html
 )
