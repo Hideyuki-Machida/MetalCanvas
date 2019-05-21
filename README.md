@@ -21,6 +21,12 @@ processingにおけるOpenGLのように、Metalを少ないインターフェ�
 * [Flash BitmapData](https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/display/BitmapData.html)
 
 
+#### Metal参考
+
+* [Metal Programming Guide](https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/MetalProgrammingGuide/Introduction/Introduction.html
+)
+* [Metalを基礎から日本語で学べる書籍](https://qiita.com/shu223/items/19c7d98fc186562b4f57)
+
 
 ## サンプルコード
 
