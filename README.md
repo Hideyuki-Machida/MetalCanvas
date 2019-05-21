@@ -6,6 +6,21 @@
 
 
 
+## 概要
+
+このフレームワークはprocessingの思想を基にしています。
+processingにおけるOpenGLのように、Metalを少ないインターフェースで使えることを目指しています。
+少ないコードで キャンバスに絵を描くようにコードで絵を描きます。
+点や四角などのプリミティブの描画や画像処理。
+そういった事を簡単に行なえます。
+
+#### 参考
+
+* [processing](https://processing.org/)
+* [openframeworks](https://openframeworks.cc/)
+* [Flash BitmapData](https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/display/BitmapData.html)
+
+
 
 ## サンプルコード
 
@@ -87,11 +102,5 @@ do {
 * Morphing
 * Vision
 
-
-## 参考
-
-* [processing](https://processing.org/)
-* [openframeworks](https://openframeworks.cc/)
-* [Flash BitmapData](https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/display/BitmapData.html)
 
 
