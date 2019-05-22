@@ -8,10 +8,11 @@
 
 ## 概要
 
-このフレームワークはprocessingの思想を基にしています。
-processingにおけるOpenGLのように、Metalを少ないインターフェースで使えることを目指しています。
-少ないコードで キャンバスに絵を描くようにコードで絵を描きます。
-点や四角などのプリミティブの描画や画像処理。
+このフレームワークは、processingの思想に影響を受けています。<br>
+processingにおけるOpenGLのように、Metalを少ない手続き・インターフェースで使えることを目指しています。<br>
+
+少ないコードで キャンバスに絵を描くようにコードで絵を描きます。<br>
+点や四角などのプリミティブの描画や画像処理。<br>
 そういった事を簡単に行なえます。
 
 ---
@@ -32,6 +33,7 @@ Processing is a flexible software sketchbook and a language for learning how to 
 * [Metal Programming Guide](https://developer.apple.com/library/archive/documentation/Miscellaneous/Conceptual/MetalProgrammingGuide/Introduction/Introduction.html
 )
 * [Metalを基礎から日本語で学べる書籍](https://qiita.com/shu223/items/19c7d98fc186562b4f57)
+
 
 
 ## サンプルコード
