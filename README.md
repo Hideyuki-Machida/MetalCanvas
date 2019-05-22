@@ -35,6 +35,16 @@ Processing is a flexible software sketchbook and a language for learning how to 
 * [Metalを基礎から日本語で学べる書籍](https://qiita.com/shu223/items/19c7d98fc186562b4f57)
 
 
+## Interface
+
+* [MCCore](https://github.com/Hideyuki-Machida/MetalCanvas/blob/master/MetalCanvas/MCCore.swift): 初期化やCommandBufferの生成など
+* [MCCanvas](https://github.com/Hideyuki-Machida/MetalCanvas/blob/master/MetalCanvas/MCCanvas.swift): 描画情報をセット
+* [MCImageRenderView](https://github.com/Hideyuki-Machida/MetalCanvas/blob/master/MetalCanvas/MCImageRenderView.swift): CanvasのRender
+* [MCColor](https://github.com/Hideyuki-Machida/MetalCanvas/blob/master/MetalCanvas/Color/MCColor.swift): 色に関する
+* [MCGeom](https://github.com/Hideyuki-Machida/MetalCanvas/tree/master/MetalCanvas/Geom): Vector や Matrix
+* [MCPrimitive](https://github.com/Hideyuki-Machida/MetalCanvas/tree/master/MetalCanvas/Primitive): PointやRectangle等のプリミティブ
+* [MCFilter](https://github.com/Hideyuki-Machida/MetalCanvas/tree/master/MetalCanvas/Filter): 画像処理フィルター
+
 
 ## サンプルコード
 
@@ -77,11 +87,11 @@ do {
 	
 		// キャンバスにポイントを描画
 		MCPoint.init(
-			ppsition: MCGeom.Vec3D.init(x: 0, y: 0, z: 0),
+			psition: MCGeom.Vec3D.init(x: 0, y: 0, z: 0),
 			color: MCColor.init(hex: "0xFF0000"), size: 200.0
 		),
 		MCPoint.init(
-			ppsition: MCGeom.Vec3D.init(x: 300, y: 10, z: 0),
+			psition: MCGeom.Vec3D.init(x: 300, y: 10, z: 0),
 			color: MCColor.init(hex: "0xFFFF00"), size: 300.0
 		)
 	])
