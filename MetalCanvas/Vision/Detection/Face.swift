@@ -13,8 +13,7 @@ import Vision
 extension MCVision.Detection {
 	public class Face {
 		
-		private let queue: DispatchQueue = DispatchQueue(label: "com.cchannel.FaceDetection.queue", attributes: .concurrent)
-		//private let queue: DispatchQueue = DispatchQueue(label: "com.cchannel.FaceDetection.queue")
+		private let queue: DispatchQueue = DispatchQueue(label: "MetalCanvas.FaceDetection.queue", attributes: .concurrent)
 		
 		public struct Face {
 			public var boundingBox: CGRect = CGRect.init()

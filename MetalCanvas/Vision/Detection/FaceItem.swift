@@ -12,8 +12,6 @@ import Vision
 @available(iOS 11.0, *)
 extension MCVision.Detection.Face {
 	public class Item {
-		//private let queue: DispatchQueue = DispatchQueue(label: "com.cchannel.FaceDetection.FaceItem.queue", attributes: .concurrent)
-		//private let queue: DispatchQueue = DispatchQueue(label: "com.cchannel.FaceDetection.FaceItem.queue")
 		public let id: Int
 		private let queue: DispatchQueue
 		public var boundingBox: CGRect = CGRect.init()
@@ -26,7 +24,7 @@ extension MCVision.Detection.Face {
 		public init(id: Int, observation: VNFaceObservation, landmarks: VNFaceLandmarks2D?, renderSize: CGSize) {
 			self.id = id
 			let uuid = NSUUID().uuidString
-			self.queue = DispatchQueue(label: "com.cchannel.FaceDetection.FaceItem.\(uuid).queue")
+			self.queue = DispatchQueue(label: "MetalCanvas.FaceDetection.FaceItem.\(uuid).queue")
 			self.faceTrackingRequest = VNTrackObjectRequest(detectedObjectObservation: observation)
 			self.renderSize = renderSize
 			
