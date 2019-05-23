@@ -51,6 +51,11 @@
 		62CDBB6521F0600900718DC9 /* CGAffineTransform+Extended.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CDBB6121F0600900718DC9 /* CGAffineTransform+Extended.swift */; };
 		62CDBB6621F0600900718DC9 /* CGSize+Extended.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CDBB6221F0600900718DC9 /* CGSize+Extended.swift */; };
 		62D10F502222AE9E00573F86 /* Lut3DFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D10F4F2222AE9E00573F86 /* Lut3DFilter.swift */; };
+		62FABEBA2296DFE5002672A0 /* MCVisionNameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FABEB32296DFE5002672A0 /* MCVisionNameSpace.swift */; };
+		62FABEBB2296DFE5002672A0 /* DepthMapTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FABEB52296DFE5002672A0 /* DepthMapTexture.swift */; };
+		62FABEBC2296DFE5002672A0 /* HumanSegmentationTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FABEB62296DFE5002672A0 /* HumanSegmentationTexture.swift */; };
+		62FABEBD2296DFE5002672A0 /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FABEB82296DFE5002672A0 /* Face.swift */; };
+		62FABEBE2296DFE5002672A0 /* FaceItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FABEB92296DFE5002672A0 /* FaceItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +116,11 @@
 		62CDBB6121F0600900718DC9 /* CGAffineTransform+Extended.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGAffineTransform+Extended.swift"; sourceTree = "<group>"; };
 		62CDBB6221F0600900718DC9 /* CGSize+Extended.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Extended.swift"; sourceTree = "<group>"; };
 		62D10F4F2222AE9E00573F86 /* Lut3DFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lut3DFilter.swift; sourceTree = "<group>"; };
+		62FABEB32296DFE5002672A0 /* MCVisionNameSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCVisionNameSpace.swift; sourceTree = "<group>"; };
+		62FABEB52296DFE5002672A0 /* DepthMapTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepthMapTexture.swift; sourceTree = "<group>"; };
+		62FABEB62296DFE5002672A0 /* HumanSegmentationTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumanSegmentationTexture.swift; sourceTree = "<group>"; };
+		62FABEB82296DFE5002672A0 /* Face.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
+		62FABEB92296DFE5002672A0 /* FaceItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +254,7 @@
 				6226E80521DCB4CE00E46C2E /* Filter */,
 				6226E7FE21DCAD4F00E46C2E /* Shader */,
 				6292FC0A21E5A6D0006E7E05 /* Extension */,
+				62FABEB22296DFE5002672A0 /* Vision */,
 				62C6758021D74B5D00181478 /* MCCore.swift */,
 				6226E7FC21DCAC6700E46C2E /* MCFunction.swift */,
 				62C6758621D75B9400181478 /* MCImageRenderView.swift */,
@@ -319,6 +330,34 @@
 				62D10F4F2222AE9E00573F86 /* Lut3DFilter.swift */,
 			);
 			path = ColorProcessing;
+			sourceTree = "<group>";
+		};
+		62FABEB22296DFE5002672A0 /* Vision */ = {
+			isa = PBXGroup;
+			children = (
+				62FABEB32296DFE5002672A0 /* MCVisionNameSpace.swift */,
+				62FABEB42296DFE5002672A0 /* Depth */,
+				62FABEB72296DFE5002672A0 /* Detection */,
+			);
+			path = Vision;
+			sourceTree = "<group>";
+		};
+		62FABEB42296DFE5002672A0 /* Depth */ = {
+			isa = PBXGroup;
+			children = (
+				62FABEB52296DFE5002672A0 /* DepthMapTexture.swift */,
+				62FABEB62296DFE5002672A0 /* HumanSegmentationTexture.swift */,
+			);
+			path = Depth;
+			sourceTree = "<group>";
+		};
+		62FABEB72296DFE5002672A0 /* Detection */ = {
+			isa = PBXGroup;
+			children = (
+				62FABEB82296DFE5002672A0 /* Face.swift */,
+				62FABEB92296DFE5002672A0 /* FaceItem.swift */,
+			);
+			path = Detection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,18 +476,22 @@
 				62CDBB6421F0600900718DC9 /* CGPoint+Extended.swift in Sources */,
 				62C6758521D759EA00181478 /* Shader.metal in Sources */,
 				6226E81621DDDF0300E46C2E /* YCbCrToRGB.swift in Sources */,
+				62FABEBC2296DFE5002672A0 /* HumanSegmentationTexture.swift in Sources */,
 				6226E80421DCB1DF00E46C2E /* Point.metal in Sources */,
 				6226E82421DF182B00E46C2E /* MCGeomNameSpace.swift in Sources */,
 				6226E81C21DDE23900E46C2E /* MCPrimitiveNameSpace.swift in Sources */,
 				6226E81221DD56B100E46C2E /* YCbCrToRGB.metal in Sources */,
+				62FABEBB2296DFE5002672A0 /* DepthMapTexture.swift in Sources */,
 				62D10F502222AE9E00573F86 /* Lut3DFilter.swift in Sources */,
 				62C6757421D7495E00181478 /* Vec4D.swift in Sources */,
+				62FABEBE2296DFE5002672A0 /* FaceItem.swift in Sources */,
 				6226E81021DD306F00E46C2E /* Points.swift in Sources */,
 				62150886222416E600F2E516 /* Lut3DFilter.metal in Sources */,
 				62C6757321D7495E00181478 /* MCColor.swift in Sources */,
 				6226E81E21DE1BB100E46C2E /* Image.metal in Sources */,
 				6226E80E21DD23F900E46C2E /* MCTexture.swift in Sources */,
 				6299A05C228C1CF8000C9136 /* Rectangle.swift in Sources */,
+				62FABEBA2296DFE5002672A0 /* MCVisionNameSpace.swift in Sources */,
 				62C6757921D7495E00181478 /* MCPrimitiveTypeProtocol.swift in Sources */,
 				6226E81A21DDE03600E46C2E /* MCFilterNameSpace.swift in Sources */,
 				62C6757A21D7495E00181478 /* MCCanvas.swift in Sources */,
@@ -462,6 +505,7 @@
 				62C6758121D74B5D00181478 /* MCCore.swift in Sources */,
 				62C6757F21D74A5900181478 /* MCMatrix4.swift in Sources */,
 				6299A05A228C126F000C9136 /* Triangle.swift in Sources */,
+				62FABEBD2296DFE5002672A0 /* Face.swift in Sources */,
 				6226E80821DCB58100E46C2E /* MCFilterImageBlending.swift in Sources */,
 				62A9E30C21F1BDD500A5D991 /* DepthBlending.metal in Sources */,
 				62CDBB6521F0600900718DC9 /* CGAffineTransform+Extended.swift in Sources */,
