@@ -81,6 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	* キャンバスに描画したいプリミティブをセット
 	* MCImageRenderViewを更新（描画）
 <br />
+
+<span style="color: red">
 <font color="red">
 	※ 生成した commandBuffer は MCImageRenderView. updateでcommitされ、MCImageRenderViewに描画されます。
 	<br />
@@ -89,6 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	※ 動画のフレーム毎の処理のような繰り返し描画を行う場合には、都度 MTLCommandBuffer生成 → commit を繰り返します。
 	
 </font>
+</span>
 
 ```
 do {
