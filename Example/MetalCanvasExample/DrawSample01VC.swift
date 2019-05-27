@@ -25,8 +25,18 @@ class DrawSample01VC: UIViewController {
 			var destinationTexture: MCTexture = try MCTexture.init(renderSize: renderSize)
 
 			// 画像テクスチャを生成
-			let texture01: MCTexture = try MCTexture.init(URL: Bundle.main.url(forResource: "https___www.pakutaso.com_shared_img_thumb_YUK85_ossu15095452", withExtension: "jpg")!)
-			let texture02: MCTexture = try MCTexture.init(URL: Bundle.main.url(forResource: "https___www.pakutaso.com_shared_img_thumb_SAYA151005538606", withExtension: "jpg")!)
+			let texture01: MCTexture = try MCTexture.init(
+				URL: Bundle.main.url(
+					forResource: "https___www.pakutaso.com_shared_img_thumb_YUK85_ossu15095452",
+					withExtension: "jpg"
+				)!
+			)
+			let texture02: MCTexture = try MCTexture.init(
+				URL: Bundle.main.url(
+					forResource: "https___www.pakutaso.com_shared_img_thumb_SAYA151005538606",
+					withExtension: "jpg"
+				)!
+			)
 
 			// キャンバスを生成
 			let canvas: MCCanvas = try MCCanvas.init(destination: &destinationTexture, orthoType: .topLeft)
@@ -34,7 +44,7 @@ class DrawSample01VC: UIViewController {
 			var image01Mat: MCGeom.Matrix4x4 = MCGeom.Matrix4x4.init(scaleX: 0.1, scaleY: 0.1, scaleZ: 1.0)
 			image01Mat.rotateAroundX(xAngleRad: 0.0, yAngleRad: 0.0, zAngleRad: 0.5)
 			
-			// キャンバスにプリミティブを描画
+			// キャンバスに描画したいプリミティブをセット
 			try canvas.draw(commandBuffer: &commandBuffer, objects: [
 
 				// キャンバスに画像を描画

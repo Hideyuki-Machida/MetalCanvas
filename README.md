@@ -47,6 +47,7 @@ Processing is a flexible software sketchbook and a language for learning how to 
 
 
 ## サンプルコード
+* まず AppDelegate.swift → MCCore.setup で初期化します。
 
 ```
 import UIKit
@@ -56,7 +57,6 @@ import MetalCanvas
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var window: UIWindow?
-
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
@@ -73,6 +73,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	}
 
 ```
+<br />
+
+* 実際に使う際には下記のサンプルコードの流れで使用します。
+	* MTLCommandBufferを生成（[MTLCommandBufferについて](https://qiita.com/yuky_az/items/b557850ae9dc317f1570))
+	* MCCanvasを生成
+	* キャンバスに描画したいプリミティブをセット
+	* MCImageRenderViewを更新（描画）
+<br />
+<font color="red">
+	※ 生成した commandBuffer は MCImageRenderView. updateでcommitされ、MCImageRenderViewに描画されます。
+	<br />
+	※ MTLCommandBufferは一度 commit されると、無効になります。
+	<br />
+	※ 動画のフレーム毎の処理のような繰り返し描画を行う場合には、都度 MTLCommandBuffer生成 → commit を繰り返します。
+	
+</font>
 
 ```
 do {
@@ -82,7 +98,7 @@ do {
 	// キャンバスを生成
 	let canvas: MCCanvas = try MCCanvas.init(destination: &destinationTexture, orthoType: .topLeft)
 	
-	// キャンバスにプリミティブを描画
+	// キャンバスに描画したいプリミティブをセット
 	try canvas.draw(commandBuffer: &commandBuffer, objects: [
 	
 		// キャンバスにポイントを描画
