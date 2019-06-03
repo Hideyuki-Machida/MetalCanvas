@@ -9,6 +9,9 @@
 import Foundation
 import AVFoundation
 
+#if targetEnvironment(simulator)
+extension MCVision.Depth {}
+#else
 @available(iOS 11.0, *)
 extension MCVision.Depth {
 	public struct HumanSegmentationTexture {
@@ -112,3 +115,4 @@ extension MCVision.Depth {
 		}
 	}
 }
+#endif

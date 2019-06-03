@@ -9,6 +9,9 @@
 import Foundation
 import MetalKit
 
+#if targetEnvironment(simulator)
+public struct MCTexture {}
+#else
 public struct MCTexture {
 	public enum ErrorType: Error {
 		case createError
@@ -91,3 +94,4 @@ extension MCTexture {
 		MCCore.ciContext.render(image, to: self.texture, commandBuffer: commandBuffer, bounds: image.extent, colorSpace: colorSpace)
 	}
 }
+#endif

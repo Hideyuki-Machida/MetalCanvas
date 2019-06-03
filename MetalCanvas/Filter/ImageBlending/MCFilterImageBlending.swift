@@ -8,6 +8,9 @@
 
 import Foundation
 
+#if targetEnvironment(simulator)
+extension MCFilter {}
+#else
 extension MCFilter {
 	public struct ImageBlending {
 		private var pipeline: MTLComputePipelineState
@@ -32,3 +35,4 @@ extension MCFilter {
 		}
 	}
 }
+#endif

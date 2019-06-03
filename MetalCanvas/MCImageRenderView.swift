@@ -11,6 +11,9 @@ import MetalKit
 import MetalPerformanceShaders
 import AVFoundation
 
+#if targetEnvironment(simulator)
+open class MCImageRenderView {}
+#else
 open class MCImageRenderView: MTKView, MTKViewDelegate {
 	
 	private let rect: CGRect = CGRect(origin: CGPoint(x: 0, y: 0), size: UIScreen.main.nativeBounds.size)
@@ -349,3 +352,4 @@ extension MCImageRenderView {
 	}
 
 }
+#endif

@@ -8,6 +8,9 @@
 
 import Foundation
 
+#if targetEnvironment(simulator)
+extension MCFilter.ColorSpace {}
+#else
 extension MCFilter.ColorSpace {
 	public struct YCbCrToRGB {
 
@@ -51,3 +54,4 @@ extension MCFilter.ColorSpace {
 		}
 	}
 }
+#endif
