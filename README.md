@@ -3,6 +3,7 @@
 [![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Platforms iOS](https://img.shields.io/badge/Platforms-iOS-lightgray.svg?style=flat)](https://developer.apple.com/swift/)
 [![Xcode 10.2+](https://img.shields.io/badge/Xcode-10.2+-blue.svg?style=flat)](https://developer.apple.com/swift/)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 
 
@@ -46,8 +47,14 @@ Processing is a flexible software sketchbook and a language for learning how to 
 * [MCFilter](https://github.com/Hideyuki-Machida/MetalCanvas/tree/master/MetalCanvas/Filter): 画像処理フィルター
 
 
+<<<<<<< HEAD
 ## サンプルコード
 * まず AppDelegate.swift → MCCore.setup で初期化します。
+=======
+## サンプル
+
+### サンプルコード
+>>>>>>> Vision
 
 ```
 import UIKit
@@ -128,14 +135,23 @@ do {
 ```
 
 
-## サンプルコード 画像描画
+### サンプルコード 画像描画
 
 * [DrawSample01VC.swift](https://github.com/Hideyuki-Machida/MetalCanvas/blob/master/Example/MetalCanvasExample/DrawSample01VC.swift)
 
 
-## サンプルコード リアルタイム描画
+### サンプルコード リアルタイム描画
 
 * [DrawSample02VC.swift](https://github.com/Hideyuki-Machida/MetalCanvas/blob/master/Example/MetalCanvasExample/DrawSample02VC.swift)
+
+
+## Installation
+
+### [Carthage](https://github.com/Carthage/Carthage)
+
+```
+github "Hideyuki-Machida/iOS_DummyAVAssets" ~> 0.0.1
+```
 
 
 ## Coming Soon

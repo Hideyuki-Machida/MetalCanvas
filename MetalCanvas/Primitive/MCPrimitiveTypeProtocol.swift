@@ -8,6 +8,10 @@
 
 import Foundation
 
+#if targetEnvironment(simulator)
+public protocol MCPrimitiveTypeProtocol {}
+#else
 public protocol MCPrimitiveTypeProtocol {
 	func draw(commandBuffer: inout MTLCommandBuffer, drawInfo: MCPrimitive.DrawInfo) throws
 }
+#endif

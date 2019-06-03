@@ -9,6 +9,9 @@
 import Foundation
 import GLKit
 
+#if targetEnvironment(simulator)
+public class MCCanvas {}
+#else
 public class MCCanvas {
 
 	public enum ErrorType: Error {
@@ -112,3 +115,4 @@ extension MCCanvas {
 		try object.draw(commandBuffer: &commandBuffer, drawInfo: self.drawInfo)
 	}
 }
+#endif
