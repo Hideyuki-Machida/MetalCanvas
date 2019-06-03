@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Example/MetalCanvasExample.xcodeproj">
+      location = "group:../MetalCanvas.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:MetalCanvas.xcodeproj">
+      location = "group:MetalCanvasExample.xcodeproj">
    </FileRef>
 </Workspace>

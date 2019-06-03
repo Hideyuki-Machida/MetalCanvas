@@ -30,7 +30,7 @@ extension MCVision.Depth {
 			//////////////////////////////////////////////////////////
 			// depthTexture 生成
 			let depthPixelBuffer: CVPixelBuffer = depthData.depthDataMap
-			depthPixelBuffer.normalize()
+			//depthPixelBuffer.normalize()
 			let depthWidth: Int = CVPixelBufferGetWidth(depthPixelBuffer)
 			let depthHeight: Int = CVPixelBufferGetHeight(depthPixelBuffer)
 			guard var newPixelBuffer: CVPixelBuffer = CVPixelBuffer.create(size: CGSize.init(width: depthWidth, height: depthHeight)) else { throw MCVision.ErrorType.rendering }
