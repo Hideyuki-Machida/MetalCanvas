@@ -47,14 +47,12 @@ Processing is a flexible software sketchbook and a language for learning how to 
 * [MCFilter](https://github.com/Hideyuki-Machida/MetalCanvas/tree/master/MetalCanvas/Filter): 画像処理フィルター
 
 
-<<<<<<< HEAD
 ## サンプルコード
 * まず AppDelegate.swift → MCCore.setup で初期化します。
 =======
 ## サンプル
 
 ### サンプルコード
->>>>>>> Vision
 
 ```
 import UIKit
@@ -150,7 +148,7 @@ do {
 ### [Carthage](https://github.com/Carthage/Carthage)
 
 ```
-github "Hideyuki-Machida/iOS_DummyAVAssets" ~> 0.0.1
+github "Hideyuki-Machida/MetalCanvas"
 ```
 
 
