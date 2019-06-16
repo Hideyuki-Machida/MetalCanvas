@@ -7,7 +7,7 @@ let package = Package(
         .library(name: "MetalCanvas", targets: ["MetalCanvas"])
     ],
     targets: [
-        .target(name: "MetalCanvas", dependencies: [])
+        .target(name: "MetalCanvas", dependencies: [], path: "Sources/MetalCanvas")
     ],
     swiftLanguageVersions: [.v5]
 )

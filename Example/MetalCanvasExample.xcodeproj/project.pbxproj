@@ -12,8 +12,8 @@
 		627D12FD22B56CE500131DA9 /* DrawSample04VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627D12FC22B56CE500131DA9 /* DrawSample04VC.swift */; };
 		628FFBB122A570BE0025428E /* DrawSample03VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFBB022A570BE0025428E /* DrawSample03VC.swift */; };
 		6299A04E228BC8A7000C9136 /* DrawSample02VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6299A04D228BC8A7000C9136 /* DrawSample02VC.swift */; };
-		6299A053228BDC00000C9136 /* MetalCanvas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6299A051228BD7E5000C9136 /* MetalCanvas.framework */; };
-		6299A054228BDC00000C9136 /* MetalCanvas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6299A051228BD7E5000C9136 /* MetalCanvas.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		62C40F2022B65A0A005CC6F6 /* MetalCanvas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C40F1F22B65A0A005CC6F6 /* MetalCanvas.framework */; };
+		62C40F2122B65A0A005CC6F6 /* MetalCanvas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 62C40F1F22B65A0A005CC6F6 /* MetalCanvas.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		62C6753321D7455A00181478 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C6753221D7455A00181478 /* AppDelegate.swift */; };
 		62C6753521D7455A00181478 /* DrawSample01VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C6753421D7455A00181478 /* DrawSample01VC.swift */; };
 		62C6753821D7455A00181478 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C6753621D7455A00181478 /* Main.storyboard */; };
@@ -23,13 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		6299A055228BDC00000C9136 /* Embed Frameworks */ = {
+		62C40F1D22B659EB005CC6F6 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6299A054228BDC00000C9136 /* MetalCanvas.framework in Embed Frameworks */,
+				62C40F2122B65A0A005CC6F6 /* MetalCanvas.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,7 +42,7 @@
 		627D12FC22B56CE500131DA9 /* DrawSample04VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSample04VC.swift; sourceTree = "<group>"; };
 		628FFBB022A570BE0025428E /* DrawSample03VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSample03VC.swift; sourceTree = "<group>"; };
 		6299A04D228BC8A7000C9136 /* DrawSample02VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSample02VC.swift; sourceTree = "<group>"; };
-		6299A051228BD7E5000C9136 /* MetalCanvas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MetalCanvas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		62C40F1F22B65A0A005CC6F6 /* MetalCanvas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MetalCanvas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C6752F21D7455A00181478 /* MetalCanvasExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalCanvasExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C6753221D7455A00181478 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62C6753421D7455A00181478 /* DrawSample01VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSample01VC.swift; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6299A053228BDC00000C9136 /* MetalCanvas.framework in Frameworks */,
+				62C40F2022B65A0A005CC6F6 /* MetalCanvas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,7 +68,6 @@
 		6299A050228BD7E5000C9136 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6299A051228BD7E5000C9136 /* MetalCanvas.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -76,6 +75,7 @@
 		62C6752621D7455900181478 = {
 			isa = PBXGroup;
 			children = (
+				62C40F1F22B65A0A005CC6F6 /* MetalCanvas.framework */,
 				62C6753121D7455A00181478 /* MetalCanvasExample */,
 				62C6753021D7455A00181478 /* Products */,
 				6299A050228BD7E5000C9136 /* Frameworks */,
@@ -119,7 +119,7 @@
 				62C6752B21D7455A00181478 /* Sources */,
 				62C6752C21D7455A00181478 /* Frameworks */,
 				62C6752D21D7455A00181478 /* Resources */,
-				6299A055228BDC00000C9136 /* Embed Frameworks */,
+				62C40F1D22B659EB005CC6F6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
