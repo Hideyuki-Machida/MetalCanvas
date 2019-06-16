@@ -49,10 +49,6 @@ Processing is a flexible software sketchbook and a language for learning how to 
 
 ## サンプルコード
 * まず AppDelegate.swift → MCCore.setup で初期化します。
-=======
-## サンプル
-
-### サンプルコード
 
 ```
 import UIKit

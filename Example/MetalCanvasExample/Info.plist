@@ -39,5 +39,18 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>カメラを使用する理由</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>マイクを使用する理由</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>動画保存のために許可して下さい</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+
+	
 </dict>
 </plist>

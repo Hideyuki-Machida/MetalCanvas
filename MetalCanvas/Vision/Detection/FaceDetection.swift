@@ -11,7 +11,7 @@ import Vision
 
 @available(iOS 11.0, *)
 extension MCVision.Detection {
-	public class Face {
+	public class FaceDetection {
 		
 		private let queue: DispatchQueue = DispatchQueue(label: "MetalCanvas.FaceDetection.queue", attributes: .concurrent)
 		
@@ -33,7 +33,7 @@ extension MCVision.Detection {
 		lazy var sequenceRequestHandler = VNSequenceRequestHandler()
 		
 		var faces: [Face] = []
-		var faceItems: [MCVision.Detection.Face.Item] = []
+		var faceItems: [MCVision.Detection.FaceDetection.Item] = []
 		
 		public init() {
 			self.prepareVisionRequest()
@@ -58,7 +58,7 @@ extension MCVision.Detection {
 				print(results.count)
 				self.faceItems = []
 				for observation in results {
-					let faceItem: MCVision.Detection.Face.Item = MCVision.Detection.Face.Item.init(id: 0, observation: observation, landmarks: observation.landmarks, renderSize: renderSize)
+					let faceItem: MCVision.Detection.FaceDetection.Item = MCVision.Detection.FaceDetection.Item.init(id: 0, observation: observation, landmarks: observation.landmarks, renderSize: renderSize)
 					//let faceItem: FaceDetection.FaceItem = FaceDetection.FaceItem.init(observation: observation, renderSize: renderSize)
 					faceItem.tracking(pixelBuffer: &pixelBuffer)
 					self.faceItems.append(faceItem)
@@ -88,7 +88,7 @@ extension MCVision.Detection {
 				print(results.count)
 				self.faceItems = []
 				for observation in results {
-					let faceItem: MCVision.Detection.Face.Item = MCVision.Detection.Face.Item.init(id: 0, observation: observation, landmarks: nil, renderSize: renderSize)
+					let faceItem: MCVision.Detection.FaceDetection.Item = MCVision.Detection.FaceDetection.Item.init(id: 0, observation: observation, landmarks: nil, renderSize: renderSize)
 					faceItem.tracking(pixelBuffer: &pixelBuffer)
 					self.faceItems.append(faceItem)
 				}
@@ -130,7 +130,7 @@ extension MCVision.Detection {
 		}
 		
 		var count: Int = 0
-		public func detection(pixelBuffer: inout CVPixelBuffer, renderSize: CGSize, onDetection: @escaping ((_ landmarksResults: [Face])->Void)) throws -> [MCVision.Detection.Face.Item] {
+		public func detection(pixelBuffer: inout CVPixelBuffer, renderSize: CGSize, onDetection: @escaping ((_ landmarksResults: [Face])->Void)) throws -> [Item] {
 			//guard self.count >= 0 else { self.count += 1; return self.faceItems}
 			//self.count = 0
 			//onDetection(self.faces)
@@ -172,6 +172,7 @@ extension MCVision.Detection {
 		}
 		
 		public func detection(pixelBuffer: inout CVPixelBuffer, renderSize: CGSize, onDetection: @escaping ((_ landmarksResults: [Face])->Void)) throws -> [Face] {
+						print("@@@0")
 			guard self.count >= 1 else { self.count += 1; return self.faces}
 			self.count = 0
 			//onDetection(self.faces)
@@ -179,9 +180,10 @@ extension MCVision.Detection {
 			self.queue.async {
 				do {
 					//guard self.count == true else { return }
-					
+						print("@@@1")
 					//self.count = false
 					try self.faceRandmarkDetection(pixelBuffer: &pixelBuffer) { (faceObservations: [VNFaceObservation]) in
+						print("@@@2")
 						self.faces = []
 						for faceObservation: VNFaceObservation in faceObservations {
 							guard let landmarks: VNFaceLandmarks2D = faceObservation.landmarks else { continue }
@@ -191,11 +193,11 @@ extension MCVision.Detection {
 								let points: [CGPoint] = faceContour.pointsInImage(imageSize: renderSize)
 								var face: Face = Face()
 								face.allPoints = points
-								
 								self.faces.append(face)
 							}
 						}
 					}
+					print("ddddd", self.faces.count)
 				} catch {
 					//self.count = true
 				}

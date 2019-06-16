@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1DL-kE-S16">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J7V-FT-f0J">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -153,6 +153,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6J-6c-fGZ" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137" y="808"/>
+        </scene>
+        <!--Draw Sample03VC-->
+        <scene sceneID="mt1-WM-4Uo">
+            <objects>
+                <viewController id="efM-uG-7FC" customClass="DrawSample03VC" customModule="MetalCanvasExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y4n-Zh-nEt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mtkView contentMode="scaleToFill" colorPixelFormat="BGRA8Unorm" depthStencilPixelFormat="Depth32Float" translatesAutoresizingMaskIntoConstraints="NO" id="Chb-e1-7oA" customClass="MCImageRenderView" customModule="MetalCanvas">
+                                <rect key="frame" x="0.0" y="111.33333333333331" width="375" height="666.66666666666674"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Chb-e1-7oA" secondAttribute="height" multiplier="9:16" id="Biw-3d-NQt"/>
+                                </constraints>
+                            </mtkView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Chb-e1-7oA" firstAttribute="bottom" secondItem="kWQ-mF-cO6" secondAttribute="bottom" id="BP3-dE-qnK"/>
+                            <constraint firstItem="Chb-e1-7oA" firstAttribute="trailing" secondItem="kWQ-mF-cO6" secondAttribute="trailing" id="F4X-Wv-98A"/>
+                            <constraint firstItem="Chb-e1-7oA" firstAttribute="leading" secondItem="kWQ-mF-cO6" secondAttribute="leading" id="rgo-Da-g8y"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kWQ-mF-cO6"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageRender" destination="Chb-e1-7oA" id="gTa-AX-CuM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oxh-Z8-Oma" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137" y="1492"/>
+        </scene>
+        <!--Draw Sample04VC-->
+        <scene sceneID="GXv-7b-Anw">
+            <objects>
+                <viewController id="J7V-FT-f0J" customClass="DrawSample04VC" customModule="MetalCanvasExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fzS-fG-sZE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mtkView contentMode="scaleToFill" colorPixelFormat="BGRA8Unorm" depthStencilPixelFormat="Depth32Float" translatesAutoresizingMaskIntoConstraints="NO" id="Vvi-Ot-8Xu" customClass="MCImageRenderView" customModule="MetalCanvas">
+                                <rect key="frame" x="0.0" y="111.33333333333331" width="375" height="666.66666666666674"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Vvi-Ot-8Xu" secondAttribute="height" multiplier="9:16" id="Peg-ds-O0d"/>
+                                </constraints>
+                            </mtkView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Vvi-Ot-8Xu" firstAttribute="trailing" secondItem="vfU-VK-MT7" secondAttribute="trailing" id="Opk-pS-ahC"/>
+                            <constraint firstItem="Vvi-Ot-8Xu" firstAttribute="bottom" secondItem="vfU-VK-MT7" secondAttribute="bottom" id="kZC-mx-l3V"/>
+                            <constraint firstItem="Vvi-Ot-8Xu" firstAttribute="leading" secondItem="vfU-VK-MT7" secondAttribute="leading" id="tWW-xw-7VP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vfU-VK-MT7"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageRender" destination="Vvi-Ot-8Xu" id="jZS-T4-uyA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1SL-Ma-tGf" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137" y="2188"/>
         </scene>
     </scenes>
 </document>

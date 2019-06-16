@@ -10,7 +10,7 @@ import Foundation
 import Vision
 
 @available(iOS 11.0, *)
-extension MCVision.Detection.Face {
+extension MCVision.Detection.FaceDetection {
 	public class Item {
 		public let id: Int
 		private let queue: DispatchQueue

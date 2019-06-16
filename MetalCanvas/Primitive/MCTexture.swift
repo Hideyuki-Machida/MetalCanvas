@@ -44,7 +44,6 @@ public struct MCTexture {
 	}
 	
 	public init(URL: URL, commandBuffer: MTLCommandBuffer) throws {
-
 		guard
 			let inputImage: CIImage = CIImage.init(contentsOf: URL),
 			let colorSpace: CGColorSpace = inputImage.colorSpace
@@ -61,7 +60,6 @@ public struct MCTexture {
 		MCCore.ciContext.render(inputImage, to: texture, commandBuffer: commandBuffer, bounds: inputImage.extent, colorSpace: colorSpace)
 		self.texture = texture
 	}
-
 
 	public init(pixelBuffer: inout CVPixelBuffer, planeIndex: Int) throws {
 		try self.init(pixelBuffer: &pixelBuffer, colorPixelFormat: MTLPixelFormat.bgra8Unorm, planeIndex: planeIndex)
@@ -94,4 +92,20 @@ extension MCTexture {
 		MCCore.ciContext.render(image, to: self.texture, commandBuffer: commandBuffer, bounds: image.extent, colorSpace: colorSpace)
 	}
 }
+
+extension MCTexture {
+	public mutating func getPixelBuffer() throws -> CVPixelBuffer {
+		guard let pixelBuffer: CVPixelBuffer = CVPixelBuffer.create(size: CGSize.init(CGFloat(self.width), CGFloat(self.height))) else { throw ErrorType.createError }
+		CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags.init(rawValue: 0))
+		let region = MTLRegionMake2D(0, 0, Int(self.width), Int(self.height))
+		let bytesPerPixel = 4;
+		let bytesPerRow = CGFloat(bytesPerPixel) * CGFloat(self.width)
+		
+		let tempBuffer = CVPixelBufferGetBaseAddress(pixelBuffer)
+		self.texture.getBytes(tempBuffer!, bytesPerRow: Int(bytesPerRow), from: region, mipmapLevel: 0)
+		CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags.init(rawValue: 0))
+		return pixelBuffer
+	}
+}
+
 #endif
