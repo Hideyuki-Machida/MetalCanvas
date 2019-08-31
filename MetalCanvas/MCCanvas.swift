@@ -41,13 +41,13 @@ public class MCCanvas {
 	}
 
 	public init(destination: inout MCTexture, orthoType: OrthoType, loadAction: MTLLoadAction = MTLLoadAction.load) throws {
-		let renderSize = CGSize.init(width: destination.width, height: destination.height)
+		let renderSize: CGSize = CGSize.init(width: destination.width, height: destination.height)
 		self.projection.glkMatrix = orthoType.getMatrix(size: renderSize)
 		
 		let renderPassDescriptor: MTLRenderPassDescriptor = MTLRenderPassDescriptor()
 		renderPassDescriptor.colorAttachments[0].loadAction = loadAction
 
-		//renderPassDescriptor.colorAttachments[0].storeAction = .store
+		renderPassDescriptor.colorAttachments[0].storeAction = MTLStoreAction.store
 		//renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadAction.clear
 		//renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: Double(255/255.0), green: Double(255/255.0), blue: Double(255/255.0), alpha: Double(255/255.0))
 		renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)

@@ -29,16 +29,16 @@ public struct MCTexture {
 	public fileprivate(set) var texture: MTLTexture
 	public init(renderSize: CGSize) throws {
 		let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: MTLPixelFormat.bgra8Unorm, width: Int(renderSize.width), height: Int(renderSize.height), mipmapped: true)
-		textureDescriptor.usage = [.shaderRead, .shaderWrite]
+		textureDescriptor.usage = [.shaderRead, .shaderWrite, .renderTarget, .pixelFormatView]
 		guard let texture: MTLTexture = MCCore.device.makeTexture(descriptor: textureDescriptor) else { throw ErrorType.createError }
 		self.texture = texture
 	}
 
 	public init(URL: URL) throws {
-		let textureLoaderOptions = [
+		let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
 			MTKTextureLoader.Option.SRGB: true,
 			MTKTextureLoader.Option.textureUsage: NSNumber(value: MTLTextureUsage.shaderRead.rawValue),
-			MTKTextureLoader.Option.textureStorageMode: NSNumber(value: MTLStorageMode.`private`.rawValue)
+			MTKTextureLoader.Option.textureStorageMode: NSNumber(value: MTLStorageMode.private.rawValue)
 		]
 		self.texture = try MCCore.textureLoader.newTexture(URL: URL, options: textureLoaderOptions)
 	}
