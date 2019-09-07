@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62023B25231BB0FD007C0061 /* DrawSample03VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62023B24231BB0FD007C0061 /* DrawSample03VC.swift */; };
 		6215088D22241F8500F2E516 /* lookup_soft_elegance_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6215088822241F8500F2E516 /* lookup_soft_elegance_2.png */; };
 		6215088E22241F8500F2E516 /* lookup_soft_elegance_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6215088922241F8500F2E516 /* lookup_soft_elegance_1.png */; };
 		6215088F22241F8500F2E516 /* lookup.png in Resources */ = {isa = PBXBuildFile; fileRef = 6215088A22241F8500F2E516 /* lookup.png */; };
@@ -42,6 +43,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		62023B24231BB0FD007C0061 /* DrawSample03VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSample03VC.swift; sourceTree = "<group>"; };
 		6215088822241F8500F2E516 /* lookup_soft_elegance_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_soft_elegance_2.png; sourceTree = "<group>"; };
 		6215088922241F8500F2E516 /* lookup_soft_elegance_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup_soft_elegance_1.png; sourceTree = "<group>"; };
 		6215088A22241F8500F2E516 /* lookup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lookup.png; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				62C6753221D7455A00181478 /* AppDelegate.swift */,
 				62C6753421D7455A00181478 /* DrawSample01VC.swift */,
 				6299A04D228BC8A7000C9136 /* DrawSample02VC.swift */,
+				62023B24231BB0FD007C0061 /* DrawSample03VC.swift */,
 				6215088722241F8500F2E516 /* lut */,
 				6226E80921DCB89100E46C2E /* https___www.pakutaso.com_shared_img_thumb_YUK85_ossu15095452.jpg */,
 				6226E80B21DCB8E600E46C2E /* https___www.pakutaso.com_shared_img_thumb_SAYA151005538606.jpg */,
@@ -218,6 +221,7 @@
 				62C6753521D7455A00181478 /* DrawSample01VC.swift in Sources */,
 				62C6753321D7455A00181478 /* AppDelegate.swift in Sources */,
 				6299A04E228BC8A7000C9136 /* DrawSample02VC.swift in Sources */,
+				62023B25231BB0FD007C0061 /* DrawSample03VC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

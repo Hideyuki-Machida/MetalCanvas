@@ -204,6 +204,35 @@ extension MCVision.Detection {
 			return self.faces
 		}
 		
+		/*
+		public func detection(texture: inout MCTexture, renderSize: CGSize, onDetection: @escaping ((_ landmarksResults: Result<[Face], Error>)->Void)) -> [MCVision.Detection.Face.Item] {
+			self.queue.async {
+				do {
+					//guard self.count == true else { return }
+					
+					//self.count = false
+					try self.faceRandmarkDetection(pixelBuffer: &pixelBuffer) { (faceObservations: [VNFaceObservation]) in
+						self.faces = []
+						for faceObservation: VNFaceObservation in faceObservations {
+							guard let landmarks: VNFaceLandmarks2D = faceObservation.landmarks else { continue }
+							if let faceContour: VNFaceLandmarkRegion2D = landmarks.allPoints {
+								//print(faceContour.pointsInImage(imageSize: renderSize))
+								//let points: [CGPoint] = faceContour.normalizedPoints
+								let points: [CGPoint] = faceContour.pointsInImage(imageSize: renderSize)
+								var face: Face = Face()
+								face.allPoints = points
+								
+								self.faces.append(face)
+							}
+						}
+					}
+				} catch {
+					//self.count = true
+				}
+			}
+			return self.faceItems
+		}
+		*/
 		
 		private func tracking(pixelBuffer: inout CVPixelBuffer, trackingRequests: [VNTrackObjectRequest]?, detectionRequests: [VNDetectFaceLandmarksRequest]?) throws -> ([VNTrackObjectRequest], [[VNDetectedObjectObservation]]) {
 			guard let requests = trackingRequests, !requests.isEmpty else {

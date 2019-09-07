@@ -30,7 +30,7 @@ extension MCVision.Depth {
 		}
 
 		public mutating func update(to depthData: AVDepthData, commandBuffer: inout MTLCommandBuffer, orientation: AVCaptureVideoOrientation, position: AVCaptureDevice.Position, renderSize: CGSize) throws {
-			guard var textureCache: CVMetalTextureCache = self.textureCache else { throw MCVision.ErrorType.rendering }
+			guard let textureCache: CVMetalTextureCache = self.textureCache else { throw MCVision.ErrorType.rendering }
 			//////////////////////////////////////////////////////////
 			// depthTexture 生成
 			let depthPixelBuffer: CVPixelBuffer = depthData.depthDataMap

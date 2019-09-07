@@ -8,6 +8,10 @@
 
 import Foundation
 
+#if targetEnvironment(simulator)
+public class MCVision {}
+#else
+
 public struct MCVision {
 	public enum ErrorType: Error {
 		case rendering
@@ -16,3 +20,4 @@ public struct MCVision {
 	public struct Depth { }
 	public struct Detection { }
 }
+#endif
