@@ -9,11 +9,6 @@
 import Foundation
 import AVFoundation
 
-#if targetEnvironment(simulator)
-extension MCVision.Depth {}
-#else
-
-@available(iOS 11.0, *)
 extension MCVision.Depth {
 	public struct DepthMapTexture {
 		public fileprivate(set) var texture: MCTexture?
@@ -86,4 +81,3 @@ extension MCVision.Depth {
 		
 	}
 }
-#endif

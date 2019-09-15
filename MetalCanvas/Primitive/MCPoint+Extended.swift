@@ -8,9 +8,6 @@
 
 import Foundation
 
-#if targetEnvironment(simulator)
-extension MCPoint {}
-#else
 extension MCPoint: MCPrimitiveTypeProtocol {
 	fileprivate var renderPipelineState: MTLRenderPipelineState {
 		let vertexFunction: MTLFunction = MCFunction.Primitive.point.vertex
@@ -55,4 +52,3 @@ extension MCPoint: MCPrimitiveTypeProtocol {
 	}
 
 }
-#endif

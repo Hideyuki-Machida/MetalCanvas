@@ -8,9 +8,6 @@
 
 import Foundation
 
-#if targetEnvironment(simulator)
-extension MCPrimitive {}
-#else
 extension MCPrimitive {
 	public struct Image: MCPrimitiveTypeProtocol {
 		fileprivate let vertexData: [Float] = [-1, -1, 0, 1,
@@ -86,4 +83,3 @@ extension MCPrimitive {
 		}
 	}
 }
-#endif

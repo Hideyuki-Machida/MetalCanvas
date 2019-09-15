@@ -8,9 +8,6 @@
 
 import Foundation
 
-#if targetEnvironment(simulator)
-extension MCFilter.ColorProcessing {}
-#else
 extension MCFilter.ColorProcessing {
 	public struct Lut1DFilter {
 		fileprivate let vertexData: [Float] = [-1, -1, 0, 1,
@@ -59,4 +56,3 @@ extension MCFilter.ColorProcessing {
 		
 	}
 }
-#endif

@@ -9,7 +9,6 @@
 import Foundation
 import Vision
 
-@available(iOS 11.0, *)
 extension MCVision.Detection {
 	public class Face {
 		

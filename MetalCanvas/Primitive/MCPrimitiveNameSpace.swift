@@ -8,9 +8,6 @@
 
 import Foundation
 
-#if targetEnvironment(simulator)
-public struct MCPrimitive {}
-#else
 public struct MCPrimitive {
 
 	public enum ErrorType: Error {
@@ -38,4 +35,3 @@ public struct MCPrimitive {
 		}
 	}
 }
-#endif

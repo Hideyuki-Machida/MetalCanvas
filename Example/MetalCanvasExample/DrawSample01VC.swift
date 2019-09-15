@@ -64,7 +64,7 @@ class DrawSample01VC: UIViewController {
 			
 			// MCImageRenderViewを更新（描画）
 			self.imageRender?.update(
-				commandBuffer: commandBuffer,
+				commandBuffer: &commandBuffer,
 				texture: destinationTexture,
 				renderSize: renderSize,
 				queue: nil

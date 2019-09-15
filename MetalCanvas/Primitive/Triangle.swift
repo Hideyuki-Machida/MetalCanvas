@@ -8,9 +8,6 @@
 
 import Foundation
 
-#if targetEnvironment(simulator)
-extension MCPrimitive {}
-#else
 extension MCPrimitive {
 	public struct Triangle: MCPrimitiveTypeProtocol {
 		fileprivate var renderPipelineState: MTLRenderPipelineState
@@ -73,4 +70,3 @@ extension MCPrimitive {
 		}
 	}
 }
-#endif

@@ -89,6 +89,10 @@ class DrawSample02VC: UIViewController {
 	var drawMode: DrawMode = DrawMode.clear
 	/////////////////////////////////////////////////////////////////////////////////////
 	
+	deinit {
+		self.displayLink?.invalidate()
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		do {
@@ -155,7 +159,7 @@ class DrawSample02VC: UIViewController {
 
 			// MCImageRenderViewを更新（描画）
 			self.imageRender?.update(
-				commandBuffer: commandBuffer,
+				commandBuffer: &commandBuffer,
 				texture: self.destinationTexture!,
 				renderSize: self.renderSize,
 				queue: self.queue
@@ -165,4 +169,32 @@ class DrawSample02VC: UIViewController {
 			print("エラー")
 		}
 	}
+}
+
+extension DrawSample02VC {
+	
+	@IBAction func openMenu(_ sender: Any) {
+		let action: UIAlertController = UIAlertController(title: "メニュー", message: "", preferredStyle:  UIAlertController.Style.actionSheet)
+		
+		let action001: UIAlertAction = UIAlertAction(title: "clear", style: UIAlertAction.Style.default, handler:{
+			(action: UIAlertAction!) -> Void in
+			self.drawMode = .clear
+		})
+		
+		let action002: UIAlertAction = UIAlertAction(title: "load", style: UIAlertAction.Style.default, handler:{
+			(action: UIAlertAction!) -> Void in
+			self.drawMode = .load
+		})
+		
+		let cancel: UIAlertAction = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.cancel, handler:{
+			(action: UIAlertAction!) -> Void in
+		})
+		
+		action.addAction(action001)
+		action.addAction(action002)
+		action.addAction(cancel)
+		
+		self.present(action, animated: true, completion: nil)
+	}
+
 }

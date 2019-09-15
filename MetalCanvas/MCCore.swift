@@ -11,10 +11,6 @@ import AVFoundation
 import Metal
 import MetalKit
 
-#if targetEnvironment(simulator)
-public class MCCore {}
-#else
-
 final public class MCCore {
 	
 	public enum MCCoreErrorType: Error {
@@ -134,4 +130,3 @@ extension MCCore {
 	}
 
 }
-#endif
