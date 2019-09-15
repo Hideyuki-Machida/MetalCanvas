@@ -19,6 +19,7 @@ typedef enum VertexInputIndex
 	MCColorIndex = 2,
 	MCSizeIndex = 3,
 	MCTexCoord = 4,
+	MCIntensity = 5,
 } VertexInputIndex;
 
 typedef enum KernelImageBlendingInputIndex

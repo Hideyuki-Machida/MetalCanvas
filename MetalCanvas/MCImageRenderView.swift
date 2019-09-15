@@ -24,17 +24,10 @@ open class MCImageRenderView: MTKView, MTKViewDelegate {
 	
 	private var _mathScale: CGSize = CGSize(width: 0, height: 0)
 	
-	private var filter: MPSImageLanczosScale!
-	
 	open override func awakeFromNib() {
 		super.awakeFromNib()
 		self.delegate = self
 		self.device = MCCore.device
-		self.filter = MPSImageLanczosScale(device: self.device!)
-		//self.clearColor = MTLClearColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-		//self.ciContext = CIContext(mtlDevice: self.device!)
-		//self.ciContext = CIContext(mtlDevice: RuntimeVars.device, options: SharedContext.options)
-		//self.ciContext = CIContext(mtlDevice: self.device!, options: SharedContext.options)
 		
 		self.isPaused = true
 		self.framebufferOnly = false
@@ -111,44 +104,23 @@ extension MCImageRenderView {
 	private func updatePixelBuffer(commandBuffer: inout MTLCommandBuffer, texture: inout MTLTexture, renderSize: CGSize) {
 		////////////////////////////////////////////////////////////
 		//
+		self.drawableSize = renderSize
 		guard let drawable: CAMetalDrawable = self.currentDrawable else { return }
 		////////////////////////////////////////////////////////////
 
-		/*
-		////////////////////////////////////////////////////////////
-		// previewScale encode
-		let scale: Double = Double(drawable.texture.width) / Double(texture.width)
-		//let scale: Double = 1.0
-		var transform: MPSScaleTransform = MPSScaleTransform(scaleX: scale, scaleY: scale, translateX: 0, translateY: 0)
-		withUnsafePointer(to: &transform) { [weak self] (transformPtr: UnsafePointer<MPSScaleTransform>) -> () in
-			self?.filter.scaleTransform = transformPtr
-			self?.filter.encode(commandBuffer: commandBuffer, sourceTexture: texture, destinationTexture: drawable.texture)
-		}
-		////////////////////////////////////////////////////////////
-		*/
-
 		do {
 
-			////////////////////////////////////////////////////////////
-			// previewScale encode
-			var mcTexture01: MCTexture = try MCTexture.init(texture: drawable.texture)
-			let mcTexture02: MCTexture = try MCTexture.init(texture: texture)
-			let scale: Float = Float(mcTexture01.width) / Float(mcTexture02.width)
-			let canvas: MCCanvas = try MCCanvas.init(destination: &mcTexture01, orthoType: MCCanvas.OrthoType.topLeft)
-			let imageMat: MCGeom.Matrix4x4 = MCGeom.Matrix4x4.init(scaleX: scale, scaleY: scale, scaleZ: 1.0)
-
-			try canvas.draw(commandBuffer: &commandBuffer, objects: [
-				try MCPrimitive.Image.init(
-					texture: mcTexture02,
-					ppsition: MCGeom.Vec3D.init(x: Float(mcTexture01.width) / 2.0, y: Float(mcTexture01.height) / 2.0, z: 0),
-					transform: imageMat,
-					anchorPoint: .center
-				)
-			])
-			////////////////////////////////////////////////////////////
-			
-			////////////////////////////////////////////////////////////
-			// commit
+			let blitEncoder = commandBuffer.makeBlitCommandEncoder()
+			blitEncoder?.copy(from: texture,
+							 sourceSlice: 0,
+							 sourceLevel: 0,
+							 sourceOrigin: MTLOrigin(x: 0, y: 0, z: 0),
+							 sourceSize: MTLSizeMake(texture.width, texture.height, texture.depth),
+							 to: drawable.texture,
+							 destinationSlice: 0,
+							 destinationLevel: 0,
+							 destinationOrigin: MTLOrigin(x: 0, y: 0, z: 0))
+			blitEncoder?.endEncoding()
 
 			/*
 			commandBuffer.addCompletedHandler { [weak self] (cb) in

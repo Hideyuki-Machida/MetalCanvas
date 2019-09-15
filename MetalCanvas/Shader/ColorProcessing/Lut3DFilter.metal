@@ -30,9 +30,9 @@ vertex ImageColorInOut vertex_Lut3DFilter(device float4 *positions [[ buffer(MCV
 }
 
 fragment half4 fragment_Lut3DFilter(ImageColorInOut in [[stage_in]],
-								   texture2d<half> originalTexture [[texture(OriginalTextureIndex)]],
-								   texture2d<half> lutTexture [[texture(1)]])
-								   //constant IntensityUniform& uniform [[ buffer(1) ]])
+									texture2d<half> originalTexture [[texture(OriginalTextureIndex)]],
+									texture2d<half> lutTexture [[texture(1)]],
+									constant float &intensity [[ buffer(MCIntensity) ]])
 {
 	constexpr sampler quadSampler;
 	half4 base = originalTexture.sample(quadSampler, in.texCoords);
@@ -62,7 +62,6 @@ fragment half4 fragment_Lut3DFilter(ImageColorInOut in [[stage_in]],
 	
 	half4 newColor = mix(newColor1, newColor2, fract(blueColor));
 
-	return half4(mix(base, half4(newColor.rgb, base.w), half(1.0)));
-	//return half4(mix(base, half4(newColor.rgb, base.w), half(uniform.intensity)));
+	return half4(mix(base, half4(newColor.rgb, base.w), half(intensity)));
 }
 

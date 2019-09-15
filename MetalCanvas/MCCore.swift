@@ -124,5 +124,14 @@ extension MCCore {
 		return try? self.textureLoader.newTexture(cgImage: cgImage, options: nil)
 	}
 
+	public static func texture(URL: URL, isSRGB: Bool = true) throws -> MTLTexture {
+		let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
+			MTKTextureLoader.Option.SRGB: isSRGB,
+			MTKTextureLoader.Option.textureUsage: NSNumber(value: MTLTextureUsage.shaderRead.rawValue),
+			MTKTextureLoader.Option.textureStorageMode: NSNumber(value: MTLStorageMode.private.rawValue)
+		]
+		return try MCCore.textureLoader.newTexture(URL: URL, options: textureLoaderOptions)
+	}
+
 }
 #endif

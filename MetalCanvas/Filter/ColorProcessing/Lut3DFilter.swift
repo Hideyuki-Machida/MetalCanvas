@@ -26,8 +26,13 @@ extension MCFilter.ColorProcessing {
 		fileprivate var renderPassDescriptor: MTLRenderPassDescriptor = MTLRenderPassDescriptor()
 		private var renderPipelineState: MTLRenderPipelineState!
 		private var threadsPerThreadgroup: MTLSize
+		private var lutImageTexture: MCTexture?
 		
-		public init () {
+		public var intensity: Float = 1.0
+		
+		public init (lutImageTexture: MCTexture) {
+			self.lutImageTexture = lutImageTexture
+			
 			self.renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadAction.clear
 			self.renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
 
@@ -42,17 +47,21 @@ extension MCFilter.ColorProcessing {
 			self.renderPipelineState = try! MCCore.device.makeRenderPipelineState(descriptor: renderPipelineDescriptor)
 		}
 		
-		public func processing(commandBuffer: inout MTLCommandBuffer, imageTexture: MCTexture, lutImageTexture: MCTexture, destinationTexture: inout MCTexture) throws {
+		public func processing(commandBuffer: inout MTLCommandBuffer, imageTexture: MCTexture, destinationTexture: inout MCTexture) throws {
+			guard let lutImageTexture: MCTexture = self.lutImageTexture else { throw MCFilter.ErrorType.drawError }
 			self.renderPassDescriptor.colorAttachments[0].texture = destinationTexture.texture
 			
 			let vertexBuffer: MTLBuffer = try MCCore.makeBuffer(data: self.vertexData)
 			let texCoordBuffer: MTLBuffer = try MCCore.makeBuffer(data: self.textureCoordinateData)
+			let intensity: MTLBuffer = try MCCore.makeBuffer(data: [self.intensity])
+
 			guard let renderCommandEncoder: MTLRenderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) else { throw MCFilter.ErrorType.drawError }
 			renderCommandEncoder.setRenderPipelineState(self.renderPipelineState)
 			renderCommandEncoder.setVertexBuffer(vertexBuffer, offset: 0, index: Int(MCVertexIndex.rawValue))
 			renderCommandEncoder.setVertexBuffer(texCoordBuffer, offset: 0, index: Int(MCTexCoord.rawValue))
 			renderCommandEncoder.setFragmentTexture(imageTexture.texture, index: 0)
 			renderCommandEncoder.setFragmentTexture(lutImageTexture.texture, index: 1)
+			renderCommandEncoder.setFragmentBuffer(intensity, offset: 0, index: Int(MCIntensity.rawValue))
 			renderCommandEncoder.drawPrimitives(type: .triangleStrip, vertexStart: 0, vertexCount: 4)
 			renderCommandEncoder.endEncoding()
 		}
