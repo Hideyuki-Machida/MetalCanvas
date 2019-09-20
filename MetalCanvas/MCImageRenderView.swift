@@ -25,35 +25,38 @@ open class MCImageRenderView: MTKView, MTKViewDelegate {
 	
 	open override func awakeFromNib() {
 		super.awakeFromNib()
-		self.delegate = self
-		self.device = MCCore.device
-		self.filter = MPSImageLanczosScale(device: self.device!)
-		
-		self.isPaused = true
-		self.framebufferOnly = false
-		self.enableSetNeedsDisplay = false
-	}
-	
+    }
+    
+    public override init(frame frameRect: CGRect, device: MTLDevice?) {
+        super.init(frame: frameRect, device: device)
+        
+        self._init()
+    }
+    
+    required public init(coder: NSCoder) {
+        super.init(coder: coder)
+
+        self._init()
+    }
+    
+    private func _init() {
+        self.delegate = self
+        self.device = MCCore.device
+        self.filter = MPSImageLanczosScale(device: self.device!)
+        
+        self.isPaused = true
+        self.framebufferOnly = false
+        self.enableSetNeedsDisplay = false
+        self.autoResizeDrawable = true
+    }
+    
 	public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
 	}
 	
 	public func draw(in view: MTKView) {
-		//print(view.preferredFramesPerSecond)
-		/*
-		guard let image: CIImage = self.image else { return }
-		guard let commandQueue: MTLCommandQueue = self.commandQueue else { return }
-		let commandBuffer: MTLCommandBuffer = commandQueue.makeCommandBuffer()
-		let bounds = CGRect( x: 0, y: 0, width: (self.bounds.size.width), height: (self.bounds.size.height) )
-		let colorSpace = CGColorSpaceCreateDeviceRGB()
-		self.ciContext?.render(image, to: self.currentDrawable!.texture, commandBuffer: commandBuffer, bounds: image.extent, colorSpace: colorSpace)
-		commandBuffer.present(self.currentDrawable!)
-		commandBuffer.commit()
-		commandBuffer.waitUntilCompleted()
-		*/
-		
 	}
 	
-	func setup() {
+	public func setup() {
 	}
 	
 	deinit {
