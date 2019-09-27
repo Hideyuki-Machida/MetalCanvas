@@ -107,7 +107,7 @@ extension MCImageRenderView {
 	fileprivate func updatePixelBuffer(commandBuffer: inout MTLCommandBuffer, texture: MTLTexture, renderSize: CGSize) {
 		////////////////////////////////////////////////////////////
 		//
-		guard let drawable: CAMetalDrawable = self.currentDrawable else {
+        guard let drawable: CAMetalDrawable = self.currentDrawable else {
 			commandBuffer.commit()
 			return
 		}
@@ -136,7 +136,8 @@ extension MCImageRenderView {
 					blitEncoder?.endEncoding()
 					cb.addCompletedHandler { [weak self] (cb) in
 						self?.draw()
-						guard let drawable: CAMetalDrawable = self?.currentDrawable else {
+
+                        guard let drawable: CAMetalDrawable = self?.currentDrawable else {
 							commandBuffer.commit()
 							return
 						}
@@ -144,6 +145,7 @@ extension MCImageRenderView {
 					}
 					cb.present(drawable)
 					cb.commit()
+                    cb.waitUntilCompleted()
 				} else {
 					guard let cb: MTLCommandBuffer = MCCore.commandQueue.makeCommandBuffer() else { return }
 					let t: MCTexture = try MCTexture.init(renderSize: CGSize.init(width: renderSize.width, height: renderSize.height))
@@ -159,15 +161,17 @@ extension MCImageRenderView {
 									 destinationOrigin: MTLOrigin(x: 0, y: 0, z: 0))
 					blitEncoder?.endEncoding()
 					cb.addCompletedHandler { [weak self] (cb) in
-						self?.draw()
+                        self?.draw()
+
 						guard let drawable: CAMetalDrawable = self?.currentDrawable else {
 							commandBuffer.commit()
 							return
 						}
-						self?.updatePixelBuffer002(commandBuffer: &commandBuffer, drawable: drawable, texture: texture, renderSize: renderSize)
+                        self?.updatePixelBuffer002(commandBuffer: &commandBuffer, drawable: drawable, texture: texture, renderSize: renderSize)
 					}
-					cb.present(drawable)
+                    cb.present(drawable)
 					cb.commit()
+                    cb.waitUntilCompleted()
 				}
 			} else {
 				self.updatePixelBuffer002(commandBuffer: &commandBuffer, drawable: drawable, texture: texture, renderSize: renderSize)
