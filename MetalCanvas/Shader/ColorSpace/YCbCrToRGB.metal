@@ -15,8 +15,8 @@
 using namespace metal;
 
 
-vertex ImageColorInOut vertex_YCbCrToRGB(device float4 *positions [[ buffer(MCVertexIndex) ]],
-										 device float2 *texCoords [[ buffer(MCTexCoord) ]],
+vertex ImageColorInOut vertex_YCbCrToRGB(const device float4 *positions [[ buffer(MCVertexIndex) ]],
+										 const device float2 *texCoords [[ buffer(MCTexCoord) ]],
 										 uint vid [[ vertex_id ]])
 {
 	ImageColorInOut out;

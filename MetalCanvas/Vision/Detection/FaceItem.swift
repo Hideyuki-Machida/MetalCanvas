@@ -77,7 +77,7 @@ extension MCVision.Detection.Face {
 		public func tracking(pixelBuffer: inout CVPixelBuffer) {
 			let start: TimeInterval = Date().timeIntervalSince1970
 			var pixelBuffer = pixelBuffer
-			var faceTrackingRequest: VNTrackObjectRequest = self.faceTrackingRequest
+			let faceTrackingRequest: VNTrackObjectRequest = self.faceTrackingRequest
 			self.queue.async {
 				do {
 					try self.sequenceRequestHandler.perform([faceTrackingRequest], on: pixelBuffer)

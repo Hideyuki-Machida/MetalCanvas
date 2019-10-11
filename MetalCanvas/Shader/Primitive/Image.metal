@@ -15,8 +15,8 @@
 using namespace metal;
 
 namespace primitive {
-	vertex ImageColorInOut vertex_primitive_image(device float4 *positions [[ buffer(MCVertexIndex) ]],
-												  device float2 *texCoords [[ buffer(MCTexCoord) ]],
+	vertex ImageColorInOut vertex_primitive_image(const device float4 *positions [[ buffer(MCVertexIndex) ]],
+												  const device float2 *texCoords [[ buffer(MCTexCoord) ]],
 												  const device float4x4 &projectionMat [[buffer(MCProjectionMatrixIndex)]],
 												  const device float4x4 &objMat [[buffer(30)]],
 												  uint vid [[ vertex_id ]])

@@ -19,8 +19,8 @@ typedef struct
 	float intensity;
 } IntensityUniform;
 
-vertex ImageColorInOut vertex_Lut1DFilter(device float4 *positions [[ buffer(MCVertexIndex) ]],
-										  device float2 *texCoords [[ buffer(MCTexCoord) ]],
+vertex ImageColorInOut vertex_Lut1DFilter(const device float4 *positions [[ buffer(MCVertexIndex) ]],
+										  const device float2 *texCoords [[ buffer(MCTexCoord) ]],
 										  uint vid [[ vertex_id ]])
 {
 	ImageColorInOut out;
