@@ -40,6 +40,7 @@ extension MCPrimitive {
 			//renderPipelineDescriptor.isAlphaToOneEnabled = true
 
 			renderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
+            //renderPipelineDescriptor.colorAttachments[0].isBlendingEnabled = true
 			/*
 			renderPipelineDescriptor.colorAttachments[0].isBlendingEnabled = true
 

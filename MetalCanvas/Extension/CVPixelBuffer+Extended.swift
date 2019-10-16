@@ -14,16 +14,24 @@ extension CVPixelBuffer {
 	static public func create(image: CGImage, pixelFormat: OSType = kCVPixelFormatType_32BGRA) -> CVPixelBuffer? {
 		guard let pixelBuffer: CVPixelBuffer = create(size: CGSize.init(CGFloat(image.width), CGFloat(image.height)), pixelFormat: pixelFormat) else { return nil }
 		
+        print("image.bitsPerComponent")
+        print(image.bitsPerComponent)
+        print(CGImageAlphaInfo.noneSkipFirst.rawValue)
+        print(image.bitmapInfo.rawValue)
+        print(CGColorSpaceCreateDeviceRGB())
 		CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags.readOnly)
-		
+		let bytesPerRow = CVPixelBufferGetBytesPerRow(pixelBuffer)
 		let context = CGContext(
 			data: CVPixelBufferGetBaseAddress(pixelBuffer),
 			width: image.width,
 			height: image.height,
+            //bitsPerComponent: 8,
 			bitsPerComponent: image.bitsPerComponent,
-			bytesPerRow: image.bytesPerRow,
-			space: CGColorSpaceCreateDeviceRGB(),
-			bitmapInfo: image.bitmapInfo.rawValue)
+			//bytesPerRow: image.bytesPerRow,
+            bytesPerRow: bytesPerRow,
+            space: CGColorSpaceCreateDeviceRGB(),
+			//bitmapInfo: image.bitmapInfo.rawValue)
+            bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
 		context?.draw(image, in: CGRect.init(CGFloat(image.width), CGFloat(image.height)))
 		
 		CVPixelBufferUnlockBaseAddress(pixelBuffer, CVPixelBufferLockFlags.readOnly)

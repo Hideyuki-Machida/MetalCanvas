@@ -31,9 +31,9 @@ public struct MCTexture {
 		self.texture = texture
 	}
 
-    public init(image: UIImage) throws {
+    public init(image: UIImage, SRGB: Bool = true) throws {
         let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
-            MTKTextureLoader.Option.SRGB: true,
+            MTKTextureLoader.Option.SRGB: SRGB,
             MTKTextureLoader.Option.textureUsage: NSNumber(value: MTLTextureUsage.shaderRead.rawValue),
             MTKTextureLoader.Option.textureStorageMode: NSNumber(value: MTLStorageMode.private.rawValue)
         ]
@@ -41,9 +41,9 @@ public struct MCTexture {
         self.texture = try MCCore.textureLoader.newTexture(cgImage: cgImage, options: textureLoaderOptions)
     }
 
-    public init(URL: URL) throws {
+    public init(URL: URL, SRGB: Bool = true) throws {
 		let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
-			MTKTextureLoader.Option.SRGB: true,
+			MTKTextureLoader.Option.SRGB: SRGB,
 			MTKTextureLoader.Option.textureUsage: NSNumber(value: MTLTextureUsage.shaderRead.rawValue),
 			MTKTextureLoader.Option.textureStorageMode: NSNumber(value: MTLStorageMode.private.rawValue)
 		]
