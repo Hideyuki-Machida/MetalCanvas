@@ -19,13 +19,15 @@ public class MCCanvas {
 	
 	public enum OrthoType {
 		case perspective
-		case topLeft
+        case center
+        case topLeft
 		case bottomLeft
 		
 		func getMatrix(size: CGSize) -> GLKMatrix4 {
 			switch self {
 			case .perspective: return MCGeom.Matrix4x4().glkMatrix
-			case .topLeft: return GLKMatrix4MakeOrtho(0, Float(size.width), Float(size.height), 0, -1, 1)
+			case .center: return GLKMatrix4MakeOrtho(-Float(size.width/2), Float(size.width/2), Float(size.height/2), -Float(size.height/2), -1, 1)
+            case .topLeft: return GLKMatrix4MakeOrtho(0, Float(size.width), Float(size.height), 0, -1, 1)
 			case .bottomLeft: return GLKMatrix4MakeOrtho(0, Float(size.width), 0, Float(size.height), -1, 1)
 			}
 		}

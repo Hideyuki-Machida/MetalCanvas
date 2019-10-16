@@ -31,7 +31,17 @@ public struct MCTexture {
 		self.texture = texture
 	}
 
-	public init(URL: URL) throws {
+    public init(image: UIImage) throws {
+        let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
+            MTKTextureLoader.Option.SRGB: true,
+            MTKTextureLoader.Option.textureUsage: NSNumber(value: MTLTextureUsage.shaderRead.rawValue),
+            MTKTextureLoader.Option.textureStorageMode: NSNumber(value: MTLStorageMode.private.rawValue)
+        ]
+        guard let cgImage = image.cgImage else { throw ErrorType.createError }
+        self.texture = try MCCore.textureLoader.newTexture(cgImage: cgImage, options: textureLoaderOptions)
+    }
+
+    public init(URL: URL) throws {
 		let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
 			MTKTextureLoader.Option.SRGB: true,
 			MTKTextureLoader.Option.textureUsage: NSNumber(value: MTLTextureUsage.shaderRead.rawValue),
