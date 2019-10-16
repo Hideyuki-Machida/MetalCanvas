@@ -105,12 +105,30 @@ extension MCCanvas {
 
 extension MCCanvas {
 	public func fill(commandBuffer: inout MTLCommandBuffer, color: MCColor) throws {
-		let object: MCPrimitiveTypeProtocol = try MCPrimitive.Rectangle.init(
-			position: MCGeom.Vec2D.init(0.0, 0.0),
-			w: Float(self.drawInfo.renderSize.width),
-			h: Float(self.drawInfo.renderSize.height),
-			color: color
-		)
-		try object.draw(commandBuffer: &commandBuffer, drawInfo: self.drawInfo)
-	}
+        let object: MCPrimitiveTypeProtocol
+        switch self.drawInfo.orthoType {
+        case .perspective:
+            object = try MCPrimitive.Rectangle.init(
+                position: MCGeom.Vec2D.init(-1.0, -1.0),
+                w: 2.0,
+                h: 2.0,
+                color: color
+            )
+        case .center:
+            object = try MCPrimitive.Rectangle.init(
+                position: MCGeom.Vec2D.init(-Float(self.drawInfo.renderSize.width / 2.0), -Float(self.drawInfo.renderSize.height / 2.0)),
+                w: Float(self.drawInfo.renderSize.width),
+                h: Float(self.drawInfo.renderSize.height),
+                color: color
+            )
+        case .topLeft, .bottomLeft:
+            object = try MCPrimitive.Rectangle.init(
+                position: MCGeom.Vec2D.init(0.0, 0.0),
+                w: Float(self.drawInfo.renderSize.width),
+                h: Float(self.drawInfo.renderSize.height),
+                color: color
+            )
+        }
+        try object.draw(commandBuffer: &commandBuffer, drawInfo: self.drawInfo)
+    }
 }
