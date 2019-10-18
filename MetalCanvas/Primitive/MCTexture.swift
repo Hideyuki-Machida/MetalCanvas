@@ -31,9 +31,28 @@ public struct MCTexture {
 		self.texture = texture
 	}
 
-	public init(URL: URL) throws {
+    public init(image: UIImage, SRGB: Bool = true) throws {
+        let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
+            MTKTextureLoader.Option.SRGB: SRGB,
+            MTKTextureLoader.Option.textureUsage: NSNumber(value: MTLTextureUsage.shaderRead.rawValue),
+            MTKTextureLoader.Option.textureStorageMode: NSNumber(value: MTLStorageMode.private.rawValue)
+        ]
+        guard let cgImage = image.cgImage else { throw ErrorType.createError }
+        self.texture = try MCCore.textureLoader.newTexture(cgImage: cgImage, options: textureLoaderOptions)
+    }
+
+    public init(image: CGImage, SRGB: Bool = true) throws {
+        let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
+            MTKTextureLoader.Option.SRGB: SRGB,
+            MTKTextureLoader.Option.textureUsage: NSNumber(value: MTLTextureUsage.shaderRead.rawValue),
+            MTKTextureLoader.Option.textureStorageMode: NSNumber(value: MTLStorageMode.private.rawValue)
+        ]
+        self.texture = try MCCore.textureLoader.newTexture(cgImage: image, options: textureLoaderOptions)
+    }
+    
+    public init(URL: URL, SRGB: Bool = true) throws {
 		let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
-			MTKTextureLoader.Option.SRGB: true,
+			MTKTextureLoader.Option.SRGB: SRGB,
 			MTKTextureLoader.Option.textureUsage: NSNumber(value: MTLTextureUsage.shaderRead.rawValue),
 			MTKTextureLoader.Option.textureStorageMode: NSNumber(value: MTLStorageMode.private.rawValue)
 		]
