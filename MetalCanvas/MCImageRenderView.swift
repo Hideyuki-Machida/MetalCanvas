@@ -56,7 +56,7 @@ open class MCImageRenderView: MTKView, MTKViewDelegate {
 	public func draw(in view: MTKView) {
 	}
 	
-	public func setup() {
+	open func setup() throws {
 	}
 	
 	deinit {
