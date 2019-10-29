@@ -11,7 +11,7 @@ import CoreGraphics
 // MARK: - initialize
 
 public extension CGPoint {
-	init(_ x: CGFloat, _ y: CGFloat) {
+    init(_ x: CGFloat, _ y: CGFloat) {
         self = CGPoint.init(x: x, y: y)
     }
 }
@@ -146,10 +146,10 @@ public extension CGPoint {
 }
 
 public extension CGPoint {
-	func normalized(size: CGSize) -> CGPoint {
-		return CGPoint.init(
-			x: self.x / size.width,
-			y: self.y / size.height
-		)
-	}
+    func normalized(size: CGSize) -> CGPoint {
+        return CGPoint.init(
+            x: self.x / size.width,
+            y: self.y / size.height
+        )
+    }
 }

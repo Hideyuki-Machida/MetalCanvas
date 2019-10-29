@@ -10,28 +10,28 @@ import Foundation
 
 public struct MCPrimitive {
 
-	public enum ErrorType: Error {
-		case setupError
-		case drawError
-		case endError
-	}
+    public enum ErrorType: Error {
+        case setupError
+        case drawError
+        case endError
+    }
 
-	public enum anchor {
-		case topLeft
-		case bottomLeft
-		case center
-	}
-	public struct DrawInfo {
-		var renderPassDescriptor: MTLRenderPassDescriptor
-		var renderSize: CGSize
-		var orthoType: MCCanvas.OrthoType
-		var projectionMatrixBuffer: MTLBuffer
-		
-		public init(renderPassDescriptor: MTLRenderPassDescriptor, renderSize: CGSize, orthoType: MCCanvas.OrthoType, projectionMatrixBuffer: MTLBuffer) {
-			self.renderPassDescriptor = renderPassDescriptor
-			self.renderSize = renderSize
-			self.orthoType = orthoType
-			self.projectionMatrixBuffer = projectionMatrixBuffer
-		}
-	}
+    public enum anchor {
+        case topLeft
+        case bottomLeft
+        case center
+    }
+    public struct DrawInfo {
+        var renderPassDescriptor: MTLRenderPassDescriptor
+        var renderSize: CGSize
+        var orthoType: MCCanvas.OrthoType
+        var projectionMatrixBuffer: MTLBuffer
+        
+        public init(renderPassDescriptor: MTLRenderPassDescriptor, renderSize: CGSize, orthoType: MCCanvas.OrthoType, projectionMatrixBuffer: MTLBuffer) {
+            self.renderPassDescriptor = renderPassDescriptor
+            self.renderSize = renderSize
+            self.orthoType = orthoType
+            self.projectionMatrixBuffer = projectionMatrixBuffer
+        }
+    }
 }

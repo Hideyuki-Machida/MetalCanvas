@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MCShaderTypes.h"
+#import "./MCShaderTypes.h"
 
 //! Project version number for MetalCanvas.
 FOUNDATION_EXPORT double MetalCanvasVersionNumber;

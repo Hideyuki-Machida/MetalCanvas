@@ -120,47 +120,47 @@ public extension CGRect {
 // MARK: - Basic operator - 演算子
 
 public extension CGRect {
-	static func + (left: CGRect, right: CGFloat) -> CGRect {
-		return CGRect.init(origin: left.origin + right, size: left.size + right)
-	}
+    static func + (left: CGRect, right: CGFloat) -> CGRect {
+        return CGRect.init(origin: left.origin + right, size: left.size + right)
+    }
 
-	static func - (left: CGRect, right: CGFloat) -> CGRect {
-		return CGRect.init(origin: left.origin - right, size: left.size - right)
-	}
-	
-	static func * (left: CGRect, right: CGFloat) -> CGRect {
-		return CGRect.init(origin: left.origin * right, size: left.size * right)
-	}
-	
-	static func / (left: CGRect, right: CGFloat) -> CGRect {
-		return CGRect.init(origin: left.origin / right, size: left.size / right)
-	}
+    static func - (left: CGRect, right: CGFloat) -> CGRect {
+        return CGRect.init(origin: left.origin - right, size: left.size - right)
+    }
+    
+    static func * (left: CGRect, right: CGFloat) -> CGRect {
+        return CGRect.init(origin: left.origin * right, size: left.size * right)
+    }
+    
+    static func / (left: CGRect, right: CGFloat) -> CGRect {
+        return CGRect.init(origin: left.origin / right, size: left.size / right)
+    }
 
 }
 
 public extension CGRect {
-	static func + (left: CGRect, right: CGRect) -> CGRect {
-		return CGRect.init(origin: left.origin + right.origin, size: left.size + right.size)
-	}
-	
-	static func - (left: CGRect, right: CGRect) -> CGRect {
-		return CGRect.init(origin: left.origin - right.origin, size: left.size - right.size)
-	}
-	
-	static func * (left: CGRect, right: CGRect) -> CGRect {
-		return CGRect.init(origin: left.origin * right.origin, size: left.size * right.size)
-	}
-	
-	static func / (left: CGRect, right: CGRect) -> CGRect {
-		return CGRect.init(origin: left.origin / right.origin, size: left.size / right.size)
-	}
+    static func + (left: CGRect, right: CGRect) -> CGRect {
+        return CGRect.init(origin: left.origin + right.origin, size: left.size + right.size)
+    }
+    
+    static func - (left: CGRect, right: CGRect) -> CGRect {
+        return CGRect.init(origin: left.origin - right.origin, size: left.size - right.size)
+    }
+    
+    static func * (left: CGRect, right: CGRect) -> CGRect {
+        return CGRect.init(origin: left.origin * right.origin, size: left.size * right.size)
+    }
+    
+    static func / (left: CGRect, right: CGRect) -> CGRect {
+        return CGRect.init(origin: left.origin / right.origin, size: left.size / right.size)
+    }
 }
 
 public extension CGRect {
-	func normalized(size: CGSize) -> CGRect {
-		return CGRect.init(
-			origin: self.origin.normalized(size: size),
-			size: self.size.normalized(size: size)
-		)
-	}
+    func normalized(size: CGSize) -> CGRect {
+        return CGRect.init(
+            origin: self.origin.normalized(size: size),
+            size: self.size.normalized(size: size)
+        )
+    }
 }

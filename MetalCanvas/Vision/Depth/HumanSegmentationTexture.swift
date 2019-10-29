@@ -91,7 +91,8 @@ extension MCVision.Depth {
 				mat.scale(x: Float(renderSize.width) / Float(alphaMatteTexture.height), y: Float(renderSize.height) / Float(alphaMatteTexture.width), z: 1.0)
 				mat.rotateAroundX(xAngleRad: 0.0, yAngleRad: 0.0, zAngleRad: Float(angle))
 				mat.translate(x: 0, y: -Float(alphaMatteTexture.height), z: 0.0)
-				image = try MCPrimitive.Image.init(texture: alphaMatteTexture, ppsition: MCGeom.Vec3D.init(0.0, 0.0, 0.0), transform: mat, anchorPoint: MCPrimitive.anchor.topLeft)
+				image = try MCPrimitive.Image.init(texture: alphaMatteTexture, ppsition:
+                    SIMD3.init(0.0, 0.0, 0.0), transform: mat, anchorPoint: MCPrimitive.anchor.topLeft)
 				
 				self.image = image
 			} else {

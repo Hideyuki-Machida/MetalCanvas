@@ -9,31 +9,25 @@
 #include <metal_stdlib>
 #include <metal_common>
 #include <simd/simd.h>
-#import "../MCShaderTypes.h"
+#import "MCShaderTypes.h"
 
 using namespace metal;
 
 ////////////////////////////////////////////////
-struct VertexIn {
-	packed_float3 position;
-	packed_float4 colors;
-};
-
-////////////////////////////////////////////////
 struct PointVertexOut{
-	float4 pos [[position]];
-	float pointSize [[point_size]];
-	float4 color;
+    float4 pos [[position]];
+    float pointSize [[point_size]];
+    float4 color;
 };
 
 ////////////////////////////////////////////////
 struct ImageColorInOut {
-	float4 position [[ position ]];
-	float2 texCoords;
+    float4 position [[ position ]];
+    float2 texCoords;
 };
 
 ////////////////////////////////////////////////
 struct TriangleColorInOut {
-	float4 position [[ position ]];
-	float4 color;
+    float4 position [[ position ]];
+    float4 color;
 };

@@ -9,12 +9,19 @@
 import Foundation
 
 public struct MCFilter {
-	public enum ErrorType: Error {
-		case setupError
-		case drawError
-		case endError
-	}
+    public enum ErrorType: Error {
+        case setupError
+        case drawError
+        case endError
+    }
 
-	public struct ColorSpace {}
-	public struct ColorProcessing {}
+    public struct ColorSpace {}
+    public struct ColorProcessing {}
+}
+
+public protocol MCFilterProtocol {
+    
+}
+
+extension MCFilterProtocol {
 }

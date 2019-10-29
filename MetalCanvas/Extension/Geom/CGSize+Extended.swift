@@ -19,46 +19,46 @@ public extension CGSize {
 }
 
 public extension CGSize {
-	static func + (left: CGSize, right: CGFloat) -> CGSize {
-		return CGSize(width: left.width + right, height: left.height + right)
-	}
-	
-	static func - (left: CGSize, right: CGFloat) -> CGSize {
-		return CGSize(width: left.width - right, height: left.height - right)
-	}
-	
-	static func * (point: CGSize, scalar: CGFloat) -> CGSize {
-		return CGSize(width: point.width * scalar, height: point.height * scalar)
-	}
-	
-	static func / (point: CGSize, scalar: CGFloat) -> CGSize {
-		return CGSize(width: point.width / scalar, height: point.height / scalar)
-	}
+    static func + (left: CGSize, right: CGFloat) -> CGSize {
+        return CGSize(width: left.width + right, height: left.height + right)
+    }
+    
+    static func - (left: CGSize, right: CGFloat) -> CGSize {
+        return CGSize(width: left.width - right, height: left.height - right)
+    }
+    
+    static func * (point: CGSize, scalar: CGFloat) -> CGSize {
+        return CGSize(width: point.width * scalar, height: point.height * scalar)
+    }
+    
+    static func / (point: CGSize, scalar: CGFloat) -> CGSize {
+        return CGSize(width: point.width / scalar, height: point.height / scalar)
+    }
 }
 
 public extension CGSize {
-	static func + (left: CGSize, right: CGSize) -> CGSize {
-		return CGSize(width: left.width + right.width, height: left.height + right.height)
-	}
-	
-	static func - (left: CGSize, right: CGSize) -> CGSize {
-		return CGSize(width: left.width - right.width, height: left.height - right.height)
-	}
-	
-	static func * (left: CGSize, right: CGSize) -> CGSize {
-		return CGSize(width: left.width * right.width, height: left.height * right.height)
-	}
-	
-	static func / (left: CGSize, right: CGSize) -> CGSize {
-		return CGSize(width: left.width / right.width, height: left.height / right.height)
-	}
+    static func + (left: CGSize, right: CGSize) -> CGSize {
+        return CGSize(width: left.width + right.width, height: left.height + right.height)
+    }
+    
+    static func - (left: CGSize, right: CGSize) -> CGSize {
+        return CGSize(width: left.width - right.width, height: left.height - right.height)
+    }
+    
+    static func * (left: CGSize, right: CGSize) -> CGSize {
+        return CGSize(width: left.width * right.width, height: left.height * right.height)
+    }
+    
+    static func / (left: CGSize, right: CGSize) -> CGSize {
+        return CGSize(width: left.width / right.width, height: left.height / right.height)
+    }
 }
 
 public extension CGSize {
-	func normalized(size: CGSize) -> CGSize {
-		return CGSize.init(
-			width: self.width / size.width,
-			height: self.height / size.height
-		)
-	}
+    func normalized(size: CGSize) -> CGSize {
+        return CGSize.init(
+            width: self.width / size.width,
+            height: self.height / size.height
+        )
+    }
 }
