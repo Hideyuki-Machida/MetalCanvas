@@ -70,7 +70,7 @@ open class MCImageRenderView: MTKView, MTKViewDelegate {
 
 
 extension MCImageRenderView {
-    public func update001(texture: MTLTexture, renderSize: CGSize, queue: DispatchQueue?) {
+    public func update(texture: MTLTexture, renderSize: CGSize, queue: DispatchQueue?) {
         guard let commandBuffer: MTLCommandBuffer = MCCore.commandQueue.makeCommandBuffer() else { return }
         if let queue = queue {
             queue.async { [weak self] in
