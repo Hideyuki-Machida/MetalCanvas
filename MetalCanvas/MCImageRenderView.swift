@@ -51,6 +51,7 @@ open class MCImageRenderView: MTKView, MTKViewDelegate {
     }
 
     open func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+        MCDebug.log("MTKView drawableSizeWillChange: \(size)")
     }
 
     open func draw(in view: MTKView) {
@@ -106,6 +107,7 @@ extension MCImageRenderView {
             commandBuffer.commit()
             return
         }
+
         var commandBuffer: MTLCommandBuffer = commandBuffer
         ////////////////////////////////////////////////////////////
 
@@ -299,5 +301,37 @@ extension MCImageRenderView {
 
         }
 
+    }
+}
+
+extension MCImageRenderView {
+    public func setPreferredFramesPerSecond(frameRate: Int) {
+        self.preferredFramesPerSecond = min(frameRate, UIScreen.main.maximumFramesPerSecond)
+    }
+
+    public func drawUpdate(drawTexture: MTLTexture) {
+        guard
+            let commandBuffer: MTLCommandBuffer = MCCore.commandQueue.makeCommandBuffer(),
+            let drawable: CAMetalDrawable = self.currentDrawable,
+            drawable.texture.width == drawTexture.width && drawable.texture.height == drawTexture.height
+            else { return }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        // ブリットエンコード
+        let blitEncoder: MTLBlitCommandEncoder? = commandBuffer.makeBlitCommandEncoder()
+        blitEncoder?.copy(from: drawTexture,
+                          sourceSlice: 0,
+                          sourceLevel: 0,
+                          sourceOrigin: MTLOrigin(x: 0, y: 0, z: 0),
+                          sourceSize: MTLSizeMake(drawable.texture.width, drawable.texture.height, drawable.texture.depth),
+                          to: drawable.texture,
+                          destinationSlice: 0,
+                          destinationLevel: 0,
+                          destinationOrigin: MTLOrigin(x: 0, y: 0, z: 0))
+        blitEncoder?.endEncoding()
+        ///////////////////////////////////////////////////////////////////////////////////////////
+        
+        commandBuffer.present(drawable)
+        commandBuffer.commit()
     }
 }
