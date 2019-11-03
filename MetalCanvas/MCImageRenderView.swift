@@ -33,7 +33,7 @@ open class MCImageRenderView: MTKView, MTKViewDelegate {
         self._init()
     }
     
-    required public init(coder: NSCoder) {
+    public required init(coder: NSCoder) {
         super.init(coder: coder)
 
         self._init()
@@ -50,10 +50,10 @@ open class MCImageRenderView: MTKView, MTKViewDelegate {
         self.autoResizeDrawable = true
     }
 
-    public func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+    open func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
     }
 
-    public func draw(in view: MTKView) {
+    open func draw(in view: MTKView) {
     }
 
     open func setup() throws {
@@ -252,6 +252,51 @@ extension MCImageRenderView {
             } catch {
                 commandBuffer.commit()
             }
+        }
+
+    }
+}
+
+extension MCImageRenderView {
+    public func updatePixelBuffer(commandBuffer: MTLCommandBuffer, sorce: MTLTexture, destination: MTLTexture, renderSize: CGSize) {
+        ////////////////////////////////////////////////////////////
+        //
+        var commandBuffer: MTLCommandBuffer = commandBuffer
+        ////////////////////////////////////////////////////////////
+
+        if self.hasHEVCHardwareEncoder {
+            ////////////////////////////////////////////////////////////
+            // previewScale encode
+            let scale: Double = Double(destination.width) / Double(sorce.width)
+            var transform: MPSScaleTransform = MPSScaleTransform(scaleX: scale, scaleY: scale, translateX: 0, translateY: 0)
+            withUnsafePointer(to: &transform) { [weak self] (transformPtr: UnsafePointer<MPSScaleTransform>) -> () in
+                self?.filter.scaleTransform = transformPtr
+                self?.filter.encode(commandBuffer: commandBuffer, sourceTexture: sorce, destinationTexture: destination)
+            }
+            ////////////////////////////////////////////////////////////
+        } else {
+            do {
+                ////////////////////////////////////////////////////////////
+                // previewScale encode
+                let texture: MCTexture = try MCTexture.init(texture: sorce)
+                var mcTexture01: MCTexture = try MCTexture.init(texture: destination)
+                let scale: Float = Float(mcTexture01.width) / Float(texture.width)
+                let canvas: MCCanvas = try MCCanvas.init(destination: &mcTexture01, orthoType: MCCanvas.OrthoType.topLeft)
+                let imageMat: MCGeom.Matrix4x4 = MCGeom.Matrix4x4.init(scaleX: scale, scaleY: scale, scaleZ: 1.0)
+
+                try canvas.draw(commandBuffer: &commandBuffer, objects: [
+                    try MCPrimitive.Image.init(
+                        texture: texture,
+                        ppsition: SIMD3<Float>.init(x: Float(mcTexture01.width) / 2.0, y: Float(mcTexture01.height) / 2.0, z: 0),
+                        transform: imageMat,
+                        anchorPoint: .center
+                    )
+                ])
+                ////////////////////////////////////////////////////////////
+            } catch {
+                MCDebug.log("updatePixelBuffer error")
+            }
+
         }
 
     }
