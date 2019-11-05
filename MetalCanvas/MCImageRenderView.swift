@@ -29,13 +29,11 @@ open class MCImageRenderView: MTKView, MTKViewDelegate {
 
     public override init(frame frameRect: CGRect, device: MTLDevice?) {
         super.init(frame: frameRect, device: device)
-        
         self._init()
     }
     
     public required init(coder: NSCoder) {
         super.init(coder: coder)
-
         self._init()
     }
 
@@ -298,23 +296,17 @@ extension MCImageRenderView {
             } catch {
                 MCDebug.log("updatePixelBuffer error")
             }
-
         }
-
     }
 }
 
 extension MCImageRenderView {
-    public func setPreferredFramesPerSecond(frameRate: Int) {
-        self.preferredFramesPerSecond = min(frameRate, UIScreen.main.maximumFramesPerSecond)
-    }
-
     public func drawUpdate(drawTexture: MTLTexture) {
         guard
             let commandBuffer: MTLCommandBuffer = MCCore.commandQueue.makeCommandBuffer(),
             let drawable: CAMetalDrawable = self.currentDrawable,
             drawable.texture.width == drawTexture.width && drawable.texture.height == drawTexture.height
-            else { return }
+        else { return }
 
         ///////////////////////////////////////////////////////////////////////////////////////////
         // ブリットエンコード
