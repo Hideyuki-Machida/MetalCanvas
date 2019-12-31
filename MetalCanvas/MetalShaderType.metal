@@ -3,7 +3,7 @@
 //  CameraCore
 //
 //  Created by hideyuki machida on 2018/10/19.
-//  Copyright © 2018 Donuts. All rights reserved.
+//  Copyright © 2018 hideyuki machida. All rights reserved.
 //
 
 #include <metal_stdlib>

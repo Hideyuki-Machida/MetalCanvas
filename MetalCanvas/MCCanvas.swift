@@ -3,7 +3,7 @@
 //  CameraCore
 //
 //  Created by hideyuki machida on 2018/12/23.
-//  Copyright © 2018 Donuts. All rights reserved.
+//  Copyright © 2018 hideyuki machida. All rights reserved.
 //
 
 import Foundation

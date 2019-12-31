@@ -3,7 +3,7 @@
 //  iOSGraphicsLibs
 //
 //  Created by hideyuki machida on 2018/07/16.
-//  Copyright © 2018 Donuts. All rights reserved.
+//  Copyright © 2018 hideyuki machida. All rights reserved.
 //
 
 import UIKit

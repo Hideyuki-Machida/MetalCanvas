@@ -3,7 +3,7 @@
 //  MetalCanvas
 //
 //  Created by hideyuki machida on 2019/01/02.
-//  Copyright © 2019 Donuts. All rights reserved.
+//  Copyright © 2019 hideyuki machida. All rights reserved.
 //
 
 #include <metal_stdlib>

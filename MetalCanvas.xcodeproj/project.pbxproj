@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6226E7FD21DCAC6700E46C2E /* MCFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226E7FC21DCAC6700E46C2E /* MCFunction.swift */; };
 		6226E82421DF182B00E46C2E /* MCGeomNameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226E82321DF182B00E46C2E /* MCGeomNameSpace.swift */; };
 		62B6C4B323B795120044A531 /* MCDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6C4B223B795120044A531 /* MCDebug.swift */; };
 		62B6C4B623B7953A0044A531 /* MCShaderPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6C4B523B7953A0044A531 /* MCShaderPreset.swift */; };
@@ -55,7 +54,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6226E7FC21DCAC6700E46C2E /* MCFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCFunction.swift; sourceTree = "<group>"; };
 		6226E82321DF182B00E46C2E /* MCGeomNameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCGeomNameSpace.swift; sourceTree = "<group>"; };
 		62B6C4B223B795120044A531 /* MCDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCDebug.swift; sourceTree = "<group>"; };
 		62B6C4B523B7953A0044A531 /* MCShaderPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCShaderPreset.swift; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 				62FABEB22296DFE5002672A0 /* Vision */,
 				62B6C4B423B795230044A531 /* Utils */,
 				62C6758021D74B5D00181478 /* MCCore.swift */,
-				6226E7FC21DCAC6700E46C2E /* MCFunction.swift */,
 				62C6758621D75B9400181478 /* MCImageRenderView.swift */,
 				62B6C4F423B799810044A531 /* MetalShaderType.metal */,
 				62C6757121D7495D00181478 /* MCCanvas.swift */,
@@ -436,7 +433,6 @@
 				62B6C4F523B799810044A531 /* MetalShaderType.metal in Sources */,
 				62B6C4E123B7980D0044A531 /* YCbCrToRGB.metal in Sources */,
 				62B6C4C823B797D20044A531 /* Image.swift in Sources */,
-				6226E7FD21DCAC6700E46C2E /* MCFunction.swift in Sources */,
 				62E34190232E9ABC005E96A7 /* MCTools.swift in Sources */,
 				62C6758121D74B5D00181478 /* MCCore.swift in Sources */,
 				62C6757F21D74A5900181478 /* MCMatrix4.swift in Sources */,
