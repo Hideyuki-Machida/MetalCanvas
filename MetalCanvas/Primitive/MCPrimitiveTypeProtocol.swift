@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol MCPrimitiveTypeProtocol {
-	func draw(commandBuffer: inout MTLCommandBuffer, drawInfo: MCPrimitive.DrawInfo) throws
+    func draw(commandBuffer: inout MTLCommandBuffer, drawInfo: MCPrimitive.DrawInfo) throws
 }
