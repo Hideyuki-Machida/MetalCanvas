@@ -8,5 +8,5 @@
 
 import Foundation
 
-public struct MCGeom {}
+public struct MCGeom { private init() {} /* このstructはnamespace用途なのでインスタンス化防止 */ }
 

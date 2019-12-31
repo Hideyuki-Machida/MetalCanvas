@@ -14,26 +14,23 @@ public typealias HSV = (h: Int, s: Int, v: Int)
 public typealias HSVA = (h: Int, s: Int, v: Int, a: Int)
 
 public struct MCColor {
-	
-	var color: [Float] = [1.0, 1.0, 1.0, 1.0]
-	
-	public init(r: Float, g: Float, b: Float, a: Float) {
-		self.color = [r, g, b, a]
-	}
-	
-	// MARK: - Hex
-	
-	public init(hex: String, alpha: Float = 1.0) {
-		let hex: String = hex.replacingOccurrences(of: "#", with: "")
-		let scanner: Scanner = Scanner(string: hex)
-		scanner.scanLocation = 0
-		var rgbValue: UInt64 = 0
-		scanner.scanHexInt64(&rgbValue)
-		let r: UInt64 = (rgbValue & 0xff0000) >> 16
-		let g: UInt64 = (rgbValue & 0xff00) >> 8
-		let b: UInt64 = rgbValue & 0xff
-		
-		self.color = [Float(r) / 0xff, Float(g) / 0xff, Float(b) / 0xff, alpha]
+    let color: SIMD4<Float>
+
+    public init(red: Float, green: Float, blue: Float, alpha: Float) {
+        self.color = [red, green, blue, alpha]
+    }
+
+    public init(hex: String, alpha: Float = 1.0) {
+        let hex: String = hex.replacingOccurrences(of: "#", with: "")
+        let scanner: Scanner = Scanner(string: hex)
+        scanner.scanLocation = 0
+        var rgbValue: UInt64 = 0
+        scanner.scanHexInt64(&rgbValue)
+        let red: UInt64 = (rgbValue & 0xFF0000) >> 16
+        let green: UInt64 = (rgbValue & 0xFF00) >> 8
+        let blue: UInt64 = rgbValue & 0xFF
+
+        self.color = SIMD4<Float>(x: Float(red) / 0xFF, y: Float(green) / 0xFF, z: Float(blue) / 0xFF, w: alpha)
 	}
 	
 	/*
