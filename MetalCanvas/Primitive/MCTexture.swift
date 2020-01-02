@@ -98,14 +98,15 @@ public struct MCTexture {
         self.size = SIMD2<Float>(Float(texture.width), Float(texture.height))
     }
 
-    public func copy() throws -> MCTexture {
+}
+
+public extension MCTexture {
+    func copy() throws -> MCTexture {
         guard let texture: MTLTexture = self.texture.makeTextureView(pixelFormat: self.pixelFormat) else { throw ErrorType.createError }
         return try MCTexture(texture: texture)
     }
-}
 
-extension MCTexture {
-    public mutating func update(commandBuffer: MTLCommandBuffer, URL: URL) throws {
+    mutating func update(commandBuffer: MTLCommandBuffer, URL: URL) throws {
         guard let image: CIImage = CIImage(contentsOf: URL) else { throw ErrorType.createError }
         let colorSpace: CGColorSpace = image.colorSpace ?? CGColorSpaceCreateDeviceRGB()
         MCCore.ciContext.render(image, to: self.texture, commandBuffer: commandBuffer, bounds: image.extent, colorSpace: colorSpace)
