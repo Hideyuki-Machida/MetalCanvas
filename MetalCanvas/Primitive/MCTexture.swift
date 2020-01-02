@@ -15,17 +15,17 @@ public struct MCTexture {
     }
 
     public var width: Int { return texture.width }
-
     public var height: Int { return texture.height }
-
+    fileprivate(set) public var size: SIMD2<Float>
     public var pixelFormat: MTLPixelFormat { return texture.pixelFormat }
+    fileprivate(set) public var pixelBuffer: CVPixelBuffer?
 
     public private(set) var texture: MTLTexture
     public init(renderSize: CGSize) throws {
         let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: MTLPixelFormat.bgra8Unorm, width: Int(renderSize.width), height: Int(renderSize.height), mipmapped: true)
         textureDescriptor.usage = [.shaderRead, .shaderWrite, .renderTarget, .pixelFormatView]
         guard let texture: MTLTexture = MCCore.device.makeTexture(descriptor: textureDescriptor) else { throw ErrorType.createError }
-        self.texture = texture
+        try self.init(texture: texture)
     }
 
     public init(image: UIImage, isSRGB: Bool = false) throws {
@@ -35,7 +35,8 @@ public struct MCTexture {
             MTKTextureLoader.Option.textureStorageMode: NSNumber(value: MTLStorageMode.private.rawValue),
         ]
         guard let cgImage = image.cgImage else { throw ErrorType.createError }
-        self.texture = try MCCore.textureLoader.newTexture(cgImage: cgImage, options: textureLoaderOptions)
+        let texture: MTLTexture = try MCCore.textureLoader.newTexture(cgImage: cgImage, options: textureLoaderOptions)
+        try self.init(texture: texture)
     }
 
     public init(image: CGImage, isSRGB: Bool = false) throws {
@@ -44,7 +45,8 @@ public struct MCTexture {
             MTKTextureLoader.Option.textureUsage: NSNumber(value: MTLTextureUsage.shaderRead.rawValue),
             MTKTextureLoader.Option.textureStorageMode: NSNumber(value: MTLStorageMode.private.rawValue),
         ]
-        self.texture = try MCCore.textureLoader.newTexture(cgImage: image, options: textureLoaderOptions)
+        let texture: MTLTexture = try MCCore.textureLoader.newTexture(cgImage: image, options: textureLoaderOptions)
+        try self.init(texture: texture)
     }
 
     public init(URL: URL, isSRGB: Bool = false) throws {
@@ -53,7 +55,8 @@ public struct MCTexture {
             MTKTextureLoader.Option.textureUsage: NSNumber(value: MTLTextureUsage.shaderRead.rawValue),
             MTKTextureLoader.Option.textureStorageMode: NSNumber(value: MTLStorageMode.private.rawValue),
         ]
-        self.texture = try MCCore.textureLoader.newTexture(URL: URL, options: textureLoaderOptions)
+        let texture: MTLTexture = try MCCore.textureLoader.newTexture(URL: URL, options: textureLoaderOptions)
+        try self.init(texture: texture)
     }
 
     public init(URL: URL, commandBuffer: MTLCommandBuffer) throws {
@@ -71,7 +74,7 @@ public struct MCTexture {
         textureDescriptor.usage = [.shaderRead, .shaderWrite]
         guard let texture: MTLTexture = MCCore.device.makeTexture(descriptor: textureDescriptor) else { throw ErrorType.createError }
         MCCore.ciContext.render(inputImage, to: texture, commandBuffer: commandBuffer, bounds: inputImage.extent, colorSpace: colorSpace)
-        self.texture = texture
+        try self.init(texture: texture)
     }
 
     public init(pixelBuffer: inout CVPixelBuffer, planeIndex: Int) throws {
@@ -80,16 +83,19 @@ public struct MCTexture {
 
     public init(pixelBuffer: inout CVPixelBuffer, colorPixelFormat: MTLPixelFormat, planeIndex: Int) throws {
         guard let texture: MTLTexture = MCCore.texture(pixelBuffer: &pixelBuffer, colorPixelFormat: colorPixelFormat, planeIndex: planeIndex) else { throw ErrorType.createError }
-        self.texture = texture
+        try self.init(texture: texture)
+        self.pixelBuffer = pixelBuffer
     }
 
     public init(pixelBuffer: inout CVPixelBuffer, textureCache: CVMetalTextureCache, colorPixelFormat: MTLPixelFormat, planeIndex: Int) throws {
         guard let texture: MTLTexture = MCCore.texture(pixelBuffer: &pixelBuffer, textureCache: textureCache, colorPixelFormat: colorPixelFormat, planeIndex: planeIndex) else { throw ErrorType.createError }
-        self.texture = texture
+        try self.init(texture: texture)
+        self.pixelBuffer = pixelBuffer
     }
 
     public init(texture: MTLTexture) throws {
         self.texture = texture
+        self.size = SIMD2<Float>(Float(texture.width), Float(texture.height))
     }
 
     public func copy() throws -> MCTexture {
