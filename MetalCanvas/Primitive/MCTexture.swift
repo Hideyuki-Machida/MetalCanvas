@@ -16,7 +16,7 @@ public struct MCTexture {
 
     public var width: Int { return texture.width }
     public var height: Int { return texture.height }
-    fileprivate(set) public var size: SIMD2<Float>
+    fileprivate(set) public var size: MCSize
     public var pixelFormat: MTLPixelFormat { return texture.pixelFormat }
     fileprivate(set) public var pixelBuffer: CVPixelBuffer?
 
@@ -95,7 +95,7 @@ public struct MCTexture {
 
     public init(texture: MTLTexture) throws {
         self.texture = texture
-        self.size = SIMD2<Float>(Float(texture.width), Float(texture.height))
+        self.size = MCSize(Float(texture.width), Float(texture.height))
     }
 
 }

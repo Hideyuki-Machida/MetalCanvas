@@ -16,13 +16,13 @@ extension MCVision.Detection.Face {
 		public var boundingBox: CGRect = CGRect.init()
 		public var allPoints: [CGPoint] = []
 		public var landmarks: VNFaceLandmarks2D?
-		private var renderSize: CGSize
+		private var renderSize: MCSize
 		var faceTrackingRequest: VNTrackObjectRequest? = nil
 		let sequenceRequestHandler: VNSequenceRequestHandler = VNSequenceRequestHandler()
         var isDetection: Bool = true
         var observation: VNDetectedObjectObservation
 
-		public init(id: Int, observation: VNFaceObservation, landmarks: VNFaceLandmarks2D?, renderSize: CGSize) {
+		public init(id: Int, observation: VNFaceObservation, landmarks: VNFaceLandmarks2D?, renderSize: MCSize) {
 			self.id = id
             let uuid = NSUUID().uuidString
 			self.queue = DispatchQueue(label: "MetalCanvas.FaceDetection.FaceItem.\(uuid).queue")
@@ -34,7 +34,7 @@ extension MCVision.Detection.Face {
 			guard let landmarks: VNFaceLandmarks2D = landmarks else { return }
 			self.landmarks = landmarks
 			if let faceContour: VNFaceLandmarkRegion2D = landmarks.allPoints {
-				let points: [CGPoint] = faceContour.pointsInImage(imageSize: self.renderSize)
+                let points: [CGPoint] = faceContour.pointsInImage(imageSize: self.renderSize.toCGSize())
 				self.allPoints = points
 			}
             
@@ -61,7 +61,7 @@ extension MCVision.Detection.Face {
                     //self.observation = faceObservation
                     guard let landmarks: VNFaceLandmarks2D = faceObservation.landmarks else { continue }
 					if let faceContour: VNFaceLandmarkRegion2D = landmarks.allPoints {
-						let points: [CGPoint] = faceContour.pointsInImage(imageSize: self.renderSize)
+                        let points: [CGPoint] = faceContour.pointsInImage(imageSize: self.renderSize.toCGSize())
 						self.boundingBox = observation.boundingBox
 						self.allPoints = points
 						self.landmarks = landmarks

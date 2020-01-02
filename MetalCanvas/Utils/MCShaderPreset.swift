@@ -10,9 +10,9 @@ import Foundation
 
 public struct MCShaderPreset {
     public static let normalizedVertex: [MCVertexIn] = [
-        MCVertexIn(position: SIMD4<Float>(-1, -1, 0, 1), texCoords: SIMD2<Float>(0, 1)),
-        MCVertexIn(position: SIMD4<Float>(1, -1, 0, 1), texCoords: SIMD2<Float>(1, 1)),
-        MCVertexIn(position: SIMD4<Float>(-1, 1, 0, 1), texCoords: SIMD2<Float>(0, 0)),
-        MCVertexIn(position: SIMD4<Float>(1, 1, 0, 1), texCoords: SIMD2<Float>(1, 0)),
+        MCVertexIn(position: SIMD4<Float>(-1, -1, 0, 1), texCoords: MCPoint(0, 1)),
+        MCVertexIn(position: SIMD4<Float>(1, -1, 0, 1), texCoords: MCPoint(1, 1)),
+        MCVertexIn(position: SIMD4<Float>(-1, 1, 0, 1), texCoords: MCPoint(0, 0)),
+        MCVertexIn(position: SIMD4<Float>(1, 1, 0, 1), texCoords: MCPoint(1, 0)),
     ]
 }

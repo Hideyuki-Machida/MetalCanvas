@@ -11,7 +11,7 @@ import Foundation
 
 extension CVPixelBuffer {
     public static func create(image: CGImage, pixelFormat: OSType = kCVPixelFormatType_32BGRA) -> CVPixelBuffer? {
-        let size: CGSize = CGSize(width: image.width, height: image.height)
+        let size: MCSize = MCSize(Float(image.width), Float(image.height))
         guard let pixelBuffer: CVPixelBuffer = self.create(size: size, pixelFormat: pixelFormat) else { return nil }
 
         CVPixelBufferLockBaseAddress(pixelBuffer, CVPixelBufferLockFlags.readOnly)
@@ -34,7 +34,7 @@ extension CVPixelBuffer {
 }
 
 extension CVPixelBuffer {
-    public static func create(size: CGSize, pixelFormat: OSType = kCVPixelFormatType_32BGRA) -> CVPixelBuffer? {
+    public static func create(size: MCSize, pixelFormat: OSType = kCVPixelFormatType_32BGRA) -> CVPixelBuffer? {
         var pixelBuffer: CVPixelBuffer?
 
         let options = [
@@ -46,8 +46,8 @@ extension CVPixelBuffer {
         ]
 
         _ = CVPixelBufferCreate(kCFAllocatorDefault,
-                                Int(size.width),
-                                Int(size.height),
+                                Int(size.w),
+                                Int(size.h),
                                 pixelFormat,
                                 options as CFDictionary?,
                                 &pixelBuffer)

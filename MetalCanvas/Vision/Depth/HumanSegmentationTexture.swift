@@ -20,19 +20,19 @@ extension MCVision.Depth {
 		
 		public init () {}
 		
-		public mutating func update(to depthData: AVDepthData, metadataFaceObjects: [AVMetadataFaceObject], commandBuffer: inout MTLCommandBuffer, renderSize: CGSize) throws {
+		public mutating func update(to depthData: AVDepthData, metadataFaceObjects: [AVMetadataFaceObject], commandBuffer: inout MTLCommandBuffer, renderSize: MCSize) throws {
 			let depthPixelBuffer: CVPixelBuffer = depthData.depthDataMap
 			//depthPixelBuffer.normalize()
 			//guard let depthData: AVDepthData = depthData else { throw Renderer.ErrorType.rendering }
 			guard let faceObject: AVMetadataFaceObject = metadataFaceObjects.first else { throw MCVision.ErrorType.rendering }
 			let depthWidth: Int = CVPixelBufferGetWidth(depthPixelBuffer)
 			let depthHeight: Int = CVPixelBufferGetHeight(depthPixelBuffer)
-			guard var newPixelBuffer: CVPixelBuffer = CVPixelBuffer.create(size: CGSize.init(width: depthWidth, height: depthHeight)) else { throw MCVision.ErrorType.rendering }
+			guard var newPixelBuffer: CVPixelBuffer = CVPixelBuffer.create(size: MCSize.init(w: depthWidth, h: depthHeight)) else { throw MCVision.ErrorType.rendering }
 			let alphaMatteTexture: MCTexture = try MCTexture.init(pixelBuffer: &newPixelBuffer, planeIndex: 0)
 			
 			//depthPixelBuffer.normalize()
 			let faceCenter: CGPoint = CGPoint(x: faceObject.bounds.midX, y: faceObject.bounds.midY)
-			let scale: CGFloat = CGFloat(CVPixelBufferGetWidth(depthPixelBuffer)) / renderSize.width
+			let scale: CGFloat = CGFloat(CVPixelBufferGetWidth(depthPixelBuffer)) / CGFloat(renderSize.w)
 
 			//let pixelX: Int = Int((faceCenter.y * scale).rounded())
 			//let pixelY: Int = Int((faceCenter.x * scale).rounded())
@@ -88,7 +88,7 @@ extension MCVision.Depth {
 			if self.image == nil {
 				var mat: MCGeom.Matrix4x4 = MCGeom.Matrix4x4.init()
 				let angle: CGFloat = 90 * CGFloat.pi / 180
-				mat.scale(x: Float(renderSize.width) / Float(alphaMatteTexture.height), y: Float(renderSize.height) / Float(alphaMatteTexture.width), z: 1.0)
+				mat.scale(x: renderSize.w / Float(alphaMatteTexture.height), y: renderSize.h / Float(alphaMatteTexture.width), z: 1.0)
 				mat.rotateAroundX(xAngleRad: 0.0, yAngleRad: 0.0, zAngleRad: Float(angle))
 				mat.translate(x: 0, y: -Float(alphaMatteTexture.height), z: 0.0)
 

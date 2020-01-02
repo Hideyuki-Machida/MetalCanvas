@@ -40,7 +40,7 @@ extension MCVision.Detection {
 		}
 		
 		var isRequest: Bool = false
-		fileprivate func prepareVisionRequest002(pixelBuffer: inout CVPixelBuffer, renderSize: CGSize) throws {
+		fileprivate func prepareVisionRequest002(pixelBuffer: inout CVPixelBuffer, renderSize: MCSize) throws {
 			self.isRequest = true
 			var pixelBuffer = pixelBuffer
 			let faceDetectionRequest: VNDetectFaceLandmarksRequest = VNDetectFaceLandmarksRequest(completionHandler: { [weak self] (request, error) in
@@ -74,7 +74,7 @@ extension MCVision.Detection {
 			try imageRequestHandler.perform([faceDetectionRequest])
 		}
 
-		fileprivate func prepareVisionRequest003(pixelBuffer: inout CVPixelBuffer, renderSize: CGSize) throws {
+		fileprivate func prepareVisionRequest003(pixelBuffer: inout CVPixelBuffer, renderSize: MCSize) throws {
 			self.isRequest = true
 			var pixelBuffer = pixelBuffer
 			let faceDetectionRequest: VNDetectFaceRectanglesRequest = VNDetectFaceRectanglesRequest(completionHandler: { [weak self] (request, error) in
@@ -135,7 +135,7 @@ extension MCVision.Detection {
 		}
 		
 		var count: Int = 0
-		public func detection(pixelBuffer: inout CVPixelBuffer, renderSize: CGSize, onDetection: @escaping ((_ landmarksResults: [MCVision.Detection.Face.Item])->Void)) throws -> [MCVision.Detection.Face.Item] {
+		public func detection(pixelBuffer: inout CVPixelBuffer, renderSize: MCSize, onDetection: @escaping ((_ landmarksResults: [MCVision.Detection.Face.Item])->Void)) throws -> [MCVision.Detection.Face.Item] {
 			onDetection(self.faceItems)
 			var pixelBuffer = pixelBuffer
 

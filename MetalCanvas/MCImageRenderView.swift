@@ -49,7 +49,7 @@ open class MCImageRenderView: MTKView {
 }
 
 extension MCImageRenderView {
-    public func update(texture: MTLTexture, renderSize: CGSize, queue: DispatchQueue?) {
+    public func update(texture: MTLTexture, renderSize: MCSize, queue: DispatchQueue?) {
         guard let commandBuffer: MTLCommandBuffer = MCCore.commandQueue.makeCommandBuffer() else { return }
         if let queue = queue {
             queue.async { [weak self] in
@@ -64,7 +64,7 @@ extension MCImageRenderView {
         }
     }
 
-    public func update(commandBuffer: MTLCommandBuffer, texture: MTLTexture, renderSize: CGSize, queue: DispatchQueue?) {
+    public func update(commandBuffer: MTLCommandBuffer, texture: MTLTexture, renderSize: MCSize, queue: DispatchQueue?) {
         if let queue = queue {
             queue.async { [weak self] in
                 autoreleasepool { [weak self] in
@@ -78,7 +78,7 @@ extension MCImageRenderView {
         }
     }
 
-    fileprivate func updatePixelBuffer(commandBuffer: MTLCommandBuffer, texture: MTLTexture, renderSize: CGSize) {
+    fileprivate func updatePixelBuffer(commandBuffer: MTLCommandBuffer, texture: MTLTexture, renderSize: MCSize) {
         ////////////////////////////////////////////////////////////
         //
         guard let drawable: CAMetalDrawable = self.currentDrawable else {
@@ -90,7 +90,7 @@ extension MCImageRenderView {
 
         ////////////////////////////////////////////////////////////
         // drawableSizeを最適化
-        self.drawableSize = renderSize
+        self.drawableSize = renderSize.toCGSize()
         ////////////////////////////////////////////////////////////
 
         if self.hasMPS {
@@ -149,7 +149,7 @@ extension MCImageRenderView {
 }
 
 extension MCImageRenderView {
-    public func update(texture: MCTexture, renderSize: CGSize, queue: DispatchQueue?) {
+    public func update(texture: MCTexture, renderSize: MCSize, queue: DispatchQueue?) {
         guard let commandBuffer: MTLCommandBuffer = MCCore.commandQueue.makeCommandBuffer() else { return }
         if let queue = queue {
             queue.async { [weak self] in
@@ -164,7 +164,7 @@ extension MCImageRenderView {
         }
     }
 
-    public func update(commandBuffer: MTLCommandBuffer, texture: MCTexture, renderSize: CGSize, queue: DispatchQueue?) {
+    public func update(commandBuffer: MTLCommandBuffer, texture: MCTexture, renderSize: MCSize, queue: DispatchQueue?) {
         if let queue = queue {
             queue.async { [weak self] in
                 autoreleasepool { [weak self] in
@@ -176,7 +176,7 @@ extension MCImageRenderView {
         }
     }
 
-    private func updatePixelBuffer(commandBuffer: MTLCommandBuffer, texture: MCTexture, renderSize: CGSize) {
+    private func updatePixelBuffer(commandBuffer: MTLCommandBuffer, texture: MCTexture, renderSize: MCSize) {
         ////////////////////////////////////////////////////////////
         //
         guard let drawable: CAMetalDrawable = self.currentDrawable else { return }
@@ -234,7 +234,7 @@ extension MCImageRenderView {
 }
 
 extension MCImageRenderView {
-    public func updatePixelBuffer(commandBuffer: MTLCommandBuffer, source: MTLTexture, destination: MTLTexture, renderSize: CGSize) {
+    public func updatePixelBuffer(commandBuffer: MTLCommandBuffer, source: MTLTexture, destination: MTLTexture, renderSize: MCSize) {
         ////////////////////////////////////////////////////////////
         //
         var commandBuffer: MTLCommandBuffer = commandBuffer
@@ -288,6 +288,7 @@ extension MCImageRenderView {
             drawable.texture.width == drawTexture.width, drawable.texture.height == drawTexture.height
         else { return }
 
+       
         ///////////////////////////////////////////////////////////////////////////////////////////
         // ブリットエンコード
         let blitEncoder: MTLBlitCommandEncoder? = commandBuffer.makeBlitCommandEncoder()

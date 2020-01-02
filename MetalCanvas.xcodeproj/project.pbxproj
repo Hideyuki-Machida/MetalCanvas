@@ -45,7 +45,7 @@
 		62C6757F21D74A5900181478 /* MCMatrix4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C6757E21D74A5900181478 /* MCMatrix4.swift */; };
 		62C6758121D74B5D00181478 /* MCCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C6758021D74B5D00181478 /* MCCore.swift */; };
 		62C6758721D75B9400181478 /* MCImageRenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C6758621D75B9400181478 /* MCImageRenderView.swift */; };
-		62D319CE23BDE8610070E36A /* SIMD2+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D319CD23BDE8610070E36A /* SIMD2+Extension.swift */; };
+		62D319D423BE25D70070E36A /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D319D323BE25D70070E36A /* Typealias.swift */; };
 		62E34190232E9ABC005E96A7 /* MCTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E3418F232E9ABC005E96A7 /* MCTools.swift */; };
 		62FABEBA2296DFE5002672A0 /* MCVisionNameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FABEB32296DFE5002672A0 /* MCVisionNameSpace.swift */; };
 		62FABEBB2296DFE5002672A0 /* DepthMapTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FABEB52296DFE5002672A0 /* DepthMapTexture.swift */; };
@@ -95,7 +95,7 @@
 		62C6757E21D74A5900181478 /* MCMatrix4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCMatrix4.swift; sourceTree = "<group>"; };
 		62C6758021D74B5D00181478 /* MCCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCCore.swift; sourceTree = "<group>"; };
 		62C6758621D75B9400181478 /* MCImageRenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCImageRenderView.swift; sourceTree = "<group>"; };
-		62D319CD23BDE8610070E36A /* SIMD2+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SIMD2+Extension.swift"; sourceTree = "<group>"; };
+		62D319D323BE25D70070E36A /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		62E3418F232E9ABC005E96A7 /* MCTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCTools.swift; sourceTree = "<group>"; };
 		62FABEB32296DFE5002672A0 /* MCVisionNameSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MCVisionNameSpace.swift; sourceTree = "<group>"; };
 		62FABEB52296DFE5002672A0 /* DepthMapTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepthMapTexture.swift; sourceTree = "<group>"; };
@@ -228,7 +228,6 @@
 				62B6C4EA23B798570044A531 /* CGSize+Extension.swift */,
 				62B6C4EB23B798570044A531 /* CGAffineTransform+Extension.swift */,
 				62B6C4EC23B798570044A531 /* CGRect+Extension.swift */,
-				62D319CD23BDE8610070E36A /* SIMD2+Extension.swift */,
 			);
 			path = Geom;
 			sourceTree = "<group>";
@@ -259,6 +258,7 @@
 				6292FC0A21E5A6D0006E7E05 /* Extension */,
 				62FABEB22296DFE5002672A0 /* Vision */,
 				62B6C4B423B795230044A531 /* Utils */,
+				62D319D323BE25D70070E36A /* Typealias.swift */,
 				62C6758021D74B5D00181478 /* MCCore.swift */,
 				62C6758621D75B9400181478 /* MCImageRenderView.swift */,
 				62B6C4F423B799810044A531 /* MetalShaderType.metal */,
@@ -439,11 +439,11 @@
 				62E34190232E9ABC005E96A7 /* MCTools.swift in Sources */,
 				62C6758121D74B5D00181478 /* MCCore.swift in Sources */,
 				62C6757F21D74A5900181478 /* MCMatrix4.swift in Sources */,
-				62D319CE23BDE8610070E36A /* SIMD2+Extension.swift in Sources */,
 				62FABEBD2296DFE5002672A0 /* Face.swift in Sources */,
 				62B6C4E323B7980D0044A531 /* Lut3DFilter.metal in Sources */,
 				62B6C4EF23B798570044A531 /* SKNode+Extension.swift in Sources */,
 				62B6C4CA23B797D20044A531 /* Triangle.metal in Sources */,
+				62D319D423BE25D70070E36A /* Typealias.swift in Sources */,
 				62B6C4DC23B7980D0044A531 /* MCFilter.swift in Sources */,
 				62B6C4F123B798570044A531 /* CGSize+Extension.swift in Sources */,
 				62B6C4CD23B797D20044A531 /* MCPrimitive.swift in Sources */,

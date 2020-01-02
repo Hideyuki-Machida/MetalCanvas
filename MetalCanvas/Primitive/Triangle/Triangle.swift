@@ -18,7 +18,7 @@ extension MCPrimitive {
 
         // MARK: - func
 
-        public init(positions: [SIMD2<Float>], color: MCColor) throws {
+        public init(positions: [MCPoint], color: MCColor) throws {
             var data: [SIMD4<Float>] = []
             for pos in positions {
                 data.append(SIMD4<Float>(x: pos.x, y: pos.y, z: 0.0, w: 1.0))

@@ -25,11 +25,11 @@ public struct MCPrimitive {
 
     public struct DrawInfo {
         var renderPassDescriptor: MTLRenderPassDescriptor
-        var renderSize: CGSize
+        var renderSize: MCSize
         var orthoType: MCCanvas.OrthoType
         var projectionMatrixBuffer: MTLBuffer
 
-        public init(renderPassDescriptor: MTLRenderPassDescriptor, renderSize: CGSize, orthoType: MCCanvas.OrthoType, projectionMatrixBuffer: MTLBuffer) {
+        public init(renderPassDescriptor: MTLRenderPassDescriptor, renderSize: MCSize, orthoType: MCCanvas.OrthoType, projectionMatrixBuffer: MTLBuffer) {
             self.renderPassDescriptor = renderPassDescriptor
             self.renderSize = renderSize
             self.orthoType = orthoType

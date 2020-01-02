@@ -17,7 +17,7 @@ extension MCPrimitive {
 
         // MARK: - func
 
-        public init(position: SIMD2<Float>, w: Float, h: Float, color: MCColor) throws {
+        public init(position: MCPoint, w: Float, h: Float, color: MCColor) throws {
             let vertex: [MCPrimitiveVertexIn] = [
                 MCPrimitiveVertexIn(position: SIMD4<Float>(x: position.x, y: position.y, z: 0.0, w: 1.0), color: color.color), // LT
                 MCPrimitiveVertexIn(position: SIMD4<Float>(x: position.x, y: position.y + h, z: 0.0, w: 1.0), color: color.color), // LB
