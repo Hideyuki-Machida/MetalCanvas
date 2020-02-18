@@ -16,11 +16,11 @@
 		621508972224531C00F2E516 /* lut_1001.png in Resources */ = {isa = PBXBuildFile; fileRef = 621508962224531C00F2E516 /* lut_1001.png */; };
 		6215089922245E6A00F2E516 /* pink.png in Resources */ = {isa = PBXBuildFile; fileRef = 6215089822245E6A00F2E516 /* pink.png */; };
 		6215089B22245F6400F2E516 /* RGBTable16x1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6215089A22245F6400F2E516 /* RGBTable16x1.jpg */; };
+		621AF7AD23CCD9DE00F01394 /* MetalCanvas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6299A051228BD7E5000C9136 /* MetalCanvas.framework */; };
+		621AF7AE23CCD9DE00F01394 /* MetalCanvas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6299A051228BD7E5000C9136 /* MetalCanvas.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6226E80A21DCB89100E46C2E /* https___www.pakutaso.com_shared_img_thumb_YUK85_ossu15095452.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6226E80921DCB89100E46C2E /* https___www.pakutaso.com_shared_img_thumb_YUK85_ossu15095452.jpg */; };
 		6226E80C21DCB8E600E46C2E /* https___www.pakutaso.com_shared_img_thumb_SAYA151005538606.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6226E80B21DCB8E600E46C2E /* https___www.pakutaso.com_shared_img_thumb_SAYA151005538606.jpg */; };
 		6299A04E228BC8A7000C9136 /* DrawSample02VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6299A04D228BC8A7000C9136 /* DrawSample02VC.swift */; };
-		6299A053228BDC00000C9136 /* MetalCanvas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6299A051228BD7E5000C9136 /* MetalCanvas.framework */; };
-		6299A054228BDC00000C9136 /* MetalCanvas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6299A051228BD7E5000C9136 /* MetalCanvas.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		62C6753321D7455A00181478 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C6753221D7455A00181478 /* AppDelegate.swift */; };
 		62C6753521D7455A00181478 /* DrawSample01VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C6753421D7455A00181478 /* DrawSample01VC.swift */; };
 		62C6753821D7455A00181478 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C6753621D7455A00181478 /* Main.storyboard */; };
@@ -29,13 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		6299A055228BDC00000C9136 /* Embed Frameworks */ = {
+		621AF7AF23CCD9DE00F01394 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6299A054228BDC00000C9136 /* MetalCanvas.framework in Embed Frameworks */,
+				621AF7AE23CCD9DE00F01394 /* MetalCanvas.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,6 +52,7 @@
 		621508962224531C00F2E516 /* lut_1001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lut_1001.png; sourceTree = "<group>"; };
 		6215089822245E6A00F2E516 /* pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pink.png; sourceTree = "<group>"; };
 		6215089A22245F6400F2E516 /* RGBTable16x1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = RGBTable16x1.jpg; sourceTree = "<group>"; };
+		621AF7AC23CCD9BE00F01394 /* MetalCanvasExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MetalCanvasExample.entitlements; sourceTree = "<group>"; };
 		6226E80921DCB89100E46C2E /* https___www.pakutaso.com_shared_img_thumb_YUK85_ossu15095452.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "https___www.pakutaso.com_shared_img_thumb_YUK85_ossu15095452.jpg"; sourceTree = "<group>"; };
 		6226E80B21DCB8E600E46C2E /* https___www.pakutaso.com_shared_img_thumb_SAYA151005538606.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "https___www.pakutaso.com_shared_img_thumb_SAYA151005538606.jpg"; sourceTree = "<group>"; };
 		6299A04D228BC8A7000C9136 /* DrawSample02VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSample02VC.swift; sourceTree = "<group>"; };
@@ -70,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6299A053228BDC00000C9136 /* MetalCanvas.framework in Frameworks */,
+				621AF7AD23CCD9DE00F01394 /* MetalCanvas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +121,7 @@
 		62C6753121D7455A00181478 /* MetalCanvasExample */ = {
 			isa = PBXGroup;
 			children = (
+				621AF7AC23CCD9BE00F01394 /* MetalCanvasExample.entitlements */,
 				62C6753221D7455A00181478 /* AppDelegate.swift */,
 				62C6753421D7455A00181478 /* DrawSample01VC.swift */,
 				6299A04D228BC8A7000C9136 /* DrawSample02VC.swift */,
@@ -145,7 +147,7 @@
 				62C6752B21D7455A00181478 /* Sources */,
 				62C6752C21D7455A00181478 /* Frameworks */,
 				62C6752D21D7455A00181478 /* Resources */,
-				6299A055228BDC00000C9136 /* Embed Frameworks */,
+				621AF7AF23CCD9DE00F01394 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -367,7 +369,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MetalCanvasExample/MetalCanvasExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = UETCN89GVG;
 				INFOPLIST_FILE = MetalCanvasExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -378,8 +382,9 @@
 				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = hideyuki.machida.MetalCanvasExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -387,7 +392,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MetalCanvasExample/MetalCanvasExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = UETCN89GVG;
 				INFOPLIST_FILE = MetalCanvasExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -398,8 +405,9 @@
 				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = hideyuki.machida.MetalCanvasExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

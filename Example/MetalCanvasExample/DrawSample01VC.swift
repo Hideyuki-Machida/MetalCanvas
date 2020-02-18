@@ -6,9 +6,11 @@
 //  Copyright © 2018 hideyuki machida. All rights reserved.
 //
 
+import Foundation
 import MetalCanvas
 import MetalKit
 import UIKit
+import GLKit
 
 class DrawSample01VC: UIViewController {
     @IBOutlet weak var imageRender: MCImageRenderView!
@@ -18,7 +20,7 @@ class DrawSample01VC: UIViewController {
         let renderSize: CGSize = CGSize(width: 720, height: 1280)
 
         // MTLCommandBufferを生成
-        var commandBuffer: MTLCommandBuffer = MCCore.commandQueue.makeCommandBuffer()!
+        let commandBuffer: MTLCommandBuffer = MCCore.commandQueue.makeCommandBuffer()!
 
         do {
             try self.imageRender?.setup()
@@ -33,10 +35,10 @@ class DrawSample01VC: UIViewController {
             let canvas: MCCanvas = try MCCanvas(destination: &destinationTexture, orthoType: .topLeft)
 
             var image01Mat: MCGeom.Matrix4x4 = MCGeom.Matrix4x4(scaleX: 0.1, scaleY: 0.1, scaleZ: 1.0)
-            image01Mat.rotateAroundX(xAngleRad: 0.0, yAngleRad: 0.0, zAngleRad: 0.5)
+            //image01Mat.rotateZ(radians: 0.5)
 
             // キャンバスにプリミティブを描画
-            try canvas.draw(commandBuffer: &commandBuffer, objects: [
+            try canvas.draw(commandBuffer: commandBuffer, objects: [
                 // キャンバスに画像を描画
                 try MCPrimitive.Image(
                     texture: texture01,

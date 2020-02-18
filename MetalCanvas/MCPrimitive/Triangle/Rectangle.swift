@@ -34,7 +34,7 @@ extension MCPrimitive {
             self.vertexInBuffer = try MCCore.makeBuffer(data: vertex)
         }
 
-        public func draw(commandBuffer: inout MTLCommandBuffer, drawInfo: MCPrimitive.DrawInfo) throws {
+        public func draw(commandBuffer: MTLCommandBuffer, drawInfo: MCPrimitive.DrawInfo) throws {
             guard let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: drawInfo.renderPassDescriptor) else { throw MCPrimitive.ErrorType.drawError }
             renderCommandEncoder.setRenderPipelineState(self.pipelineState.renderPipelineState)
             renderCommandEncoder.setVertexBuffer(self.vertexInBuffer, offset: 0, index: Int(MCVertexIndex.rawValue))

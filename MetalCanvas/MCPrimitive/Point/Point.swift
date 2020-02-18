@@ -29,7 +29,7 @@ extension MCPrimitive {
                                      size: size)
         }
 
-        public func draw(commandBuffer: inout MTLCommandBuffer, drawInfo: MCPrimitive.DrawInfo) throws {
+        public func draw(commandBuffer: MTLCommandBuffer, drawInfo: MCPrimitive.DrawInfo) throws {
             guard let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: drawInfo.renderPassDescriptor) else { throw ErrorType.drawError }
             renderCommandEncoder.setRenderPipelineState(self.pipelineState.renderPipelineState)
             renderCommandEncoder.setVertexBytes([self.pointIn], length: MemoryLayout<MCPointIn>.size, index: Int(MCVertexIndex.rawValue))

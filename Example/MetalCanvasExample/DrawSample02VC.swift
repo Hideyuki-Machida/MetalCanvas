@@ -133,13 +133,13 @@ class DrawSample02VC: UIViewController {
 
     fileprivate func draw() {
         // MTLCommandBufferを生成
-        var commandBuffer: MTLCommandBuffer = MCCore.commandQueue.makeCommandBuffer()!
+        let commandBuffer: MTLCommandBuffer = MCCore.commandQueue.makeCommandBuffer()!
 
         do {
             ////////////////////////////////////////////////
             // 塗りつぶし
             switch self.drawMode {
-            case .clear: try self.canvas!.fill(commandBuffer: &commandBuffer, color: MCColor(hex: "0x000000"))
+            case .clear: try self.canvas!.fill(commandBuffer: commandBuffer, color: MCColor(hex: "0x000000"))
             case .load: break
             }
             ////////////////////////////////////////////////
@@ -153,7 +153,7 @@ class DrawSample02VC: UIViewController {
             }
             // キャンバスにプリミティブを描画
             try self.canvas!.draw(
-                commandBuffer: &commandBuffer,
+                commandBuffer: commandBuffer,
                 objects: points
             )
 

@@ -24,8 +24,8 @@ public final class MCCore {
     public fileprivate(set) static var commandQueue: MTLCommandQueue!
     public fileprivate(set) static var ciContext: CIContext!
     public fileprivate(set) static var library: MTLLibrary!
-    public fileprivate(set) static var textureCache: CVMetalTextureCache!
     public fileprivate(set) static var textureLoader: MTKTextureLoader!
+    public fileprivate(set) static var textureCache: CVMetalTextureCache?
 
     public static func setup(contextOptions: [CIContextOption: Any]) throws {
         let errorMessage: String = "MetalCanvas: SetupError"
@@ -34,8 +34,7 @@ public final class MCCore {
         // Metalの各ツール設定
         guard
             let device: MTLDevice = MTLCreateSystemDefaultDevice(),
-            let commandQueue: MTLCommandQueue = device.makeCommandQueue(),
-            let textureCache: CVMetalTextureCache = MCCore.createTextureCache(device: device)
+            let commandQueue: MTLCommandQueue = device.makeCommandQueue()
         else {
             MCDebug.errorLog(errorMessage)
             self.isMetalCanvas = false
@@ -44,20 +43,13 @@ public final class MCCore {
 
         self.device = device
         self.commandQueue = commandQueue
-        self.textureCache = textureCache
         self.textureLoader = MTKTextureLoader(device: device)
+        self.textureCache = MCCore.createTextureCache(device: MCCore.device)
         ///////////////////////////////////////////////////////////////////////////////
 
         ///////////////////////////////////////////////////////////////////////////////
         // default.metallib 取得
-        guard
-            let bundle: Bundle = MCTools.shard.bundle
-        else {
-            MCDebug.errorLog(errorMessage)
-            self.isMetalCanvas = false
-            throw MCCoreErrorType.setup
-        }
-
+        let bundle: Bundle = MCTools.shared.bundle
         let path: String = bundle.bundlePath + "/default.metallib"
         do {
             self.library = try device.makeLibrary(filepath: path)
@@ -133,7 +125,7 @@ extension MCCore {
     }
 
     public static func texture(pixelBuffer: inout CVPixelBuffer, colorPixelFormat: MTLPixelFormat, planeIndex: Int = 0) -> MTLTexture? {
-        guard let textureCache: CVMetalTextureCache = MCCore.textureCache else { return nil }
+        guard let textureCache: CVMetalTextureCache = MCCore.textureCache ?? MCCore.createTextureCache(device: MCCore.device) else { return nil }
         return MCCore.texture(pixelBuffer: &pixelBuffer, textureCache: textureCache, colorPixelFormat: colorPixelFormat, planeIndex: planeIndex)
     }
 
@@ -161,5 +153,10 @@ extension MCCore {
             MTKTextureLoader.Option.textureStorageMode: NSNumber(value: MTLStorageMode.private.rawValue),
         ]
         return try MCCore.textureLoader.newTexture(URL: URL, options: textureLoaderOptions)
+    }
+
+    public static func flush() {
+        MCCore.textureCache = MCCore.createTextureCache(device: MCCore.device)
+        MCCore.ciContext.clearCaches()
     }
 }

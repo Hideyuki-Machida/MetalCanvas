@@ -42,7 +42,6 @@ extension CVPixelBuffer {
             kCVPixelBufferCGBitmapContextCompatibilityKey as String: true,
             kCVPixelBufferMetalCompatibilityKey as String: true,
             kCVPixelBufferOpenGLCompatibilityKey as String: true,
-            kCVPixelBufferOpenGLESCompatibilityKey as String: true,
         ]
 
         _ = CVPixelBufferCreate(kCFAllocatorDefault,
@@ -145,8 +144,6 @@ extension CVPixelBuffer {
             kCVPixelBufferCGBitmapContextCompatibilityKey as String: true,
             kCVPixelBufferMetalCompatibilityKey as String: true,
             kCVPixelBufferOpenGLCompatibilityKey as String: true,
-            kCVPixelBufferOpenGLESCompatibilityKey as String: true,
-            kCVPixelBufferOpenGLESTextureCacheCompatibilityKey as String: true,
         ]
 
         CVPixelBufferCreate(

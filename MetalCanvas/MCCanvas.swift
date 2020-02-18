@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import GLKit
 
 public class MCCanvas {
     public enum ErrorType: Error {
@@ -22,25 +21,27 @@ public class MCCanvas {
         case topLeft
         case bottomLeft
 
-        func getMatrix(size: MCSize) -> GLKMatrix4 {
+        func getMatrix(size: MCSize) -> MCGeom.Matrix4x4 {
             switch self {
-            case .perspective: return MCGeom.Matrix4x4().glkMatrix
-            case .center: return GLKMatrix4MakeOrtho(-(size.x / 2), (size.x / 2), (size.y / 2), -(size.y / 2), -1, 1)
-            case .topLeft: return GLKMatrix4MakeOrtho(0, (size.x), (size.y), 0, -1, 1)
-            case .bottomLeft: return GLKMatrix4MakeOrtho(0, (size.x), 0, (size.y), -1, 1)
+            case .perspective: return MCGeom.Matrix4x4()
+            case .center: return MCGeom.Matrix4x4.Ortho(left: -Float(size.w / 2), right: Float(size.w / 2), bottom: Float(size.h / 2), top: -Float(size.h / 2), nearZ: -1, farZ: 1)
+            case .topLeft: return MCGeom.Matrix4x4.Ortho(left: 0, right: Float(size.w), bottom: Float(size.h), top: 0, nearZ: -1, farZ: 1)
+            case .bottomLeft: return MCGeom.Matrix4x4.Ortho(left: 0, right: Float(size.w), bottom: 0, top: Float(size.h), nearZ: -1, farZ: 1)
             }
         }
     }
 
     private var projection: MCGeom.Matrix4x4 = MCGeom.Matrix4x4()
     public private(set) var drawInfo: MCPrimitive.DrawInfo
+    public var mcTexture: MCTexture
     public var texture: MTLTexture? {
         return drawInfo.renderPassDescriptor.colorAttachments[0].texture
     }
 
     public init(destination: inout MCTexture, orthoType: OrthoType, loadAction: MTLLoadAction = MTLLoadAction.load) throws {
-        let renderSize: MCSize = destination.size
-        self.projection.glkMatrix = orthoType.getMatrix(size: renderSize)
+        self.mcTexture = destination
+        let renderSize: MCSize = MCSize(w: destination.size.w, h: destination.size.h)
+        self.projection = orthoType.getMatrix(size: renderSize)
 
         let renderPassDescriptor: MTLRenderPassDescriptor = MTLRenderPassDescriptor()
         renderPassDescriptor.colorAttachments[0].loadAction = loadAction
@@ -59,25 +60,25 @@ public class MCCanvas {
 
     public convenience init(orthoType: OrthoType, renderSize: MCSize, loadAction: MTLLoadAction = MTLLoadAction.load) throws {
         guard var pixelBuffer: CVPixelBuffer = CVPixelBuffer.create(size: renderSize) else { throw ErrorType.setupError }
-        var texture: MCTexture = try MCTexture(pixelBuffer: &pixelBuffer, planeIndex: 0)
+        var texture: MCTexture = try MCTexture(pixelBuffer: pixelBuffer, planeIndex: 0)
         try self.init(destination: &texture, orthoType: orthoType, loadAction: loadAction)
     }
 
-    public convenience init(pixelBuffer: inout CVPixelBuffer, orthoType: OrthoType, renderSize: MCSize, loadAction: MTLLoadAction = MTLLoadAction.load) throws {
-        var texture: MCTexture = try MCTexture(pixelBuffer: &pixelBuffer, planeIndex: 0)
+    public convenience init(pixelBuffer: inout CVPixelBuffer, orthoType: OrthoType, renderSize: CGSize, loadAction: MTLLoadAction = MTLLoadAction.load) throws {
+        var texture: MCTexture = try MCTexture(pixelBuffer: pixelBuffer, planeIndex: 0)
         try self.init(destination: &texture, orthoType: orthoType, loadAction: loadAction)
     }
 }
 
 extension MCCanvas {
     public func update(destination: inout MCTexture, orthoType: OrthoType, loadAction: MTLLoadAction) throws {
-        let renderSize: MCSize = destination.size
+        let renderSize: MCSize = MCSize(w: destination.size.w, h: destination.size.h)
 
         self.drawInfo.renderPassDescriptor.colorAttachments[0].loadAction = loadAction
         self.drawInfo.renderPassDescriptor.colorAttachments[0].texture = destination.texture
 
         self.drawInfo.orthoType = orthoType
-        self.projection.glkMatrix = orthoType.getMatrix(size: self.drawInfo.renderSize)
+        self.projection = orthoType.getMatrix(size: self.drawInfo.renderSize)
         self.drawInfo.projectionMatrixBuffer = try MCCore.makeBuffer(data: self.projection.raw)
         self.drawInfo.renderSize = renderSize
     }
@@ -88,39 +89,39 @@ extension MCCanvas {
 }
 
 extension MCCanvas {
-    public func draw(commandBuffer: inout MTLCommandBuffer, objects: [MCPrimitiveTypeProtocol]) throws {
+    public func draw(commandBuffer: MTLCommandBuffer, objects: [MCPrimitiveTypeProtocol]) throws {
         for object in objects {
-            try object.draw(commandBuffer: &commandBuffer, drawInfo: self.drawInfo)
+            try object.draw(commandBuffer: commandBuffer, drawInfo: self.drawInfo)
         }
     }
 }
 
 extension MCCanvas {
-    public func fill(commandBuffer: inout MTLCommandBuffer, color: MCColor) throws {
+    public func fill(commandBuffer: MTLCommandBuffer, color: MCColor) throws {
         let object: MCPrimitiveTypeProtocol
         switch self.drawInfo.orthoType {
         case .perspective:
             object = try MCPrimitive.Rectangle(
-                position: MCPoint(x: -1.0, y: -1.0),
+                position: SIMD2<Float>(x: -1.0, y: -1.0),
                 w: 2.0,
                 h: 2.0,
                 color: color
             )
         case .center:
             object = try MCPrimitive.Rectangle(
-                position: MCPoint(x: -(self.drawInfo.renderSize.x / 2.0), y: -(self.drawInfo.renderSize.y / 2.0)),
-                w: self.drawInfo.renderSize.x,
-                h: self.drawInfo.renderSize.y,
+                position: SIMD2<Float>(x: -Float(self.drawInfo.renderSize.w / 2.0), y: -Float(self.drawInfo.renderSize.h / 2.0)),
+                w: Float(self.drawInfo.renderSize.w),
+                h: Float(self.drawInfo.renderSize.h),
                 color: color
             )
         case .topLeft, .bottomLeft:
             object = try MCPrimitive.Rectangle(
-                position: MCPoint(x: 0.0, y: 0.0),
-                w: self.drawInfo.renderSize.x,
-                h: self.drawInfo.renderSize.y,
+                position: SIMD2<Float>(x: 0.0, y: 0.0),
+                w: Float(self.drawInfo.renderSize.w),
+                h: Float(self.drawInfo.renderSize.h),
                 color: color
             )
         }
-        try object.draw(commandBuffer: &commandBuffer, drawInfo: self.drawInfo)
+        try object.draw(commandBuffer: commandBuffer, drawInfo: self.drawInfo)
     }
 }

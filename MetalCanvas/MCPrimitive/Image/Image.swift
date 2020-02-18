@@ -35,7 +35,7 @@ extension MCPrimitive {
 
             // imageMatrix4x4
             var imageMat: MCGeom.Matrix4x4 = MCGeom.Matrix4x4()
-            imageMat.scale(x: Float(texture.width) / 2.0, y: (Float(texture.height) / 2.0) * -1, z: 0.0)
+            imageMat.scale(x: Float(texture.size.w) / 2.0, y: (Float(texture.size.h) / 2.0) * -1, z: 0.0)
 
             switch anchorPoint {
             case .topLeft: imageMat.translate(x: 1, y: -1, z: 0.0)
@@ -57,7 +57,7 @@ extension MCPrimitive {
             self.objMatBuffer = try MCCore.makeBuffer(data: self.objMat.raw)
         }
 
-        public func draw(commandBuffer: inout MTLCommandBuffer, drawInfo: MCPrimitive.DrawInfo) throws {
+        public func draw(commandBuffer: MTLCommandBuffer, drawInfo: MCPrimitive.DrawInfo) throws {
             guard let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: drawInfo.renderPassDescriptor) else { throw MCPrimitive.ErrorType.drawError }
             renderCommandEncoder.setRenderPipelineState(self.pipelineState.renderPipelineState)
             renderCommandEncoder.setVertexBuffer(self.vertexInBuffer, offset: 0, index: Int(MCVertexIndex.rawValue))

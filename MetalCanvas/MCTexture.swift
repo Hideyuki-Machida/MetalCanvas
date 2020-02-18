@@ -14,12 +14,11 @@ public struct MCTexture {
         case createError
     }
 
-    public var width: Int { return texture.width }
-    public var height: Int { return texture.height }
-    fileprivate(set) public var size: MCSize
-    public var pixelFormat: MTLPixelFormat { return texture.pixelFormat }
-    fileprivate(set) public var pixelBuffer: CVPixelBuffer?
+    public var userInfo: [String: Any] = [:]
 
+    public fileprivate(set) var size: MCSize
+    public var colorPixelFormat: MTLPixelFormat { return texture.pixelFormat }
+    public fileprivate(set) var pixelBuffer: CVPixelBuffer?
     public private(set) var texture: MTLTexture
     public init(renderSize: CGSize) throws {
         let textureDescriptor = MTLTextureDescriptor.texture2DDescriptor(pixelFormat: MTLPixelFormat.bgra8Unorm, width: Int(renderSize.width), height: Int(renderSize.height), mipmapped: true)
@@ -77,17 +76,19 @@ public struct MCTexture {
         try self.init(texture: texture)
     }
 
-    public init(pixelBuffer: inout CVPixelBuffer, planeIndex: Int) throws {
-        try self.init(pixelBuffer: &pixelBuffer, colorPixelFormat: MTLPixelFormat.bgra8Unorm, planeIndex: planeIndex)
+    public init(pixelBuffer: CVPixelBuffer, planeIndex: Int) throws {
+        try self.init(pixelBuffer: pixelBuffer, colorPixelFormat: MTLPixelFormat.bgra8Unorm, planeIndex: planeIndex)
     }
 
-    public init(pixelBuffer: inout CVPixelBuffer, colorPixelFormat: MTLPixelFormat, planeIndex: Int) throws {
+    public init(pixelBuffer: CVPixelBuffer, colorPixelFormat: MTLPixelFormat, planeIndex: Int) throws {
+        var pixelBuffer: CVPixelBuffer = pixelBuffer
         guard let texture: MTLTexture = MCCore.texture(pixelBuffer: &pixelBuffer, colorPixelFormat: colorPixelFormat, planeIndex: planeIndex) else { throw ErrorType.createError }
         try self.init(texture: texture)
         self.pixelBuffer = pixelBuffer
     }
 
-    public init(pixelBuffer: inout CVPixelBuffer, textureCache: CVMetalTextureCache, colorPixelFormat: MTLPixelFormat, planeIndex: Int) throws {
+    public init(pixelBuffer: CVPixelBuffer, textureCache: CVMetalTextureCache, colorPixelFormat: MTLPixelFormat, planeIndex: Int) throws {
+        var pixelBuffer: CVPixelBuffer = pixelBuffer
         guard let texture: MTLTexture = MCCore.texture(pixelBuffer: &pixelBuffer, textureCache: textureCache, colorPixelFormat: colorPixelFormat, planeIndex: planeIndex) else { throw ErrorType.createError }
         try self.init(texture: texture)
         self.pixelBuffer = pixelBuffer
@@ -97,12 +98,11 @@ public struct MCTexture {
         self.texture = texture
         self.size = MCSize(Float(texture.width), Float(texture.height))
     }
-
 }
 
 public extension MCTexture {
     func copy() throws -> MCTexture {
-        guard let texture: MTLTexture = self.texture.makeTextureView(pixelFormat: self.pixelFormat) else { throw ErrorType.createError }
+        guard let texture: MTLTexture = self.texture.makeTextureView(pixelFormat: self.colorPixelFormat) else { throw ErrorType.createError }
         return try MCTexture(texture: texture)
     }
 

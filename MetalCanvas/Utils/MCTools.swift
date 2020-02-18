@@ -8,11 +8,12 @@
 
 import Foundation
 import VideoToolbox
+import MetalPerformanceShaders
 
 public class MCTools {
-    static public let shard: MCTools = MCTools()
-    public var bundle: Bundle!
-    
+    public static let shared: MCTools = MCTools()
+    public let bundle: Bundle
+
     private init() {
         self.bundle = Bundle(for: type(of: self))
     }
@@ -32,6 +33,4 @@ public class MCTools {
         }
         return result == noErr
     }()
-
-    public let hasMPS: Bool = MCCore.device.supportsFeatureSet(.iOS_GPUFamily2_v1)
 }
