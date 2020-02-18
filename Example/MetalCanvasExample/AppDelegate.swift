@@ -17,14 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
-		do {
-			try MCCore.setup(contextPptions: [
-				CIContextOption.workingColorSpace : CGColorSpaceCreateDeviceRGB(),
-				CIContextOption.useSoftwareRenderer : NSNumber(value: false)
-				])
-		} catch {
-			
-		}
+        do {
+            try MCCore.setup(contextOptions: [
+                CIContextOption.workingColorSpace: CGColorSpaceCreateDeviceRGB(),
+                CIContextOption.useSoftwareRenderer: NSNumber(value: false),
+            ])
+        } catch {}
 		return true
 	}
 

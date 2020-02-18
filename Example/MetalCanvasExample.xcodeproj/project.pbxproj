@@ -7,29 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62023B25231BB0FD007C0061 /* DrawSample03VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62023B24231BB0FD007C0061 /* DrawSample03VC.swift */; };
+		621AF7AD23CCD9DE00F01394 /* MetalCanvas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6299A051228BD7E5000C9136 /* MetalCanvas.framework */; };
+		621AF7AE23CCD9DE00F01394 /* MetalCanvas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6299A051228BD7E5000C9136 /* MetalCanvas.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6226E80A21DCB89100E46C2E /* https___www.pakutaso.com_shared_img_thumb_YUK85_ossu15095452.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6226E80921DCB89100E46C2E /* https___www.pakutaso.com_shared_img_thumb_YUK85_ossu15095452.jpg */; };
 		6226E80C21DCB8E600E46C2E /* https___www.pakutaso.com_shared_img_thumb_SAYA151005538606.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6226E80B21DCB8E600E46C2E /* https___www.pakutaso.com_shared_img_thumb_SAYA151005538606.jpg */; };
-		627D12FD22B56CE500131DA9 /* DrawSample04VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627D12FC22B56CE500131DA9 /* DrawSample04VC.swift */; };
-		628FFBB122A570BE0025428E /* DrawSample03VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FFBB022A570BE0025428E /* DrawSample03VC.swift */; };
 		6299A04E228BC8A7000C9136 /* DrawSample02VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6299A04D228BC8A7000C9136 /* DrawSample02VC.swift */; };
-		62C40F2022B65A0A005CC6F6 /* MetalCanvas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62C40F1F22B65A0A005CC6F6 /* MetalCanvas.framework */; };
-		62C40F2122B65A0A005CC6F6 /* MetalCanvas.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 62C40F1F22B65A0A005CC6F6 /* MetalCanvas.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		62C6753321D7455A00181478 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C6753221D7455A00181478 /* AppDelegate.swift */; };
 		62C6753521D7455A00181478 /* DrawSample01VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C6753421D7455A00181478 /* DrawSample01VC.swift */; };
 		62C6753821D7455A00181478 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C6753621D7455A00181478 /* Main.storyboard */; };
 		62C6753A21D7455D00181478 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62C6753921D7455D00181478 /* Assets.xcassets */; };
 		62C6753D21D7455D00181478 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C6753B21D7455D00181478 /* LaunchScreen.storyboard */; };
-		62FF5AFC22B58050002FAEC9 /* matte_sample.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 62FF5AFB22B58050002FAEC9 /* matte_sample.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		62C40F1D22B659EB005CC6F6 /* Embed Frameworks */ = {
+		621AF7AF23CCD9DE00F01394 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				62C40F2122B65A0A005CC6F6 /* MetalCanvas.framework in Embed Frameworks */,
+				621AF7AE23CCD9DE00F01394 /* MetalCanvas.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -37,12 +35,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		62023B24231BB0FD007C0061 /* DrawSample03VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSample03VC.swift; sourceTree = "<group>"; };
+		621AF7AC23CCD9BE00F01394 /* MetalCanvasExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MetalCanvasExample.entitlements; sourceTree = "<group>"; };
 		6226E80921DCB89100E46C2E /* https___www.pakutaso.com_shared_img_thumb_YUK85_ossu15095452.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "https___www.pakutaso.com_shared_img_thumb_YUK85_ossu15095452.jpg"; sourceTree = "<group>"; };
 		6226E80B21DCB8E600E46C2E /* https___www.pakutaso.com_shared_img_thumb_SAYA151005538606.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "https___www.pakutaso.com_shared_img_thumb_SAYA151005538606.jpg"; sourceTree = "<group>"; };
-		627D12FC22B56CE500131DA9 /* DrawSample04VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSample04VC.swift; sourceTree = "<group>"; };
-		628FFBB022A570BE0025428E /* DrawSample03VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSample03VC.swift; sourceTree = "<group>"; };
 		6299A04D228BC8A7000C9136 /* DrawSample02VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSample02VC.swift; sourceTree = "<group>"; };
-		62C40F1F22B65A0A005CC6F6 /* MetalCanvas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MetalCanvas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6299A051228BD7E5000C9136 /* MetalCanvas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MetalCanvas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C6752F21D7455A00181478 /* MetalCanvasExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalCanvasExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C6753221D7455A00181478 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62C6753421D7455A00181478 /* DrawSample01VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSample01VC.swift; sourceTree = "<group>"; };
@@ -50,7 +48,6 @@
 		62C6753921D7455D00181478 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62C6753C21D7455D00181478 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62C6753E21D7455D00181478 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		62FF5AFB22B58050002FAEC9 /* matte_sample.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = matte_sample.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62C40F2022B65A0A005CC6F6 /* MetalCanvas.framework in Frameworks */,
+				621AF7AD23CCD9DE00F01394 /* MetalCanvas.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +65,7 @@
 		6299A050228BD7E5000C9136 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6299A051228BD7E5000C9136 /* MetalCanvas.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -75,7 +73,6 @@
 		62C6752621D7455900181478 = {
 			isa = PBXGroup;
 			children = (
-				62C40F1F22B65A0A005CC6F6 /* MetalCanvas.framework */,
 				62C6753121D7455A00181478 /* MetalCanvasExample */,
 				62C6753021D7455A00181478 /* Products */,
 				6299A050228BD7E5000C9136 /* Frameworks */,
@@ -93,12 +90,11 @@
 		62C6753121D7455A00181478 /* MetalCanvasExample */ = {
 			isa = PBXGroup;
 			children = (
-				62FF5AFB22B58050002FAEC9 /* matte_sample.jpg */,
+				621AF7AC23CCD9BE00F01394 /* MetalCanvasExample.entitlements */,
 				62C6753221D7455A00181478 /* AppDelegate.swift */,
 				62C6753421D7455A00181478 /* DrawSample01VC.swift */,
 				6299A04D228BC8A7000C9136 /* DrawSample02VC.swift */,
-				628FFBB022A570BE0025428E /* DrawSample03VC.swift */,
-				627D12FC22B56CE500131DA9 /* DrawSample04VC.swift */,
+				62023B24231BB0FD007C0061 /* DrawSample03VC.swift */,
 				6226E80921DCB89100E46C2E /* https___www.pakutaso.com_shared_img_thumb_YUK85_ossu15095452.jpg */,
 				6226E80B21DCB8E600E46C2E /* https___www.pakutaso.com_shared_img_thumb_SAYA151005538606.jpg */,
 				62C6753621D7455A00181478 /* Main.storyboard */,
@@ -119,7 +115,7 @@
 				62C6752B21D7455A00181478 /* Sources */,
 				62C6752C21D7455A00181478 /* Frameworks */,
 				62C6752D21D7455A00181478 /* Resources */,
-				62C40F1D22B659EB005CC6F6 /* Embed Frameworks */,
+				621AF7AF23CCD9DE00F01394 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -172,7 +168,6 @@
 				62C6753D21D7455D00181478 /* LaunchScreen.storyboard in Resources */,
 				6226E80C21DCB8E600E46C2E /* https___www.pakutaso.com_shared_img_thumb_SAYA151005538606.jpg in Resources */,
 				62C6753A21D7455D00181478 /* Assets.xcassets in Resources */,
-				62FF5AFC22B58050002FAEC9 /* matte_sample.jpg in Resources */,
 				6226E80A21DCB89100E46C2E /* https___www.pakutaso.com_shared_img_thumb_YUK85_ossu15095452.jpg in Resources */,
 				62C6753821D7455A00181478 /* Main.storyboard in Resources */,
 			);
@@ -186,10 +181,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				62C6753521D7455A00181478 /* DrawSample01VC.swift in Sources */,
-				627D12FD22B56CE500131DA9 /* DrawSample04VC.swift in Sources */,
 				62C6753321D7455A00181478 /* AppDelegate.swift in Sources */,
 				6299A04E228BC8A7000C9136 /* DrawSample02VC.swift in Sources */,
-				628FFBB122A570BE0025428E /* DrawSample03VC.swift in Sources */,
+				62023B25231BB0FD007C0061 /* DrawSample03VC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,18 +329,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MetalCanvasExample/MetalCanvasExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = UETCN89GVG;
 				INFOPLIST_FILE = MetalCanvasExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = hideyuki.machida.MetalCanvasExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -354,18 +352,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MetalCanvasExample/MetalCanvasExample.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_TEAM = UETCN89GVG;
 				INFOPLIST_FILE = MetalCanvasExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = hideyuki.machida.MetalCanvasExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
