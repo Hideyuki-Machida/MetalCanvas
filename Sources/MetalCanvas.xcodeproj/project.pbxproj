@@ -10,7 +10,7 @@
 		6226E82421DF182B00E46C2E /* MCGeomNameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226E82321DF182B00E46C2E /* MCGeomNameSpace.swift */; };
 		62AEDBB423C46664006CF7F8 /* VisionLayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEDBB323C46664006CF7F8 /* VisionLayerProtocol.swift */; };
 		62AEDBB623C466E7006CF7F8 /* VisionResultProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEDBB523C466E7006CF7F8 /* VisionResultProtocol.swift */; };
-		62AEDBB823C4672A006CF7F8 /* ImageRecognition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEDBB723C4672A006CF7F8 /* ImageRecognition.swift */; };
+		62AEDBB823C4672A006CF7F8 /* Inference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEDBB723C4672A006CF7F8 /* Inference.swift */; };
 		62B6C4B323B795120044A531 /* MCDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6C4B223B795120044A531 /* MCDebug.swift */; };
 		62B6C4B623B7953A0044A531 /* MCShaderPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6C4B523B7953A0044A531 /* MCShaderPreset.swift */; };
 		62B6C4B823B795480044A531 /* MCPipelineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6C4B723B795480044A531 /* MCPipelineState.swift */; };
@@ -61,7 +61,7 @@
 		6226E82321DF182B00E46C2E /* MCGeomNameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCGeomNameSpace.swift; sourceTree = "<group>"; };
 		62AEDBB323C46664006CF7F8 /* VisionLayerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionLayerProtocol.swift; sourceTree = "<group>"; };
 		62AEDBB523C466E7006CF7F8 /* VisionResultProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionResultProtocol.swift; sourceTree = "<group>"; };
-		62AEDBB723C4672A006CF7F8 /* ImageRecognition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRecognition.swift; sourceTree = "<group>"; };
+		62AEDBB723C4672A006CF7F8 /* Inference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inference.swift; sourceTree = "<group>"; };
 		62B6C4B223B795120044A531 /* MCDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCDebug.swift; sourceTree = "<group>"; };
 		62B6C4B523B7953A0044A531 /* MCShaderPreset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCShaderPreset.swift; sourceTree = "<group>"; };
 		62B6C4B723B795480044A531 /* MCPipelineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCPipelineState.swift; sourceTree = "<group>"; };
@@ -319,7 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				62FABEB32296DFE5002672A0 /* MCVision.swift */,
-				62AEDBB723C4672A006CF7F8 /* ImageRecognition.swift */,
+				62AEDBB723C4672A006CF7F8 /* Inference.swift */,
 				62AEDBB223C4662B006CF7F8 /* Protocol */,
 				62FABEB42296DFE5002672A0 /* Depth */,
 				62FABEB72296DFE5002672A0 /* Detection */,
@@ -430,7 +430,7 @@
 				62B6C4C523B797D20044A531 /* Point.metal in Sources */,
 				62B6C4B823B795480044A531 /* MCPipelineState.swift in Sources */,
 				62FABEBC2296DFE5002672A0 /* HumanSegmentationTexture.swift in Sources */,
-				62AEDBB823C4672A006CF7F8 /* ImageRecognition.swift in Sources */,
+				62AEDBB823C4672A006CF7F8 /* Inference.swift in Sources */,
 				62AEDBB423C46664006CF7F8 /* VisionLayerProtocol.swift in Sources */,
 				6226E82421DF182B00E46C2E /* MCGeomNameSpace.swift in Sources */,
 				62FABEBB2296DFE5002672A0 /* DepthMapTexture.swift in Sources */,

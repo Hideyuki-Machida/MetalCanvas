@@ -1,5 +1,5 @@
 //
-//  ImageRecognition.swift
+//  Inference.swift
 //  MetalCanvas
 //
 //  Created by hideyuki machida on 2020/01/07.
@@ -14,7 +14,8 @@ public protocol MCVisionImageRecognitionEventsProtocol {
 }
 
 public extension MCVision {
-    class ImageRecognition: NSObject {
+    /*
+    class Inference: NSObject {
         public fileprivate(set) var recognitionLayers: [VisionLayerProtocol] = []
         public fileprivate(set) var events: MCVisionImageRecognitionEventsProtocol?
 
@@ -22,9 +23,10 @@ public extension MCVision {
             self.events = events
         }
     }
+ */
 }
-
-public extension MCVision.ImageRecognition {
+/*
+public extension MCVision.Inference {
     func process(sorce: MCTexture, queue: DispatchQueue) throws {
         try self.process(sorce: sorce, queue: queue, events: self.events)
     }
@@ -36,3 +38,4 @@ public extension MCVision.ImageRecognition {
         self.events?.onUpdate?(result)
     }
 }
+*/

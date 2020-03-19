@@ -289,7 +289,7 @@ extension MCImageRenderView {
     public func drawUpdate(commandBuffer: MTLCommandBuffer, drawTexture: MTLTexture) {
         defer {
             commandBuffer.commit()
-            commandBuffer.waitUntilCompleted()
+            //commandBuffer.waitUntilCompleted()
         }
         ////////////////////////////////////////////////////////////
         // drawableSizeを最適化
