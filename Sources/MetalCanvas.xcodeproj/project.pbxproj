@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6226E82421DF182B00E46C2E /* MCGeomNameSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6226E82321DF182B00E46C2E /* MCGeomNameSpace.swift */; };
+		6291CD3A243859CD00FDED0C /* MCPixelFormatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6291CD39243859CD00FDED0C /* MCPixelFormatType.swift */; };
 		62AEDBB423C46664006CF7F8 /* VisionLayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEDBB323C46664006CF7F8 /* VisionLayerProtocol.swift */; };
 		62AEDBB623C466E7006CF7F8 /* VisionResultProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEDBB523C466E7006CF7F8 /* VisionResultProtocol.swift */; };
 		62AEDBB823C4672A006CF7F8 /* Inference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AEDBB723C4672A006CF7F8 /* Inference.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		6226E82321DF182B00E46C2E /* MCGeomNameSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCGeomNameSpace.swift; sourceTree = "<group>"; };
+		6291CD39243859CD00FDED0C /* MCPixelFormatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCPixelFormatType.swift; sourceTree = "<group>"; };
 		62AEDBB323C46664006CF7F8 /* VisionLayerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionLayerProtocol.swift; sourceTree = "<group>"; };
 		62AEDBB523C466E7006CF7F8 /* VisionResultProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionResultProtocol.swift; sourceTree = "<group>"; };
 		62AEDBB723C4672A006CF7F8 /* Inference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inference.swift; sourceTree = "<group>"; };
@@ -132,6 +134,14 @@
 			path = MCFilter;
 			sourceTree = "<group>";
 		};
+		6291CD382438599700FDED0C /* MCTexture */ = {
+			isa = PBXGroup;
+			children = (
+				62B6C4BC23B797D20044A531 /* MCTexture.swift */,
+			);
+			path = MCTexture;
+			sourceTree = "<group>";
+		};
 		6292FC0A21E5A6D0006E7E05 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +164,7 @@
 		62B6C4B423B795230044A531 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6291CD39243859CD00FDED0C /* MCPixelFormatType.swift */,
 				62B6C4B523B7953A0044A531 /* MCShaderPreset.swift */,
 				62B6C4B723B795480044A531 /* MCPipelineState.swift */,
 				62B6C4B223B795120044A531 /* MCDebug.swift */,
@@ -271,9 +282,9 @@
 				62C6756D21D7495D00181478 /* MCPrimitive */,
 				6226E80521DCB4CE00E46C2E /* MCFilter */,
 				62FABEB22296DFE5002672A0 /* MCVision */,
+				6291CD382438599700FDED0C /* MCTexture */,
 				6292FC0A21E5A6D0006E7E05 /* Extension */,
 				62B6C4B423B795230044A531 /* Utils */,
-				62B6C4BC23B797D20044A531 /* MCTexture.swift */,
 				62D319D323BE25D70070E36A /* Typealias.swift */,
 				62C6758021D74B5D00181478 /* MCCore.swift */,
 				62C6758621D75B9400181478 /* MCImageRenderView.swift */,
@@ -454,6 +465,7 @@
 				62B6C4F223B798570044A531 /* CGAffineTransform+Extension.swift in Sources */,
 				62B6C4DD23B7980D0044A531 /* MCFilterImageBlending.swift in Sources */,
 				62B6C4F523B799810044A531 /* MetalShaderType.metal in Sources */,
+				6291CD3A243859CD00FDED0C /* MCPixelFormatType.swift in Sources */,
 				62B6C4E123B7980D0044A531 /* YCbCrToRGB.metal in Sources */,
 				62B6C4C823B797D20044A531 /* Image.swift in Sources */,
 				62E34190232E9ABC005E96A7 /* MCTools.swift in Sources */,

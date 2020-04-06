@@ -101,16 +101,16 @@ extension MCCore {
 }
 
 extension MCCore {
-    public static func texture(sampleBuffer: inout CMSampleBuffer, textureCache: inout CVMetalTextureCache, colorPixelFormat: MTLPixelFormat) -> MTLTexture? {
+    public static func texture(sampleBuffer: inout CMSampleBuffer, textureCache: inout CVMetalTextureCache, mtlPixelFormat: MTLPixelFormat) -> MTLTexture? {
         guard var pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
-        return MCCore.texture(pixelBuffer: &pixelBuffer, textureCache: &textureCache, colorPixelFormat: colorPixelFormat)
+        return MCCore.texture(pixelBuffer: &pixelBuffer, textureCache: &textureCache, mtlPixelFormat: mtlPixelFormat)
     }
 
-    public static func texture(pixelBuffer: inout CVPixelBuffer, textureCache: inout CVMetalTextureCache, colorPixelFormat: MTLPixelFormat) -> MTLTexture? {
+    public static func texture(pixelBuffer: inout CVPixelBuffer, textureCache: inout CVMetalTextureCache, mtlPixelFormat: MTLPixelFormat) -> MTLTexture? {
         let width: Int = CVPixelBufferGetWidth(pixelBuffer)
         let height: Int = CVPixelBufferGetHeight(pixelBuffer)
         var imageTexture: CVMetalTexture?
-        let result: CVReturn = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, textureCache, pixelBuffer, nil, colorPixelFormat, width, height, 0, &imageTexture)
+        let result: CVReturn = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, textureCache, pixelBuffer, nil, mtlPixelFormat, width, height, 0, &imageTexture)
         guard result == kCVReturnSuccess else { return nil }
         guard let imgTexture: CVMetalTexture = imageTexture else { return nil }
         if let texture: MTLTexture = CVMetalTextureGetTexture(imgTexture) {
@@ -119,21 +119,21 @@ extension MCCore {
         return nil
     }
 
-    public static func texture(sampleBuffer: inout CMSampleBuffer, colorPixelFormat: MTLPixelFormat, planeIndex: Int = 0) -> MTLTexture? {
+    public static func texture(sampleBuffer: inout CMSampleBuffer, mtlPixelFormat: MTLPixelFormat, planeIndex: Int = 0) -> MTLTexture? {
         guard var pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
-        return MCCore.texture(pixelBuffer: &pixelBuffer, colorPixelFormat: colorPixelFormat, planeIndex: planeIndex)
+        return MCCore.texture(pixelBuffer: &pixelBuffer, mtlPixelFormat: mtlPixelFormat, planeIndex: planeIndex)
     }
 
-    public static func texture(pixelBuffer: inout CVPixelBuffer, colorPixelFormat: MTLPixelFormat, planeIndex: Int = 0) -> MTLTexture? {
+    public static func texture(pixelBuffer: inout CVPixelBuffer, mtlPixelFormat: MTLPixelFormat, planeIndex: Int = 0) -> MTLTexture? {
         guard let textureCache: CVMetalTextureCache = MCCore.textureCache ?? MCCore.createTextureCache(device: MCCore.device) else { return nil }
-        return MCCore.texture(pixelBuffer: &pixelBuffer, textureCache: textureCache, colorPixelFormat: colorPixelFormat, planeIndex: planeIndex)
+        return MCCore.texture(pixelBuffer: &pixelBuffer, textureCache: textureCache, mtlPixelFormat: mtlPixelFormat, planeIndex: planeIndex)
     }
 
-    public static func texture(pixelBuffer: inout CVPixelBuffer, textureCache: CVMetalTextureCache, colorPixelFormat: MTLPixelFormat, planeIndex: Int = 0) -> MTLTexture? {
+    public static func texture(pixelBuffer: inout CVPixelBuffer, textureCache: CVMetalTextureCache, mtlPixelFormat: MTLPixelFormat, planeIndex: Int = 0) -> MTLTexture? {
         let width: Int = CVPixelBufferGetWidthOfPlane(pixelBuffer, planeIndex)
         let height: Int = CVPixelBufferGetHeightOfPlane(pixelBuffer, planeIndex)
         var imageTexture: CVMetalTexture?
-        let result: CVReturn = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, textureCache, pixelBuffer, nil, colorPixelFormat, width, height, planeIndex, &imageTexture)
+        let result: CVReturn = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, textureCache, pixelBuffer, nil, mtlPixelFormat, width, height, planeIndex, &imageTexture)
         guard result == kCVReturnSuccess else { return nil }
         guard let imgTexture: CVMetalTexture = imageTexture else { return nil }
         if let texture: MTLTexture = CVMetalTextureGetTexture(imgTexture) {

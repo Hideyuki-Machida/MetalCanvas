@@ -74,7 +74,7 @@ extension MCVision.Depth {
 			var outTexture: MCTexture
 			if self.texture == nil {
 				guard var newImageBuffer: CVImageBuffer = CVImageBuffer.create(size: renderSize) else { return }
-				outTexture = try MCTexture.init(pixelBuffer: newImageBuffer, colorPixelFormat: MTLPixelFormat.bgra8Unorm, planeIndex: 0)
+				outTexture = try MCTexture.init(pixelBuffer: newImageBuffer, mtlPixelFormat: MTLPixelFormat.bgra8Unorm, planeIndex: 0)
 				self.canvas = try MCCanvas.init(destination: &outTexture, orthoType: .topLeft)
 			} else {
 				outTexture = self.texture!
