@@ -36,13 +36,13 @@ extension MCFilter.ColorProcessing {
             self.pipelineState = try MCPipelineState(
                 vertex: MCFilter.ColorProcessing.Lut3DFilter.shaderFunc.vertex,
                 fragment: MCFilter.ColorProcessing.Lut3DFilter.shaderFunc.fragment,
-                label: "MCPrimitive Image"
+                label: "MCFilter.ColorProcessing.Lut3DFilter"
             )
             self.vertexInBuffer = try MCCore.makeBuffer(data: MCShaderPreset.normalizedVertex)
             self.intensityBuffer = try MCCore.makeBuffer(data: [self.intensity])
 
-            self.renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadAction.clear
-            self.renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+            //self.renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadAction.load
+            //self.renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
         }
 
         public func process(commandBuffer: MTLCommandBuffer, imageTexture: MCTexture, destinationTexture: inout MCTexture) throws {

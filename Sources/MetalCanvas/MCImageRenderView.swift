@@ -293,9 +293,11 @@ extension MCImageRenderView {
         }
         ////////////////////////////////////////////////////////////
         // drawableSizeを最適化
-        self.drawableSize = CGSize(CGFloat(drawTexture.width), CGFloat(drawTexture.height))
-        ////////////////////////////////////////////////////////////
+        if self.currentDrawable!.texture.width != drawTexture.width || self.currentDrawable!.texture.height != drawTexture.height {
+            self.drawableSize = CGSize(CGFloat(drawTexture.width), CGFloat(drawTexture.height))
+        }
 
+        ////////////////////////////////////////////////////////////
         guard
             let drawable: CAMetalDrawable = self.currentDrawable,
             drawable.texture.width == drawTexture.width, drawable.texture.height == drawTexture.height
