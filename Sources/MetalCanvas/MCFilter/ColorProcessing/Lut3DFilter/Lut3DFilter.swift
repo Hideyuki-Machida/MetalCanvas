@@ -8,6 +8,7 @@
 
 import Foundation
 import MetalKit
+import MetalCanvasShaders
 
 extension MCFilter.ColorProcessing {
     public struct Lut3DFilter {

@@ -7,10 +7,8 @@
 //
 
 import Foundation
+import Metal
 
-#if targetEnvironment(simulator)
-public enum MCFunction {}
-#else
 public enum MCFunction {
 	public enum ColorSpace {
 		case YCbCrToRGB
@@ -90,4 +88,3 @@ public enum MCFunction {
 		}
 	}
 }
-#endif

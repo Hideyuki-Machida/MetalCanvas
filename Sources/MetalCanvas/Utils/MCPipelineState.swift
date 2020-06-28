@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Metal
 
 public struct MCPipelineState {
     public let renderPipelineState: MTLRenderPipelineState

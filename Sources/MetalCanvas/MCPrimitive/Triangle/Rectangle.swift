@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Metal
+import MetalCanvasShaders
 
 extension MCPrimitive {
     public struct Rectangle: MCPrimitiveTypeProtocol {

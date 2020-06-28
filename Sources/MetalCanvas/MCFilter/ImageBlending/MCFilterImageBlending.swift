@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import Metal
+import CoreGraphics
+import MetalCanvasShaders
 
 extension MCFilter {
     public struct ImageBlending {

@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Metal
+import CoreVideo
 
 public class MCCanvas {
     public enum ErrorType: Error {

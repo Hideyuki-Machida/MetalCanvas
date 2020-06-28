@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Metal
+import MetalCanvasShaders
 
 extension MCPoint: MCPrimitiveTypeProtocol {
     fileprivate var renderPipelineState: MTLRenderPipelineState {
@@ -28,13 +30,13 @@ extension MCPoint: MCPrimitiveTypeProtocol {
 
     public init(ppsition: SIMD3<Float>, color: MCColor, size: Float) {
         self.init()
-        self.position = ppsition
+        //self.position = ppsition
         //self.color = color.color
-        self.color = [color.color[0], color.color[1], color.color[2], color.color[3]]
-        self.size = size
+        //self.color = [color.color[0], color.color[1], color.color[2], color.color[3]]
+        //self.size = size
     }
     
-    public func draw(commandBuffer: inout MTLCommandBuffer, drawInfo: MCPrimitive.DrawInfo) throws {
+    public func draw(commandBuffer: MTLCommandBuffer, drawInfo: MCPrimitive.DrawInfo) throws {
         guard let renderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: drawInfo.renderPassDescriptor) else { throw ErrorType.drawError }
         renderCommandEncoder.setRenderPipelineState(self.renderPipelineState)
         renderCommandEncoder.setRenderPipelineState(renderPipelineState)

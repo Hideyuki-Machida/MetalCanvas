@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Metal
 
 public struct MCPrimitive {
     private init() {} /* このstructはnamespace用途なのでインスタンス化防止 */

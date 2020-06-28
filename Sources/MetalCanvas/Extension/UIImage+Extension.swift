@@ -8,6 +8,7 @@
 
 import UIKit
 
+/*
 extension UIImage {
     public func orientationCiImage() -> CIImage? {
         guard var ciimage: CIImage = CIImage(image: self) else { return nil }
@@ -27,3 +28,4 @@ extension UIImage {
         return ciimage
     }
 }
+*/

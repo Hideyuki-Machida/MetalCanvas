@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import Metal
+import CoreGraphics
+import MetalCanvasShaders
 
 extension MCFilter.ColorSpace {
     public struct YCbCrToRGB {
@@ -27,7 +30,7 @@ extension MCFilter.ColorSpace {
             self.vertexInBuffer = try MCCore.makeBuffer(data: MCShaderPreset.normalizedVertex)
         }
 
-        public func process(commandBuffer: inout MTLCommandBuffer, capturedImageTextureY: inout MCTexture, capturedImageTextureCbCr: inout MCTexture, renderPassDescriptor: MTLRenderPassDescriptor, renderSize: CGSize) throws {
+        public func process(commandBuffer: MTLCommandBuffer, capturedImageTextureY: inout MCTexture, capturedImageTextureCbCr: inout MCTexture, renderPassDescriptor: MTLRenderPassDescriptor, renderSize: CGSize) throws {
             guard let renderCommandEncoder: MTLRenderCommandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) else { throw MCFilter.ErrorType.drawError }
             renderCommandEncoder.setRenderPipelineState(self.pipelineState.renderPipelineState)
             renderCommandEncoder.setVertexBuffer(self.vertexInBuffer, offset: 0, index: Int(MCVertexIndex.rawValue))

@@ -10,6 +10,7 @@ import AVFoundation
 import Foundation
 import Metal
 import MetalKit
+import MetalCanvasShaders
 
 public final class MCCore {
     public enum MCCoreErrorType: Error {
@@ -49,10 +50,11 @@ public final class MCCore {
 
         ///////////////////////////////////////////////////////////////////////////////
         // default.metallib 取得
-        let bundle: Bundle = MCTools.shared.bundle
-        let path: String = bundle.bundlePath + "/default.metallib"
+
+        let bundle: Bundle = MetalCanvasShaders.getBundle()
+        let metallibURL: URL = bundle.url(forResource: "default", withExtension: "metallib")!
         do {
-            self.library = try device.makeLibrary(filepath: path)
+            self.library = try device.makeLibrary(filepath: metallibURL.path)
         } catch {
             MCDebug.errorLog(errorMessage)
             self.isMetalCanvas = false
@@ -69,7 +71,7 @@ public final class MCCore {
             // コンテクストのオプションが指定されていない
             self.ciContext = CIContext(
                 mtlDevice: device, options: [
-                    CIContextOption.workingColorSpace: CGColorSpaceCreateDeviceRGB(),
+                    CIContextOption.workingColorSpace: CGColorSpace.displayP3,
                     CIContextOption.useSoftwareRenderer: NSNumber(value: false),
                 ]
             )

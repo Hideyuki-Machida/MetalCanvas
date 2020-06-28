@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import CoreImage
 
 extension MCVision.Depth {
 	public struct HumanSegmentationTexture {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import simd
 
 extension MCGeom {
     public struct Matrix4x4 {

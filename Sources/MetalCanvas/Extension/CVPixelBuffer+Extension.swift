@@ -87,10 +87,10 @@ extension CVPixelBuffer {
     }
 
     public func printDebugInfo() {
-        let width = CVPixelBufferGetWidth(self)
-        let height = CVPixelBufferGetHeight(self)
-        let bytesPerRow = CVPixelBufferGetBytesPerRow(self)
-        let totalBytes = CVPixelBufferGetDataSize(self)
+        let width: Int = CVPixelBufferGetWidth(self)
+        let height: Int = CVPixelBufferGetHeight(self)
+        let bytesPerRow: Int = CVPixelBufferGetBytesPerRow(self)
+        let totalBytes: Int = CVPixelBufferGetDataSize(self)
         MCDebug.log("width: \(width)")
         MCDebug.log("height: \(height)")
         MCDebug.log("bytesPerRow: \(bytesPerRow)")
@@ -98,8 +98,8 @@ extension CVPixelBuffer {
     }
 
     public func convertToDisparity32() -> CVPixelBuffer? {
-        let width = CVPixelBufferGetWidth(self)
-        let height = CVPixelBufferGetHeight(self)
+        let width: Int = CVPixelBufferGetWidth(self)
+        let height: Int = CVPixelBufferGetHeight(self)
 
         var disparityPixelBuffer: CVPixelBuffer?
 

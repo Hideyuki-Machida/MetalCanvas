@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreGraphics
+import MetalCanvasShaders
 
 public typealias MCSize = SIMD2<Float>
 public typealias MCPoint = SIMD2<Float>
@@ -27,14 +29,14 @@ public extension MCSize {
         self.init(w, h)
     }
 
-    
     func toCGSize() -> CGSize {
         return CGSize.init(CGFloat(self.x), CGFloat(self.y))
     }
 }
-
+/*
 public extension MCPoint {
     func toCGPoint() -> CGPoint {
         return CGPoint.init(CGFloat(self.x), CGFloat(self.y))
     }
 }
+*/

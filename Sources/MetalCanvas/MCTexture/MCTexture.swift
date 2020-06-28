@@ -87,9 +87,9 @@ public struct MCTexture {
         self.pixelBuffer = pixelBuffer
     }
 
-    public init(pixelBuffer: CVPixelBuffer, textureCache: CVMetalTextureCache, colorPixelFormat: MTLPixelFormat, planeIndex: Int) throws {
+    public init(pixelBuffer: CVPixelBuffer, textureCache: CVMetalTextureCache, mtlPixelFormat: MTLPixelFormat, planeIndex: Int) throws {
         var pixelBuffer: CVPixelBuffer = pixelBuffer
-        guard let texture: MTLTexture = MCCore.texture(pixelBuffer: &pixelBuffer, textureCache: textureCache, mtlPixelFormat: colorPixelFormat, planeIndex: planeIndex) else { throw ErrorType.createError }
+        guard let texture: MTLTexture = MCCore.texture(pixelBuffer: &pixelBuffer, textureCache: textureCache, mtlPixelFormat: mtlPixelFormat, planeIndex: planeIndex) else { throw ErrorType.createError }
         try self.init(texture: texture)
         self.pixelBuffer = pixelBuffer
     }

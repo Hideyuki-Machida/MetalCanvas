@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MetalCanvasShaders
 
 public struct MCShaderPreset {
     public static let normalizedVertex: [MCVertexIn] = [

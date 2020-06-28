@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Metal
 
 public protocol MCPrimitiveTypeProtocol {
     func draw(commandBuffer: MTLCommandBuffer, drawInfo: MCPrimitive.DrawInfo) throws

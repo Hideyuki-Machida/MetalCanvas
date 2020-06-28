@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Metal
+import MetalCanvasShaders
 
 extension MCPrimitive {
     public struct Points: MCPrimitiveTypeProtocol {
@@ -43,7 +45,7 @@ extension MCPrimitive {
             self.size = [size]
         }
         
-        public func draw(commandBuffer: inout MTLCommandBuffer, drawInfo: MCPrimitive.DrawInfo) throws {
+        public func draw(commandBuffer: MTLCommandBuffer, drawInfo: MCPrimitive.DrawInfo) throws {
             /*
             let vertexBuffer: MTLBuffer = try MCCore.makeBuffer(data: self.vertex)
             let colorBuffer: MTLBuffer = try MCCore.makeBuffer(data: self.color)

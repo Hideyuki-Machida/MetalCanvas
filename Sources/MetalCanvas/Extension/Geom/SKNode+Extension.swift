@@ -8,7 +8,7 @@
 
 import Foundation
 import SpriteKit
-
+/*
 extension SKNode {
     public func setTransform(transform: CGAffineTransform, animated: Bool, duration: TimeInterval = 1.0) {
         if animated {
@@ -27,3 +27,4 @@ extension SKNode {
         }
     }
 }
+*/
