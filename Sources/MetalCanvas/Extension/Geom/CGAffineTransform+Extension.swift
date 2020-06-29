@@ -6,7 +6,7 @@
 //  Copyright © 2018 hideyuki machida. All rights reserved.
 //
 
-import UIKit
+import CoreGraphics
 
 public extension CGAffineTransform {
     var radian: CGFloat {
@@ -31,7 +31,7 @@ public extension CGAffineTransform {
         }
     }
 }
-
+/*
 public extension CGAffineTransform {
     var isPortrait: Bool {
         return (self.a == 0 && self.d == 0 && (self.b == 1.0 || self.b == -1.0) && (self.c == 1.0 || self.c == -1.0))
@@ -53,3 +53,4 @@ public extension CGAffineTransform {
         }
     }
 }
+*/

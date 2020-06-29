@@ -27,6 +27,8 @@ public struct MCTexture {
         try self.init(texture: texture)
     }
 
+    /*
+    @available(iOS 11, *)
     public init(image: UIImage, isSRGB: Bool = false) throws {
         let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
             MTKTextureLoader.Option.SRGB: isSRGB,
@@ -37,7 +39,7 @@ public struct MCTexture {
         let texture: MTLTexture = try MCCore.textureLoader.newTexture(cgImage: cgImage, options: textureLoaderOptions)
         try self.init(texture: texture)
     }
-
+*/
     public init(image: CGImage, isSRGB: Bool = false) throws {
         let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
             MTKTextureLoader.Option.SRGB: isSRGB,
@@ -99,6 +101,21 @@ public struct MCTexture {
         self.size = MCSize(Float(texture.width), Float(texture.height))
     }
 }
+
+#if os(iOS)
+public extension MCTexture {
+    public init(image: UIImage, isSRGB: Bool = false) throws {
+        let textureLoaderOptions: [MTKTextureLoader.Option: Any] = [
+            MTKTextureLoader.Option.SRGB: isSRGB,
+            MTKTextureLoader.Option.textureUsage: NSNumber(value: MTLTextureUsage.shaderRead.rawValue),
+            MTKTextureLoader.Option.textureStorageMode: NSNumber(value: MTLStorageMode.private.rawValue),
+        ]
+        guard let cgImage = image.cgImage else { throw ErrorType.createError }
+        let texture: MTLTexture = try MCCore.textureLoader.newTexture(cgImage: cgImage, options: textureLoaderOptions)
+        try self.init(texture: texture)
+    }
+}
+#endif
 
 public extension MCTexture {
     func copy() throws -> MCTexture {

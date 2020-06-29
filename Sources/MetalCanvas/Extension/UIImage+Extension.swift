@@ -6,12 +6,12 @@
 //  Copyright © 2019 hideyuki machida. All rights reserved.
 //
 
+#if os(iOS)
 import UIKit
 
-/*
 extension UIImage {
     public func orientationCiImage() -> CIImage? {
-        guard var ciimage: CIImage = CIImage(image: self) else { return nil }
+        guard var ciimage: CIImage = CIImage.init(image: self) else { return nil }
         let orientation: CGImagePropertyOrientation
         switch self.imageOrientation {
         case .up: orientation = .up
@@ -28,4 +28,4 @@ extension UIImage {
         return ciimage
     }
 }
-*/
+#endif
