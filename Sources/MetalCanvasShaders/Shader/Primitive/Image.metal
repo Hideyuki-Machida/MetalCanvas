@@ -14,7 +14,7 @@
 
 using namespace metal;
 
-namespace primitive {
+//namespace primitive {
     vertex ImageColorInOut vertex_primitive_image(const device MCVertexIn *in [[ buffer(MCVertexIndex) ]],
                                                   const device float4x4 &projectionMat [[buffer(MCProjectionMatrixIndex)]],
                                                   const device float4x4 &objMat [[buffer(30)]],
@@ -35,4 +35,4 @@ namespace primitive {
         float4 color = texture.sample(colorSampler, in.texCoords);
         return color;
     }
-}
+//}

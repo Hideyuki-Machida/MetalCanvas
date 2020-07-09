@@ -14,7 +14,7 @@
 
 using namespace metal;
 
-namespace primitive {
+//namespace primitive {
     vertex TriangleColorInOut vertex_primitive_triangle(const device MCPrimitiveVertexIn *in [[ buffer(MCVertexIndex) ]],
                                                         const device float4x4 &projectionMatrix [[buffer(MCProjectionMatrixIndex)]],
                                                         unsigned int vid [[vertex_id]])
@@ -32,4 +32,4 @@ namespace primitive {
     {
         return in.color;
     }
-}
+//}

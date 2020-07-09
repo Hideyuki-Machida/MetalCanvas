@@ -5,7 +5,7 @@
 //  Created by hideyuki machida on 2019/01/14.
 //  Copyright © 2019 hideyuki machida. All rights reserved.
 //
-
+/*
 import Foundation
 import Vision
 
@@ -158,3 +158,4 @@ extension MCVision.Detection.Face {
 
 	}
 }
+*/

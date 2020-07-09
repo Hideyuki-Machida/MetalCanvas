@@ -14,7 +14,7 @@
 
 using namespace metal;
 
-namespace primitive {
+//namespace primitive {
     vertex PointVertexOut vertex_primitive_points(constant packed_float3 *vertex_array [[buffer(MCVertexIndex)]],
                                                  const device float4 &colors [[buffer(MCColorIndex)]],
                                                  const device float &size [[buffer(MCSizeIndex)]],
@@ -52,5 +52,5 @@ namespace primitive {
     fragment half4 fragment_primitive_point(PointVertexOut in [[stage_in]]) {
         return half4(in.color.rgba);
     }
-}
+//}
 

@@ -175,3 +175,25 @@ extension CVPixelBuffer {
         return copy
     }
 }
+
+public extension CVPixelBuffer {
+    func data() -> Data {
+        //TODO:可以通过CVPixelBufferGetPlaneCount判断一下pixelBuffer是否有两个Plane
+        
+        CVPixelBufferLockBaseAddress(self, CVPixelBufferLockFlags(rawValue: 0))
+        
+        let pixelFormatType = CVPixelBufferGetPixelFormatType(self)
+        let width = CVPixelBufferGetWidth(self)
+        let height = CVPixelBufferGetHeight(self)
+
+        var data = Data()
+        let baseAddress = CVPixelBufferGetBaseAddressOfPlane(self, 0)
+        let bytesPerRow = CVPixelBufferGetBytesPerRowOfPlane(self, 0)
+        let length = bytesPerRow * height
+        data.append(Data(bytes: baseAddress!, count: length))
+
+        CVPixelBufferUnlockBaseAddress(self, CVPixelBufferLockFlags(rawValue: 0))
+        
+        return data
+    }
+}

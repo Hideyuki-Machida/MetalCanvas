@@ -20,6 +20,7 @@ open class MCImageRenderView: MTKView {
 
     public var drawRect: CGRect?
     public var trimRect: CGRect?
+    public var onDraw: ((_: MTKView)->Void)?
 
     private var filter: MPSImageLanczosScale?
 
@@ -324,5 +325,7 @@ extension MCImageRenderView {
 
 extension MCImageRenderView: MTKViewDelegate {
     open func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {}
-    open func draw(in view: MTKView) {}
+    open func draw(in view: MTKView) {
+        self.onDraw?(view)
+    }
 }
