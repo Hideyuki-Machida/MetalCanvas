@@ -10,6 +10,7 @@ import AVFoundation
 import Metal
 import MetalKit
 import MetalPerformanceShaders
+import ProcessLogger_Swift
 
 open class MCImageRenderView: MTKView {
     #if targetEnvironment(simulator)
@@ -53,7 +54,7 @@ open class MCImageRenderView: MTKView {
 
     deinit {
         self.releaseDrawables()
-        MCDebug.deinitLog(self)
+        ProcessLogger.deinitLog(self)
     }
 }
 
@@ -151,7 +152,7 @@ extension MCImageRenderView {
                 ////////////////////////////////////////////////////////////
 
             } catch {
-                MCDebug.log("updatePixelBuffer error")
+                ProcessLogger.log("updatePixelBuffer error")
             }
         }
     }
@@ -273,7 +274,7 @@ extension MCImageRenderView {
                 ])
                 ////////////////////////////////////////////////////////////
             } catch {
-                MCDebug.log("updatePixelBuffer error")
+                ProcessLogger.log("updatePixelBuffer error")
             }
         }
     }

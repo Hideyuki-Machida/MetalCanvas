@@ -13,10 +13,13 @@ let package = Package(
             name: "MetalCanvas",
             targets: ["MetalCanvasShaders", "MetalCanvas"]),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/Hideyuki-Machida/ProcessLogger.Swift", .branch("master"))
+    ],
     targets: [
         .target(
-            name: "MetalCanvasShaders"
+            name: "MetalCanvasShaders",
+            dependencies: ["ProcessLogger.Swift"]
         ),
         .target(
             name: "MetalCanvas",

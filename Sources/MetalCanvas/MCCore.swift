@@ -11,6 +11,7 @@ import Foundation
 import Metal
 import MetalKit
 import MetalCanvasShaders
+import ProcessLogger_Swift
 
 public final class MCCore {
     public enum MCCoreErrorType: Error {
@@ -37,7 +38,7 @@ public final class MCCore {
             let device: MTLDevice = MTLCreateSystemDefaultDevice(),
             let commandQueue: MTLCommandQueue = device.makeCommandQueue()
         else {
-            MCDebug.errorLog(errorMessage)
+            ProcessLogger.errorLog(errorMessage)
             self.isMetalCanvas = false
             throw MCCoreErrorType.setup
         }
@@ -56,7 +57,7 @@ public final class MCCore {
         do {
             self.library = try device.makeLibrary(filepath: metallibURL.path)
         } catch {
-            MCDebug.errorLog(errorMessage)
+            ProcessLogger.errorLog(errorMessage)
             self.isMetalCanvas = false
             throw MCCoreErrorType.setup
         }

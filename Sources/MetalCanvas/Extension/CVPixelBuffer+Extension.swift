@@ -8,6 +8,7 @@
 
 import AVFoundation
 import Foundation
+import ProcessLogger_Swift
 
 extension CVPixelBuffer {
     public static func create(image: CGImage, pixelFormat: OSType = kCVPixelFormatType_32BGRA) -> CVPixelBuffer? {
@@ -91,10 +92,10 @@ extension CVPixelBuffer {
         let height: Int = CVPixelBufferGetHeight(self)
         let bytesPerRow: Int = CVPixelBufferGetBytesPerRow(self)
         let totalBytes: Int = CVPixelBufferGetDataSize(self)
-        MCDebug.log("width: \(width)")
-        MCDebug.log("height: \(height)")
-        MCDebug.log("bytesPerRow: \(bytesPerRow)")
-        MCDebug.log("totalBytes: \(totalBytes)")
+        ProcessLogger.log("width: \(width)")
+        ProcessLogger.log("height: \(height)")
+        ProcessLogger.log("bytesPerRow: \(bytesPerRow)")
+        ProcessLogger.log("totalBytes: \(totalBytes)")
     }
 
     public func convertToDisparity32() -> CVPixelBuffer? {
