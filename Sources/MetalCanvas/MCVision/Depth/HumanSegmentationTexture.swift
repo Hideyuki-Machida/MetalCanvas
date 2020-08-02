@@ -9,6 +9,7 @@
 import Foundation
 import AVFoundation
 import CoreImage
+import GraphicsLibs_Swift
 
 extension MCVision.Depth {
 	public struct HumanSegmentationTexture {
@@ -28,7 +29,7 @@ extension MCVision.Depth {
 			guard let faceObject: AVMetadataFaceObject = metadataFaceObjects.first else { throw MCVision.ErrorType.rendering }
 			let depthWidth: Int = CVPixelBufferGetWidth(depthPixelBuffer)
 			let depthHeight: Int = CVPixelBufferGetHeight(depthPixelBuffer)
-			guard var newPixelBuffer: CVPixelBuffer = CVPixelBuffer.create(size: MCSize.init(w: depthWidth, h: depthHeight)) else { throw MCVision.ErrorType.rendering }
+			guard var newPixelBuffer: CVPixelBuffer = CVPixelBuffer.create(size: CGSize.init(width: depthWidth, height: depthHeight)) else { throw MCVision.ErrorType.rendering }
 			let alphaMatteTexture: MCTexture = try MCTexture.init(pixelBuffer: newPixelBuffer, planeIndex: 0)
 			
 			//depthPixelBuffer.normalize()
@@ -74,7 +75,7 @@ extension MCVision.Depth {
 			// outTexture canvas 生成
 			var outTexture: MCTexture
 			if self.texture == nil {
-				guard var newImageBuffer: CVImageBuffer = CVImageBuffer.create(size: renderSize) else { return }
+				guard var newImageBuffer: CVImageBuffer = CVImageBuffer.create(size: CGSize(w: CGFloat(renderSize.w), h: CGFloat(renderSize.h))) else { return }
 				outTexture = try MCTexture.init(pixelBuffer: newImageBuffer, mtlPixelFormat: MTLPixelFormat.bgra8Unorm, planeIndex: 0)
 				self.canvas = try MCCanvas.init(destination: &outTexture, orthoType: .topLeft)
 			} else {

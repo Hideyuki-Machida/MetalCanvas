@@ -14,7 +14,7 @@ extension MCPrimitive {
     public struct Rectangle: MCPrimitiveTypeProtocol {
         // MARK: - vars
 
-        fileprivate let pipelineState: MCPipelineState
+        fileprivate let pipelineState: MCRenderPipelineState
         fileprivate let vertexInBuffer: MTLBuffer
 
         // MARK: - func
@@ -27,7 +27,7 @@ extension MCPrimitive {
                 MCPrimitiveVertexIn(position: SIMD4<Float>(x: position.x + w, y: position.y + h, z: 0.0, w: 1.0), color: color.color), // RB
             ]
 
-            self.pipelineState = try MCPipelineState(
+            self.pipelineState = try MCRenderPipelineState(
                 vertex: MCPrimitive.Rectangle.shaderFunc.vertex,
                 fragment: MCPrimitive.Rectangle.shaderFunc.fragment,
                 label: "MCPrimitive Rectangle"

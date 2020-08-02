@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "ProcessLogger.Swift",
+        "repositoryURL": "https://github.com/Hideyuki-Machida/ProcessLogger.Swift",
+        "state": {
+          "branch": "master",
+          "revision": "78c0af8bf66805d03415961802a631ece12ef3b1",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

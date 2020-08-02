@@ -1,5 +1,5 @@
 //
-//  MCPipelineState.swift
+//  MCRenderPipelineState.swift
 //  MetalCanvas
 //
 //  Created by hideyuki machida on 2019/10/26.
@@ -9,7 +9,7 @@
 import Foundation
 import Metal
 
-public struct MCPipelineState {
+public struct MCRenderPipelineState {
     public let renderPipelineState: MTLRenderPipelineState
     public init(vertex: MTLFunction, fragment: MTLFunction, label: String, pixelFormat: MTLPixelFormat = .bgra8Unorm) throws {
         let renderPipelineDescriptor = MTLRenderPipelineDescriptor()

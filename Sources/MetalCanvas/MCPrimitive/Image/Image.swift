@@ -14,7 +14,7 @@ extension MCPrimitive {
     public struct Image: MCPrimitiveTypeProtocol {
         // MARK: - vars
 
-        private let pipelineState: MCPipelineState
+        private let pipelineState: MCRenderPipelineState
         private let vertexInBuffer: MTLBuffer
 
         private var texture: MCTexture
@@ -26,7 +26,7 @@ extension MCPrimitive {
         // MARK: - func
 
         public init(texture: MCTexture, position: SIMD3<Float>, transform: MCGeom.Matrix4x4 = MCGeom.Matrix4x4(), anchorPoint: MCPrimitive.Anchor = .topLeft) throws {
-            self.pipelineState = try MCPipelineState(
+            self.pipelineState = try MCRenderPipelineState(
                 vertex: MCPrimitive.Image.shaderFunc.vertex,
                 fragment: MCPrimitive.Image.shaderFunc.fragment,
                 label: "MCPrimitive Image"

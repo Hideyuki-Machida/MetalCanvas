@@ -14,7 +14,7 @@ extension MCFilter.ColorProcessing {
     public struct Lut3DFilter {
         // MARK: - vars
 
-        fileprivate let pipelineState: MCPipelineState
+        fileprivate let pipelineState: MCRenderPipelineState
         fileprivate let vertexInBuffer: MTLBuffer
         fileprivate var intensityBuffer: MTLBuffer
 
@@ -34,7 +34,7 @@ extension MCFilter.ColorProcessing {
         public init(lutImageTexture: MCTexture) throws {
             self.lutImageTexture = lutImageTexture
 
-            self.pipelineState = try MCPipelineState(
+            self.pipelineState = try MCRenderPipelineState(
                 vertex: MCFilter.ColorProcessing.Lut3DFilter.shaderFunc.vertex,
                 fragment: MCFilter.ColorProcessing.Lut3DFilter.shaderFunc.fragment,
                 label: "MCFilter.ColorProcessing.Lut3DFilter"

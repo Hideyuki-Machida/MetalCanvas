@@ -9,6 +9,7 @@
 import Foundation
 import AVFoundation
 import CoreImage
+import GraphicsLibs_Swift
 
 extension MCVision.Depth {
 	public struct DepthMapTexture {
@@ -33,7 +34,7 @@ extension MCVision.Depth {
 			//depthPixelBuffer.normalize()
 			let depthWidth: Int = CVPixelBufferGetWidth(depthPixelBuffer)
 			let depthHeight: Int = CVPixelBufferGetHeight(depthPixelBuffer)
-            guard var newPixelBuffer: CVPixelBuffer = CVPixelBuffer.create(size: MCSize.init(Float(depthWidth), Float(depthHeight))) else { throw MCVision.ErrorType.rendering }
+            guard var newPixelBuffer: CVPixelBuffer = CVPixelBuffer.create(size: CGSize(w: CGFloat(depthWidth), h: CGFloat(depthHeight))) else { throw MCVision.ErrorType.rendering }
             let depthTexture: MCTexture = try MCTexture.init(pixelBuffer: newPixelBuffer, textureCache: textureCache, mtlPixelFormat: MTLPixelFormat.bgra8Unorm, planeIndex: 0)
 			let depthImage: CIImage = CIImage(cvPixelBuffer: depthPixelBuffer, options: [:])
 			let depthCloppdImage: CIImage = depthImage.clampedToExtent().cropped(to: depthImage.extent)
@@ -44,7 +45,7 @@ extension MCVision.Depth {
 			// outTexture canvas 生成
 			var outTexture: MCTexture
 			if self.texture == nil {
-                guard var newImageBuffer: CVImageBuffer = CVImageBuffer.create(size: renderSize) else { return }
+                guard var newImageBuffer: CVImageBuffer = CVImageBuffer.create(size: CGSize(w: CGFloat(renderSize.w), h: CGFloat(renderSize.h))) else { return }
 				outTexture = try MCTexture.init(pixelBuffer: newImageBuffer, textureCache: textureCache, mtlPixelFormat: MTLPixelFormat.bgra8Unorm, planeIndex: 0)
 				self.canvas = try MCCanvas.init(destination: &outTexture, orthoType: .topLeft)
 			} else {

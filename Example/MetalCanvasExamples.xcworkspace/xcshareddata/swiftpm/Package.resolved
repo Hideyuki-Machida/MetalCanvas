@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "GraphicsLibs.Swift",
+        "repositoryURL": "https://github.com/Hideyuki-Machida/GraphicsLibs.Swift",
+        "state": {
+          "branch": "master",
+          "revision": "600c2e4cd3af8f8bf2975eda1caa440fda86d068",
+          "version": null
+        }
+      },
+      {
+        "package": "ProcessLogger.Swift",
+        "repositoryURL": "https://github.com/Hideyuki-Machida/ProcessLogger.Swift",
+        "state": {
+          "branch": "master",
+          "revision": "78c0af8bf66805d03415961802a631ece12ef3b1",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

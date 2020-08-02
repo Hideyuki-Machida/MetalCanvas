@@ -14,7 +14,7 @@ extension MCPrimitive {
     public struct Triangle: MCPrimitiveTypeProtocol {
         // MARK: - vars
 
-        fileprivate let pipelineState: MCPipelineState
+        fileprivate let pipelineState: MCRenderPipelineState
         fileprivate let vertexInBuffer: MTLBuffer
         fileprivate let vertexCount: Int
 
@@ -26,7 +26,7 @@ extension MCPrimitive {
                 data.append(SIMD4<Float>(x: pos.x, y: pos.y, z: 0.0, w: 1.0))
             }
 
-            self.pipelineState = try MCPipelineState(
+            self.pipelineState = try MCRenderPipelineState(
                 vertex: MCPrimitive.Triangle.shaderFunc.vertex,
                 fragment: MCPrimitive.Triangle.shaderFunc.fragment,
                 label: "MCPrimitive Triangle"

@@ -9,6 +9,7 @@
 import Foundation
 import Metal
 import CoreVideo
+import GraphicsLibs_Swift
 
 public class MCCanvas {
     public enum ErrorType: Error {
@@ -60,8 +61,8 @@ public class MCCanvas {
         )
     }
 
-    public convenience init(orthoType: OrthoType, renderSize: MCSize, loadAction: MTLLoadAction = MTLLoadAction.load) throws {
-        guard var pixelBuffer: CVPixelBuffer = CVPixelBuffer.create(size: renderSize) else { throw ErrorType.setupError }
+    public convenience init(orthoType: OrthoType, renderSize: CGSize, loadAction: MTLLoadAction = MTLLoadAction.load) throws {
+        guard let pixelBuffer: CVPixelBuffer = CVPixelBuffer.create(size: renderSize) else { throw ErrorType.setupError }
         var texture: MCTexture = try MCTexture(pixelBuffer: pixelBuffer, planeIndex: 0)
         try self.init(destination: &texture, orthoType: orthoType, loadAction: loadAction)
     }

@@ -14,13 +14,13 @@ extension MCPrimitive {
     public struct Point: MCPrimitiveTypeProtocol {
         // MARK: - vars
 
-        fileprivate let pipelineState: MCPipelineState
+        fileprivate let pipelineState: MCRenderPipelineState
         fileprivate let pointIn: MCPointIn
 
         // MARK: - func
 
         public init(position: SIMD3<Float>, color: MCColor, size: Float) throws {
-            self.pipelineState = try MCPipelineState(
+            self.pipelineState = try MCRenderPipelineState(
                 vertex: MCPrimitive.Point.shaderFunc.vertex,
                 fragment: MCPrimitive.Point.shaderFunc.fragment,
                 label: "MCPrimitive Point"

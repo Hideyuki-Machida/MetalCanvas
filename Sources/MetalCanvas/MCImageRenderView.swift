@@ -296,7 +296,7 @@ extension MCImageRenderView {
         ////////////////////////////////////////////////////////////
         // drawableSizeを最適化
         if self.currentDrawable!.texture.width != drawTexture.width || self.currentDrawable!.texture.height != drawTexture.height {
-            self.drawableSize = CGSize(CGFloat(drawTexture.width), CGFloat(drawTexture.height))
+            self.drawableSize = CGSize(width: CGFloat(drawTexture.width), height: CGFloat(drawTexture.height))
         }
 
         ////////////////////////////////////////////////////////////

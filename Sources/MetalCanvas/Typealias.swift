@@ -30,7 +30,7 @@ public extension MCSize {
     }
 
     func toCGSize() -> CGSize {
-        return CGSize.init(CGFloat(self.x), CGFloat(self.y))
+        return CGSize(width: CGFloat(self.x), height: CGFloat(self.y))
     }
 }
 /*
