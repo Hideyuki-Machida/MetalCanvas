@@ -11,7 +11,6 @@ let package = Package(
     products: [
         .library(
             name: "MetalCanvas",
-            type: .dynamic,
             targets: ["MetalCanvasShaders", "MetalCanvas"]),
     ],
     dependencies: [

@@ -10,6 +10,7 @@ import Foundation
 import Metal
 import CoreVideo
 import GraphicsLibs_Swift
+import GLKit
 
 public class MCCanvas {
     public enum ErrorType: Error {
@@ -24,6 +25,16 @@ public class MCCanvas {
         case topLeft
         case bottomLeft
 
+        func getMatrix(size: CGSize) -> GLKMatrix4 {
+            switch self {
+            case .perspective: return MCGeom.Matrix4x4().glkMatrix
+            case .center: return GLKMatrix4MakeOrtho(-Float(size.width / 2), Float(size.width / 2), Float(size.height / 2), -Float(size.height / 2), -1, 1)
+            case .topLeft: return GLKMatrix4MakeOrtho(0, Float(size.width), Float(size.height), 0, -1, 1)
+            case .bottomLeft: return GLKMatrix4MakeOrtho(0, Float(size.width), 0, Float(size.height), -1, 1)
+            }
+        }
+
+        /*
         func getMatrix(size: MCSize) -> MCGeom.Matrix4x4 {
             switch self {
             case .perspective: return MCGeom.Matrix4x4()
@@ -32,6 +43,7 @@ public class MCCanvas {
             case .bottomLeft: return MCGeom.Matrix4x4.Ortho(left: 0, right: Float(size.w), bottom: 0, top: Float(size.h), nearZ: -1, farZ: 1)
             }
         }
+         */
     }
 
     private var projection: MCGeom.Matrix4x4 = MCGeom.Matrix4x4()
@@ -43,8 +55,13 @@ public class MCCanvas {
 
     public init(destination: inout MCTexture, orthoType: OrthoType, loadAction: MTLLoadAction = MTLLoadAction.load) throws {
         self.mcTexture = destination
+        /*
         let renderSize: MCSize = MCSize(w: destination.size.w, h: destination.size.h)
         self.projection = orthoType.getMatrix(size: renderSize)
+*/
+        self.mcTexture = destination
+        let renderSize: MCSize = MCSize(w: destination.size.w, h: destination.size.h)
+        self.projection.glkMatrix = orthoType.getMatrix(size: renderSize.toCGSize())
 
         let renderPassDescriptor: MTLRenderPassDescriptor = MTLRenderPassDescriptor()
         renderPassDescriptor.colorAttachments[0].loadAction = loadAction
@@ -81,7 +98,7 @@ extension MCCanvas {
         self.drawInfo.renderPassDescriptor.colorAttachments[0].texture = destination.texture
 
         self.drawInfo.orthoType = orthoType
-        self.projection = orthoType.getMatrix(size: self.drawInfo.renderSize)
+        self.projection.glkMatrix = orthoType.getMatrix(size: self.drawInfo.renderSize.toCGSize())
         self.drawInfo.projectionMatrixBuffer = try MCCore.makeBuffer(data: self.projection.raw)
         self.drawInfo.renderSize = renderSize
     }

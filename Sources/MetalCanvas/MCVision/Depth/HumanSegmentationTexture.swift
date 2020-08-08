@@ -91,7 +91,7 @@ extension MCVision.Depth {
 				var mat: MCGeom.Matrix4x4 = MCGeom.Matrix4x4.init()
 				let angle: CGFloat = 90 * CGFloat.pi / 180
                 mat.scale(x: renderSize.w / Float(alphaMatteTexture.size.h), y: renderSize.h / Float(alphaMatteTexture.size.w), z: 1.0)
-                mat.rotateZ(radians: Float(angle))
+                //mat.rotateZ(radians: Float(angle))
 				mat.translate(x: 0, y: -Float(alphaMatteTexture.size.h), z: 0.0)
 
                 image = try MCPrimitive.Image.init(texture: alphaMatteTexture, position: SIMD3<Float>(x: 0.0, y: 0.0, z: 0.0), transform: mat, anchorPoint: MCPrimitive.Anchor.topLeft)
