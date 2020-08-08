@@ -6,7 +6,7 @@
         "repositoryURL": "https://github.com/Hideyuki-Machida/GraphicsLibs.Swift",
         "state": {
           "branch": "master",
-          "revision": "600c2e4cd3af8f8bf2975eda1caa440fda86d068",
+          "revision": "f8217e8bb3af77add4ad59ace8e52c71f9708a94",
           "version": null
         }
       },
@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/Hideyuki-Machida/ProcessLogger.Swift",
         "state": {
           "branch": "master",
-          "revision": "78c0af8bf66805d03415961802a631ece12ef3b1",
+          "revision": "624f37efdfca9f91a16f1e827f677ecf163153d0",
           "version": null
         }
       }
