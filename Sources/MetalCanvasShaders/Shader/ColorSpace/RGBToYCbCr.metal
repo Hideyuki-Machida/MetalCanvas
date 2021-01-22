@@ -24,14 +24,14 @@ namespace ColorSpace {
         constexpr sampler colorSampler(mip_filter::linear, mag_filter::linear, min_filter::linear);
 
         float4 sorceRGBColor = sorceRGB.read(gid);
+        uint2 gidCbCr = uint2(gid.x / 2, gid.y / 2);
 
-        float offSet = (128.0f / 255.0f);
-        float Y = (0.299f * sorceRGBColor.r) + (0.587f * sorceRGBColor.g) + (0.114f * sorceRGBColor.b);
-        float Cb = (-0.1687f * sorceRGBColor.r) - (0.331f * sorceRGBColor.g) + (0.500f * sorceRGBColor.b) + offSet;
-        float Cr = (0.5f * sorceRGBColor.r) - (0.419f * sorceRGBColor.g) + (0.081f * sorceRGBColor.b) + offSet;
+        float Y = (0.257 * sorceRGBColor.r) + (0.504 * sorceRGBColor.g) + (0.098 * sorceRGBColor.b) + (16.0 / 255.0);
+        float Cb = (-0.148 * sorceRGBColor.r) - (0.291 * sorceRGBColor.g) + (0.439 * sorceRGBColor.b) + (128.0/ 255.0);
+        float Cr = (0.439 * sorceRGBColor.r) - (0.368 * sorceRGBColor.g) - (0.071 * sorceRGBColor.b) + (128.0/ 255.0);
 
         destinationY.write(float4(Y, Y, Y, 1.0f), gid);
-        destinationCb.write(float4(Cb, Cb, Cb, 1.0f), gid);
-        destinationCr.write(float4(Cr, Cr, Cr, 1.0f), gid);
+        destinationCb.write(float4(Cb, 0.0, 0.0, 1.0), gidCbCr);
+        destinationCr.write(float4(0.0, Cr, 0.0, 1.0), gidCbCr);
     }
 }

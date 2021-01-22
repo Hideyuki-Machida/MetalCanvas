@@ -1,15 +1,15 @@
 //
-//  RGBToYCbCr.swift
-//  MetalCanvas
+//  RGBToY.swift
+//  
 //
-//  Created by hideyuki machida on 2020/07/22.
-//  Copyright © 2020 hideyuki machida. All rights reserved.
+//  Created by hideyuki machida on 2020/10/04.
+//
 
 import Foundation
 import Metal
 
 extension MCFilter.ColorSpace {
-    public struct RGBToYCbCr {
+    public struct RGBToY {
         // MARK: - vars
 
         fileprivate let pipelineState: MTLComputePipelineState
@@ -18,11 +18,10 @@ extension MCFilter.ColorSpace {
         // MARK: - func
 
         public init() throws {
-            self.pipelineState = try MCCore.device.makeComputePipelineState(function: MCFilter.ColorSpace.RGBToYCbCr.shaderFunc.kernel)
-            //self.pipelineState.label = "MCFilter.ColorSpace RGBToYCbCr"
+            self.pipelineState = try MCCore.device.makeComputePipelineState(function: MCFilter.ColorSpace.RGBToY.shaderFunc.kernel)
         }
 
-        public func process(commandBuffer: MTLCommandBuffer, sorceRGB: MCTexture, destinationY: inout MCTexture, destinationCb: inout MCTexture, destinationCr: inout MCTexture) throws {
+        public func process(commandBuffer: MTLCommandBuffer, sorceRGB: MCTexture, destinationY: inout MCTexture) throws {
 
             let threadgroupCount = MTLSize(
                 width: Int(sorceRGB.size.w) / self.threadsPerThreadgroup.width,
@@ -34,20 +33,18 @@ extension MCFilter.ColorSpace {
             encoder.setComputePipelineState(self.pipelineState)
             encoder.setTexture(sorceRGB.texture, index: 0)
             encoder.setTexture(destinationY.texture, index: 1)
-            encoder.setTexture(destinationCb.texture, index: 2)
-            encoder.setTexture(destinationCr.texture, index: 3)
             encoder.dispatchThreadgroups(threadgroupCount, threadsPerThreadgroup: threadsPerThreadgroup)
             encoder.endEncoding()
         }
     }
 }
 
-extension MCFilter.ColorSpace.RGBToYCbCr {
+extension MCFilter.ColorSpace.RGBToY {
     // MARK: - MTLFunction
 
-    private static let shaderFunc: ShaderFunc = MCFilter.ColorSpace.RGBToYCbCr.ShaderFunc()
+    private static let shaderFunc: ShaderFunc = MCFilter.ColorSpace.RGBToY.ShaderFunc()
 
     fileprivate struct ShaderFunc {
-        fileprivate let kernel: MTLFunction = MCCore.library.makeFunction(name: "kernel_RGBToYCbCr")!
+        fileprivate let kernel: MTLFunction = MCCore.library.makeFunction(name: "kernel_RGBToY")!
     }
 }
